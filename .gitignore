@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/db/csv
 
 /node_modules
 /yarn-error.log

@@ -5,4 +5,5 @@ class Station < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize
   end
+
 end
