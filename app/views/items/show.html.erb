@@ -1,1 +1,7 @@
-
+<ul>
+  <li><%= item.image %></li>
+  <li><%= item.name %></li>
+  <li><%= item.description %></li>
+  <li><%= item.price %></li>
+  <%= button_to "Add to Cart", cart_path(item_id: item.id) %>
+</ul>
