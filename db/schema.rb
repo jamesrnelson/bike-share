@@ -9,9 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 20180410002829) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180410002829) do
     t.string "subscription_type"
     t.integer "zip_code"
   end
-  
+
   create_table "conditions", force: :cascade do |t|
     t.string "date"
     t.float "max_temperature"
@@ -36,6 +34,14 @@ ActiveRecord::Schema.define(version: 20180410002829) do
     t.float "mean_wind_speed"
     t.float "precipitation"
     t.integer "zip_code"
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.integer "dock_count"
+    t.string "city"
+    t.date "installation_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

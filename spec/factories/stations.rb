@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence(:name) { |n| "Name #{n}" }
     sequence(:dock_count) { rand(0..100) }
     sequence(:city) { |n| "City #{n}" }
-    sequence(:installation_date) { "#{rand(1..12)}/#{rand(0..31)}/#{rand(2000..2017)}" }
+    installation_date '2/3/15'
   end
 end
