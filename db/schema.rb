@@ -10,10 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410205716) do
-=======
-ActiveRecord::Schema.define(version: 20180411045246) do
->>>>>>> 5dc9b45... Migration to change installation date to string in stations, seeds file complete
+ActiveRecord::Schema.define(version: 20180410025325) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +87,17 @@ ActiveRecord::Schema.define(version: 20180411045246) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.string "start_station"
+    t.datetime "end_date"
+    t.string "end_station"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
   end
 
   add_foreign_key "carts", "items"
