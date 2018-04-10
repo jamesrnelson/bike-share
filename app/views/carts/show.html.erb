@@ -1,0 +1,9 @@
+<% @item.each do |item| %>
+  <% if item.status == 1 %>
+    <ul>
+      <li><%= item.image %></li>
+      <li><%= item.name %></li>
+      <li><%= item.price %></li>
+    </ul>
+  <% end %>
+<% end %>
