@@ -9,19 +9,20 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20180410002829) do
+
+ActiveRecord::Schema.define(version: 20180410122109) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "trips", force: :cascade do |t|
-    t.integer "duration"
-    t.datetime "start_date"
-    t.string "start_station"
-    t.datetime "end_date"
-    t.string "end_station"
-    t.integer "bike_id"
-    t.string "subscription_type"
-    t.integer "zip_code"
+  create_table "carts", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_carts_on_item_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -34,6 +35,17 @@ ActiveRecord::Schema.define(version: 20180410002829) do
     t.float "mean_wind_speed"
     t.float "precipitation"
     t.integer "zip_code"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.float "price"
+    t.integer "status", default: 1
+    t.string "image", default: "img_default.jpg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
@@ -44,4 +56,26 @@ ActiveRecord::Schema.define(version: 20180410002829) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.string "start_station"
+    t.datetime "end_date"
+    t.string "end_station"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "carts", "items"
+  add_foreign_key "carts", "users"
 end
