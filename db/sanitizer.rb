@@ -1,4 +1,5 @@
 require 'csv'
+Dir.mkdir('./db/csv/truncated_data') unless Dir.exists?('./db/csv/truncated_data')
 
 @stations = CSV.readlines('./db/csv/station.csv', headers: true, header_converters: :symbol)
 @trips = []
@@ -27,11 +28,10 @@ end
 def truncate_statuses
   data = CSV.open('./db/csv/status.csv')
   @statuses << data.shift
-  count = 0
-  @stations.each do |_station|
-    10.times { @statuses << data.shift }
-    260480.times { data.shift }
-    puts "station #{count += 1} complete"
+  (1...141).each do |num|
+    5.times { @statuses << data.shift }
+    130240.times { data.shift }
+    puts "sample #{num} complete"
   end
   CSV.open('./db/csv/truncated_data/status.csv', 'w') do |csv|
     @statuses.each do |row|
