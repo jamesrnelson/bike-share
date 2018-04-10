@@ -23,9 +23,9 @@ end
 describe 'User visits trip index clicks to see more' do
   it 'should display the next 30 trips' do
     trips = create_list(:trip, 61)
+    
     visit trips_path
     click_link '2'
-    save_and_open_page
 
     expect(page).to_not have_content(trips[29].bike_id)
     expect(page).to_not have_content(trips[60].bike_id)
