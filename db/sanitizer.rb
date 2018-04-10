@@ -6,6 +6,8 @@ Dir.mkdir('./db/csv/truncated_data') unless Dir.exists?('./db/csv/truncated_data
 @statuses = []
 
 def truncate_trips
+  data = CSV.open('./db/csv/trip.csv')
+  @trips << data.shift
   @stations.reduce(Hash.new(0)) do |station_count, station_row|
     CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |trip_row|
       if trip_row[:start_station_id] == station_row[:id]
