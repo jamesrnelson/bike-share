@@ -6,4 +6,8 @@ class TripsController < ApplicationController
     offset = params[:offset].to_i * limit ||= 0
     @trips = Trip.all.offset(offset).limit(limit)
   end
+
+  def show
+    @trip = Trip.find(params[:id])
+  end
 end
