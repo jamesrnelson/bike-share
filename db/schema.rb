@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(version: 20180411185805) do
 
   add_foreign_key "carts", "items"
   add_foreign_key "carts", "users"
-  add_foreign_key "trips", "stations", column: "end_station_id"
-  add_foreign_key "trips", "stations", column: "start_station_id"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "trips", "stations", column: "end_station_id"
+  add_foreign_key "trips", "stations", column: "start_station_id"
 end
