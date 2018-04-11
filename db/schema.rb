@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410025325) do
+ActiveRecord::Schema.define(version: 20180410205716) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -69,17 +69,6 @@ ActiveRecord::Schema.define(version: 20180410025325) do
     t.integer "zip_code"
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.integer "duration"
-    t.datetime "start_date"
-    t.string "start_station"
-    t.datetime "end_date"
-    t.string "end_station"
-    t.integer "bike_id"
-    t.string "subscription_type"
-    t.integer "zip_code"
-  end
-
   create_table "users", force: :cascade do |t|
     t.integer "status", default: 0
     t.string "name"
@@ -87,17 +76,6 @@ ActiveRecord::Schema.define(version: 20180410025325) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.integer "duration"
-    t.datetime "start_date"
-    t.string "start_station"
-    t.datetime "end_date"
-    t.string "end_station"
-    t.integer "bike_id"
-    t.string "subscription_type"
-    t.integer "zip_code"
   end
 
   add_foreign_key "carts", "items"
