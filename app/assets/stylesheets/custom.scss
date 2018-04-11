@@ -32,11 +32,13 @@ tr:nth-child(1) {
 tr:hover {
   background-color: $hover-yellow;
 }
-.container {
+.container-fixed {
   margin: 0;
   max-width: 100%;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
+  background-attachment: fixed;
 }
+
 .row {
   display: flex;
   flex-direction: row;
