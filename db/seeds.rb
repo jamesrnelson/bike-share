@@ -1,7 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+CSV.foreach('./db/csv/station.csv', headers: true, header_converters: :symbol) do |row|
+  Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+end
+
+CSV.foreach('./db/csv/truncated_data/trip.csv', headers: true, header_converters: :symbol) do |row|
+  start_station = Station.find(row[:start_station_id])
+  end_station = Station.find(row[:end_station_id])
+  Trip.create(id: row[:id],
+              duration: row[:duration],
+              start_date: row[:start_date],
+              start_station: start_station,
+              end_date: row[:end_date],
+              end_station: end_station,
+              bike_id: row[:bike_id],
+              subscription_type: row[:subscription_type],
+              zip_code: row[:zip_code])
+end
+
+CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |row|
+  Condition.create(date: row[:date],
+                   max_temperature: row[:max_temperature_f],
+                   mean_temperature: row[:mean_temperature_f],
+                   min_temperature: row[:min_temperature_f],
+                   mean_humidity: row[:mean_humidity],
+                   mean_visibility: row[:mean_visibility_miles],
+                   mean_wind_speed: row[:mean_wind_speed_mph],
+                   precipitation: row[:precipitation_inches],
+                   zip_code: row[:zip_code])
+end

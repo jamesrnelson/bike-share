@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180410122109) do
-=======
 ActiveRecord::Schema.define(version: 20180410205716) do
->>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
+=======
+ActiveRecord::Schema.define(version: 20180411045246) do
+>>>>>>> 5dc9b45... Migration to change installation date to string in stations, seeds file complete
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "carts", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "user_id"
@@ -30,8 +28,6 @@ ActiveRecord::Schema.define(version: 20180410205716) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-=======
->>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
   create_table "conditions", force: :cascade do |t|
     t.string "date"
     t.float "max_temperature"
@@ -43,7 +39,6 @@ ActiveRecord::Schema.define(version: 20180410205716) do
     t.float "precipitation"
     t.integer "zip_code"
   end
-<<<<<<< HEAD
 
   create_table "items", force: :cascade do |t|
     t.string "title"
@@ -54,14 +49,12 @@ ActiveRecord::Schema.define(version: 20180410205716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-=======
->>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
     t.integer "dock_count"
     t.string "city"
-    t.date "installation_date"
+    t.string "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
