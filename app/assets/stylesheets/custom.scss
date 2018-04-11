@@ -4,8 +4,10 @@ $light-gray: #B0B0B0;
 $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
+$hover-yellow: #ffff99;
 $content: 'Roboto', sans-serif;
 $header: 'Open Sans Condensed', sans-serif;
+
 
 body {
   font-family: $content;
@@ -26,10 +28,14 @@ tr:nth-child(1) {
   background-color: $dark-navy;
   color: white;
 }
+
+tr:hover {
+  background-color: $hover-yellow;
+}
 .container {
   margin: 0;
   max-width: 100%;
-  background-color: $sky-blue;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
 }
 .row {
   display: flex;
@@ -42,6 +48,13 @@ tr:nth-child(1) {
 .col-10 {
   margin: 30px 0px;
   flex-basis: 83.33%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
+.col-9 {
+  margin: 30px 0px;
+  flex-basis: 75%;
   background-color: $light-gray;
   color: $dark-navy;
 }
@@ -67,7 +80,6 @@ tr:nth-child(1) {
 
 .nav-center {
   flex-basis: 12.5%;
-  // flex-direction: row;
   a {
     color: $light-gray;
     text-decoration: none;
@@ -80,7 +92,6 @@ tr:nth-child(1) {
 
 .nav-right {
   flex-basis: 12.5%;
-  // flex-direction: row;
   a {
     color: white;
     text-decoration: none;
