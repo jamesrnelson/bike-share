@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:Error] = 'Incorrect Username or Password'
-      render :new
+      redirect_to login_path
     end
   end
 
