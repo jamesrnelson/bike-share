@@ -9,16 +9,31 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <h1 class="navy-header">Best</h1>
+        <h1 class="sky-header">BikeShare</h1>
+      </div>
       <% if current_user  %>
-        Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %>
-        <br>
-        <%= link_to 'Logout', logout_path %>
+      <div class="nav-right">
+        <p>Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %></p>
+      </div>
+      <div class="nav-right">
+        <p><%= link_to 'Logout', logout_path %></p>
+      </div>
+
       <% else %>
-        <%= link_to 'Register', new_user_path %>
-        <%= link_to 'Login', login_path %>
+
+      <div class="nav-center">
+        <p><%= link_to 'Login', login_path %></p>
+      </div>
+      <div class="nav-right">
+        <p><%= link_to 'Register', new_user_path, class: "button" %></p>
+      </div>
+      <div class="nav-center">
+        <p>Cart: <%= @basket.total_count %></p>
+      </div>
       <% end %>
-      <p>Cart: <%= @basket.total_count %></p>
     </nav>
     <% flash.each do |type, message| %>
       <%= content_tag :div, message, class: type %>

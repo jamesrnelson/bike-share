@@ -1,16 +1,33 @@
-<% @trips.each do |trip| %>
-  <p>
-    Duration: <%= trip.duration %> -
-    Start Date: <%= trip.start_date %> -
-    Start Station: <%= trip.start_station.name %> -
-    End Date: <%= trip.end_date %> -
-    End Station: <%= trip.end_station.name %> -
-    Bike ID: <%= trip.bike_id %> -
-    Subscription Type: <%= trip.subscription_type %> -
-    Zip Code: <%= trip.zip_code %>
-  </p>
-<% end %>
-
-<% @pages.times do |n| %>
-  <%= link_to (n + 1).to_s, trips_path(offset: n) %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <table>
+        <tr class="table-background">
+          <th>Duration</th>
+          <th>Start Date</th>
+          <th>Start Station</th>
+          <th>End Date</th>
+          <th>End Station</th>
+          <th>Bike ID</th>
+          <th>Subscription Type</th>
+          <th>Zip Code</th>
+        </tr>
+        <% @trips.each do |trip| %>
+        <tr>
+          <td><%= trip.duration %> </td>
+          <td><%= trip.start_date %> </td>
+          <td><%= trip.start_station %> </td>
+          <td><%= trip.end_date %> </td>
+          <td><%= trip.end_station %> </td>
+          <td><%= trip.bike_id %> </td>
+          <td><%= trip.subscription_type %> </td>
+          <td><%= trip.zip_code %> </td>
+        </tr>
+        <% end %>
+      </table>
+      <% @pages.times do |n| %>
+        <%= link_to (n + 1).to_s, trips_path(offset: n) %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+$dark-navy: #000066;
+$sky-blue: #66ccff;
+$light-gray: #B0B0B0;
+$dark-gray: #606060;
+$button-red: #e60000;
+$hover-red: #ff0000;
+$content: 'Roboto', sans-serif;
+$header: 'Open Sans Condensed', sans-serif;
+
+body {
+  font-family: $content;
+  font-size: 16px;
+  color: $light-gray;
+  // background: $sky-blue;
+}
+
+tr:nth-child(even) {
+  background-color: $light-gray;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:nth-child(1) {
+  background-color: $dark-navy;
+  color: white;
+}
+.container {
+  margin: 0;
+  max-width: 100%;
+  background-color: $sky-blue;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.col-10 {
+  margin: 30px 0px;
+  flex-basis: 83.33%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
+
+.nav-bar {
+  width: 100%;
+  background-color: white;
+  // color: $sky-blue;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-left {
+  padding-left: 30px;
+  flex-basis: 62.5%;
+  h1 {
+    font-size: 35px;
+    font-family: $header;
+    display: inline-block;
+  }
+}
+
+.nav-center {
+  flex-basis: 12.5%;
+  // flex-direction: row;
+  a {
+    color: $light-gray;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-gray;
+    text-decoration: underline;
+  }
+}
+
+.nav-right {
+  flex-basis: 12.5%;
+  // flex-direction: row;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: #ff0000;
+  }
+}
+
+.button {
+  background-color: $button-red;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  a {
+    font-family: $header;
+    color: white;
+  }
+}
+
+.navy-header {
+  color: $dark-navy;
+}
+
+.sky-header {
+  color: $sky-blue;
+}
