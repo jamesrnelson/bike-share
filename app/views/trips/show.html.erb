@@ -1,10 +1,16 @@
-<h3>The following information is for the trip starting at <%= @trip.start_date %> at Station "<% @trip.start_station %>"</h3>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
+      <h3>The following information is for the trip starting at <%= @trip.start_date %> at Station "<% @trip.start_station.name %>"</h3>
 
-  <p>Duration: <%= @trip.duration %></p>
-  <p>Start Date: <%= @trip.start_date %></p>
-  <p>Start Station: <%= @trip.start_station.name %></p>
-  <p>End Date: <%= @trip.end_date %></p>
-  <p>End Station: <%= @trip.end_station.name %></p>
-  <p>Bike ID: <%= @trip.bike_id %></p>
-  <p>Subscription Type: <%= @trip.subscription_type %></p>
-  <p>Zip Code: <%= @trip.zip_code %></p>
+      <p>Duration: <%= @trip.duration %></p>
+      <p>Start Date: <%= @trip.start_date %></p>
+      <p>Start Station: <%= @trip.start_station.name %></p>
+      <p>End Date: <%= @trip.end_date %></p>
+      <p>End Station: <%= @trip.end_station.name %></p>
+      <p>Bike ID: <%= @trip.bike_id %></p>
+      <p>Subscription Type: <%= @trip.subscription_type %></p>
+      <p>Zip Code: <%= @trip.zip_code %></p>
+    </div>
+  </div>
+</div>

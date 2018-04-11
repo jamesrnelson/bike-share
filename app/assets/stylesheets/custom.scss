@@ -37,6 +37,7 @@ tr:hover {
   max-width: 100%;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .row {
@@ -61,11 +62,17 @@ tr:hover {
   color: $dark-navy;
 }
 
+.col-4 {
+  background-color: rgba(102,204,255,0.3);
+  flex-basis: 33%;
+  color: white;
+  padding: 30px;
+}
+
 
 .nav-bar {
   width: 100%;
   background-color: white;
-  // color: $sky-blue;
   display: flex;
   flex-direction: row;
 }
