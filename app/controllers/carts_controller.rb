@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  include ActionView::Helpers::TextHelper
+  
   def show
     @cart = Cart.where(user_id: session[:user_id]) if current_user
   end
