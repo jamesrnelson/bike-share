@@ -10,7 +10,7 @@
 
   <body>
     <nav>
-      <% if current_user %>
+      <% if current_user  %>
         Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %>
         <br>
         <%= link_to 'Logout', logout_path %>
@@ -19,6 +19,9 @@
         <%= link_to 'Login', login_path %>
       <% end %>
     </nav>
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: type %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
