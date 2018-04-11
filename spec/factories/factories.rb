@@ -10,4 +10,35 @@ FactoryBot.define do
     precipitation { rand(0..2.5).round(2) }
     zip_code 941_07
   end
+
+  factory :station do
+    sequence(:name) { |n| "Name #{n}" }
+    sequence(:dock_count) { rand(0..100) }
+    sequence(:city) { |n| "City #{n}" }
+    installation_date '2/3/15'
+  end
+
+  factory :trip do
+    duration 1040
+    start_date '2013-08-29 10:11:00'
+    start_station 'University and Emerson'
+    end_date '2013-08-29 10:31:00'
+    end_station 'California Ave Caltrain Station'
+    sequence(:bike_id) { |n| 1000000 + n }
+    subscription_type 'Subscriber'
+    zip_code 94303
+  end
+
+  factory :user do
+    sequence(:name) { |n| "Name #{n}" }
+    sequence(:username) { |n| "Username #{n}" }
+    sequence(:password) { |n| "Password #{n}" }
+  end
+
+  factory :admin, class: User do
+    name "Admin"
+    sequence(:username) { |n| "Username #{n}" }
+    sequence(:password) { |n| "Password #{n}" }
+    status 3
+  end
 end

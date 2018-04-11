@@ -4,5 +4,5 @@ class User < ApplicationRecord
   has_secure_password
   has_many :carts, dependent: :destroy
   has_many :orders
-  enum status: ['default', 'mod', 'super', 'admin']
+  enum status: ['default', 'admin']
 end
