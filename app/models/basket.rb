@@ -36,4 +36,23 @@ class Basket
       cart_item.save
     end
   end
+
+  def checkout
+    transaction = @current_user.orders.maximum(:order_num)
+    if transaction
+      transaction += 1
+    else
+      transaction = 1
+    end
+    @contents.each do |item, quantity|
+      @current_user.orders.create(item_id: item.to_i,
+                                  quantity: quantity,
+                                  order_num: transaction)
+    end
+    clear
+  end
+
+  def clear
+    @contents = Hash.new(0)
+  end
 end
