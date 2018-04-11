@@ -8,9 +8,9 @@ describe 'User visits trip index' do
 
     expect(page).to have_content(trips.first.duration)
     expect(page).to have_content(trips.first.start_date)
-    expect(page).to have_content(trips.first.start_station)
+    expect(page).to have_content(trips.first.start_station.name)
     expect(page).to have_content(trips.first.end_date)
-    expect(page).to have_content(trips.first.end_station)
+    expect(page).to have_content(trips.first.end_station.name)
     expect(page).to have_content(trips.first.bike_id)
     expect(page).to have_content(trips.first.subscription_type)
     expect(page).to have_content(trips.first.zip_code)
@@ -23,7 +23,7 @@ end
 describe 'User visits trip index clicks to see more' do
   it 'should display the next 30 trips' do
     trips = create_list(:trip, 61)
-    
+
     visit trips_path
     click_link '2'
 
