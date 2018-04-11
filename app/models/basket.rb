@@ -6,8 +6,18 @@ class Basket
     @current_user = user
   end
 
+  def find_item(id_string)
+    Item.find(id_string.to_i)
+  end
+
   def total_count
     @contents.values.sum
+  end
+
+  def total_cost
+    @contents.sum do |item, quantity|
+      quantity * find_item(item).price
+    end
   end
 
   def count_of(id)
@@ -15,6 +25,7 @@ class Basket
   end
 
   def add_item(id)
+    @contents[id.to_s] ||= 0
     @contents[id.to_s] += 1
     if @current_user
       cart_item = @current_user.cart.find_by(item_id: id)
@@ -24,5 +35,24 @@ class Basket
       cart_item.update(params)
       cart_item.save
     end
+  end
+
+  def checkout
+    transaction = @current_user.orders.maximum(:order_num)
+    if transaction
+      transaction += 1
+    else
+      transaction = 1
+    end
+    @contents.each do |item, quantity|
+      @current_user.orders.create(item_id: item.to_i,
+                                  quantity: quantity,
+                                  order_num: transaction)
+    end
+    clear
+  end
+
+  def clear
+    @contents = Hash.new(0)
   end
 end

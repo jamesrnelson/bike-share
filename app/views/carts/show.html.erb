@@ -1,1 +1,24 @@
-
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Item</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @basket.contents.each do |item, quantity| %>
+    <tr>
+      <td><%= @basket.find_item(item).image %></td>
+      <td><%= @basket.find_item(item).title %></td>
+      <td><%= @basket.find_item(item).description %></td>
+      <td><%= @basket.find_item(item).price %></td>
+      <td><%= quantity %></td>
+      <td><%= @basket.find_item(item).price * quantity %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>Total: <%= @basket.total_cost %></h3>
+<% if current_user %>
+  <%= button_to "Checkout", user_orders_path(current_user) %>
+<% end %>

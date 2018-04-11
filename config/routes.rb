@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   post '/cart', to: 'carts#create'
 
-  resources :users, only: %i[new create show]
+  resources :users, only: %i[new create show], shallow: true do
+    resources :orders, only: %i[show create]
+  end
 
   get '/dashboard', to: 'dashboard#index'
 
