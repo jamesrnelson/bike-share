@@ -28,10 +28,9 @@ class Basket
     @contents[id.to_s] ||= 0
     @contents[id.to_s] += 1
     if @current_user
-      cart_item = @current_user.cart.find_by(item_id: id)
-      cart_item ||= @current_user.cart.new(item_id: id, quantity: 0)
+      cart_item = @current_user.carts.find_by(item_id: id)
+      cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
       params = {quantity: @contents[id.to_s]}
-      params.permit(:quantity)
       cart_item.update(params)
       cart_item.save
     end
