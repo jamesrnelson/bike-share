@@ -10,9 +10,9 @@ CSV.foreach('./db/csv/truncated_data/trip.csv', headers: true, header_converters
   Trip.create(id: row[:id],
               duration: row[:duration],
               start_date: row[:start_date],
-              start_station: start_station,
+              start_station_id: start_station.id,
               end_date: row[:end_date],
-              end_station: end_station,
+              end_station_id: end_station.id,
               bike_id: row[:bike_id],
               subscription_type: row[:subscription_type],
               zip_code: row[:zip_code])
