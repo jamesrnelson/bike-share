@@ -4,7 +4,7 @@
       <li><%= item.image %></li>
       <li><%= item.title %></li>
       <li><%= item.price %></li>
-      <%= button_to "Add to Cart", cart_path(item_id: item.id) %>
+      <%= button_to "Add to Cart", cart_path(item_id: item.id), title: item.title %>
     </ul>
   <% end %>
 <% end %>
