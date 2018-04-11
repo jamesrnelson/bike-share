@@ -1,8 +1,8 @@
-<% @item.each do |item| %>
-  <% if item.status == 1 %>
+<% @items.each do |item| %>
+  <% if item.status == 'Active' %>
     <ul>
       <li><%= item.image %></li>
-      <li><%= item.name %></li>
+      <li><%= item.title %></li>
       <li><%= item.price %></li>
       <%= button_to "Add to Cart", cart_path(item_id: item.id) %>
     </ul>
