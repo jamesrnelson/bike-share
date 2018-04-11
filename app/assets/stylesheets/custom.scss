@@ -38,6 +38,24 @@ tr:hover {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  padding-bottom: 200px;
+}
+
+.container-color {
+  margin: 0;
+  max-width: 100%;
+  background-color: $sky-blue;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+.white {
+  background-color: white;
+}
+
+.sky-blue {
+  background-color: $sky-blue;
 }
 
 .row {
@@ -46,6 +64,21 @@ tr:hover {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+}
+
+.white-links {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-navy;
+    text-decoration: underline;
+  }
+  p {
+    display: inline-block;
+    padding: 0px 30px;
+  }
 }
 
 .col-10 {
@@ -67,6 +100,40 @@ tr:hover {
   flex-basis: 33%;
   color: white;
   padding: 30px;
+  tr {
+    background-color: $dark-navy;
+  }
+}
+
+.col-5 {
+  flex-basis: 50%;
+  margin: 50px;
+  color: white;
+  font-family: $header;
+  font-size: 20px;
+  text-align: center;
+  h1 {
+    font-size: 40 px;
+  }
+}
+
+.centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.navy-background {
+  background-color: $dark-navy;
 }
 
 
@@ -89,6 +156,10 @@ tr:hover {
 
 .nav-center {
   flex-basis: 12.5%;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
   a {
     color: $light-gray;
     text-decoration: none;
@@ -101,6 +172,10 @@ tr:hover {
 
 .nav-right {
   flex-basis: 12.5%;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
   a {
     color: white;
     text-decoration: none;
@@ -122,9 +197,15 @@ tr:hover {
 }
 
 .navy-header {
-  color: $dark-navy;
+  a {
+    color: $dark-navy;
+    text-decoration: none;
+  }
 }
 
 .sky-header {
-  color: $sky-blue;
+  a {
+    color: $sky-blue;
+    text-decoration: none;
+  }
 }

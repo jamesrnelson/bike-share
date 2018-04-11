@@ -1,12 +1,22 @@
 <%= form_for @user do |f| %>
-  <%= f.label :name, @user.name %>
-  <%= f.text_field :name %>
+<table>
+  <tr>
+    <td><%= f.label :name, @user.name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
 
-  <%= f.label :username, @user.username %>
-  <%= f.text_field :username %>
+  <tr>
+    <td><%= f.label :username, @user.username %></td>
+    <td><%= f.text_field :username %></p></td>
+  </tr>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <tr>
+    <td><%= f.label :password %></td>
+    <td><%= f.password_field :password %></td>
+  </tr>
 
-  <%= f.submit %>
+  <tr>
+    <td></td>
+    <td><%= f.submit %></td>
+  </tr>
 <% end %>
