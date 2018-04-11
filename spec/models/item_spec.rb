@@ -10,4 +10,19 @@ describe Item, type: :model do
       expect(item.image).to eq('img_default.jpg')
     end
   end
+
+  describe "relationships" do
+    it "has_many_orders" do
+      item = create(:item)
+      expect(item).to respond_to(:orders)
+    end
+    it "has many carts" do
+      item = create(:item)
+      expect(item).to respond_to(:carts)
+    end
+  end
+
+  # describe 'statuses' do
+  #   it
+
 end
