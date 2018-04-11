@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410205716) do
-
+ActiveRecord::Schema.define(version: 20180411172137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,13 +59,15 @@ ActiveRecord::Schema.define(version: 20180410205716) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.datetime "start_date"
-    t.string "start_station"
-    t.datetime "end_date"
-    t.string "end_station"
+    t.string "start_date"
+    t.string "end_date"
     t.integer "bike_id"
     t.string "subscription_type"
     t.integer "zip_code"
+    t.bigint "start_station_id"
+    t.bigint "end_station_id"
+    t.index ["end_station_id"], name: "index_trips_on_end_station_id"
+    t.index ["start_station_id"], name: "index_trips_on_start_station_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,4 +81,6 @@ ActiveRecord::Schema.define(version: 20180410205716) do
 
   add_foreign_key "carts", "items"
   add_foreign_key "carts", "users"
+  add_foreign_key "trips", "stations", column: "end_station_id"
+  add_foreign_key "trips", "stations", column: "start_station_id"
 end
