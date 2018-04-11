@@ -1,11 +1,23 @@
-<div class="form">
-  <%= form_tag login_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
+<div class="container-color white">
+  <div class="row">
+    <div class="form">
+      <%= form_tag login_path do %>
+      <%= label_tag :username %>
+      <%= text_field_tag :username %>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
 
-  <%= submit_tag "Login" %>
-  <% end %>
+      <%= submit_tag "Login" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-5">
+      <h1>Log in for the full experience!</h1>
+    </div>
+  </div>
 </div>

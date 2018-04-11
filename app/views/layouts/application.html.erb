@@ -9,17 +9,44 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <h1 class="navy-header"><%= link_to 'Best', root_path %></h1>
+        <h1 class="sky-header"><%= link_to 'BikeShare', root_path %></h1>
+      </div>
       <% if current_user  %>
-        Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %>
-        <br>
-        <%= link_to 'Logout', logout_path %>
+      <div class="nav-center">
+        <p>Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %></p>
+      </div>
+      <div class="nav-right">
+        <p><%= link_to 'Logout', logout_path, class: "button" %></p>
+      </div>
+      <div class="nav-center">
+        <p>Cart: <%= @basket.total_count %></p>
+      </div>
+
       <% else %>
-        <%= link_to 'Register', new_user_path %>
-        <%= link_to 'Login', login_path %>
+
+      <div class="nav-center">
+        <p><%= link_to 'Login', login_path %></p>
+      </div>
+      <div class="nav-right">
+        <p><%= link_to 'Register', new_user_path, class: "button" %></p>
+      </div>
+      <div class="nav-center">
+        <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
+      </div>
       <% end %>
-      <p>Cart: <%= @basket.total_count %></p>
     </nav>
+    <div class="row sky-blue">
+      <div class="white-links">
+        <p><%= link_to 'Conditions History', conditions_path %></p>
+        <p><%= link_to 'All Trips', trips_path %></p>
+        <p><%= link_to 'All Stations', stations_path %></p>
+        <p><%= link_to 'The Bike Shop', bike_shop_path %></p>
+      </div>
+
+    </div>
     <% flash.each do |type, message| %>
       <%= content_tag :div, message, class: type %>
     <% end %>

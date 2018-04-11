@@ -1,0 +1,211 @@
+$dark-navy: #000066;
+$sky-blue: #66ccff;
+$light-gray: #B0B0B0;
+$dark-gray: #606060;
+$button-red: #e60000;
+$hover-red: #ff0000;
+$hover-yellow: #ffff99;
+$content: 'Roboto', sans-serif;
+$header: 'Open Sans Condensed', sans-serif;
+
+
+body {
+  font-family: $content;
+  font-size: 16px;
+  color: $light-gray;
+  // background: $sky-blue;
+}
+
+tr:nth-child(even) {
+  background-color: $light-gray;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:nth-child(1) {
+  background-color: $dark-navy;
+  color: white;
+}
+
+tr:hover {
+  background-color: $hover-yellow;
+}
+.container-fixed {
+  margin: 0;
+  max-width: 100%;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding-bottom: 200px;
+}
+
+.container-color {
+  margin: 0;
+  max-width: 100%;
+  background-color: $sky-blue;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+.white {
+  background-color: white;
+}
+
+.sky-blue {
+  background-color: $sky-blue;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.white-links {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-navy;
+    text-decoration: underline;
+  }
+  p {
+    display: inline-block;
+    padding: 0px 30px;
+  }
+}
+
+.col-10 {
+  margin: 30px 0px;
+  flex-basis: 83.33%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
+.col-9 {
+  margin: 30px 0px;
+  flex-basis: 75%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
+.col-4 {
+  background-color: rgba(102,204,255,0.3);
+  flex-basis: 33%;
+  color: white;
+  padding: 30px;
+  tr {
+    background-color: $dark-navy;
+  }
+}
+
+.col-5 {
+  flex-basis: 50%;
+  margin: 50px;
+  color: white;
+  font-family: $header;
+  font-size: 20px;
+  text-align: center;
+  h1 {
+    font-size: 40 px;
+  }
+}
+
+.centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.navy-background {
+  background-color: $dark-navy;
+}
+
+
+.nav-bar {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-left {
+  padding-left: 30px;
+  flex-basis: 62.5%;
+  h1 {
+    font-size: 35px;
+    font-family: $header;
+    display: inline-block;
+  }
+}
+
+.nav-center {
+  flex-basis: 12.5%;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: $light-gray;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-gray;
+    text-decoration: underline;
+  }
+}
+
+.nav-right {
+  flex-basis: 12.5%;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: #ff0000;
+  }
+}
+
+.button {
+  background-color: $button-red;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  a {
+    font-family: $header;
+    color: white;
+  }
+}
+
+.navy-header {
+  a {
+    color: $dark-navy;
+    text-decoration: none;
+  }
+}
+
+.sky-header {
+  a {
+    color: $sky-blue;
+    text-decoration: none;
+  }
+}
