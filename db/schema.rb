@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180410122109) do
+=======
+ActiveRecord::Schema.define(version: 20180410205716) do
+>>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "carts", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "user_id"
@@ -25,6 +30,8 @@ ActiveRecord::Schema.define(version: 20180410122109) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+=======
+>>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
   create_table "conditions", force: :cascade do |t|
     t.string "date"
     t.float "max_temperature"
@@ -36,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180410122109) do
     t.float "precipitation"
     t.integer "zip_code"
   end
+<<<<<<< HEAD
 
   create_table "items", force: :cascade do |t|
     t.string "title"
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 20180410122109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+=======
+>>>>>>> 897e64f... Adds slug to stations and modifies stations controller and routes to handle pretty station show url
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
@@ -54,6 +64,18 @@ ActiveRecord::Schema.define(version: 20180410122109) do
     t.date "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.string "start_station"
+    t.datetime "end_date"
+    t.string "end_station"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
   end
 
   create_table "trips", force: :cascade do |t|
