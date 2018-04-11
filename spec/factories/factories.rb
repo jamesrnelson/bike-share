@@ -35,20 +35,6 @@ FactoryBot.define do
     sequence(:password) { |n| "Password #{n}" }
   end
 
-  factory :mod, class: User do
-    name "Mod"
-    sequence(:username) { |n| "Username #{n}" }
-    sequence(:password) { |n| "Password #{n}" }
-    status 1
-  end
-
-  factory :super, class: User do
-    name "Super"
-    sequence(:username) { |n| "Username #{n}" }
-    sequence(:password) { |n| "Password #{n}" }
-    status 2
-  end
-
   factory :admin, class: User do
     name "Admin"
     sequence(:username) { |n| "Username #{n}" }
