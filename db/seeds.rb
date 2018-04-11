@@ -29,3 +29,19 @@ CSV.foreach('./db/truncated_data/weather.csv', headers: true, header_converters:
                    precipitation: row[:precipitation_inches],
                    zip_code: row[:zip_code])
 end
+
+Item.create(title: 'Seat', description: 'Comphier than what you have now', price: 10.00)
+Item.create(title: 'Peddles', description: 'You need em to ride', price: 15.95)
+Item.create(title: 'Helmet', description: 'Protect yourself!', price: 12.95)
+Item.create(title: 'Bell', description: 'JJJIING JJJIING', price: 3.5)
+Item.create(title: 'Saddle-bags', description: 'Aerodynamic....', price: 14.5)
+Item.create(title: 'Horn', description: 'Horns are louder than bells', price: 3.5)
+Item.create(title: 'Bike Lock', description: 'Protect your bike!', price: 18.95)
+Item.create(title: 'Sweet Rims', description: 'Cooler than what you have now', price: 22)
+Item.create(title: 'Sand Tires', description: 'For the beach crawlin\'', price: 32.00)
+Item.create(title: 'Basket', description: 'Bike with more stuff', price: 11.50)
+Item.create(title: 'Reflectors', description: 'Don\'t get hit', price: 2.5)
+Item.create(title: 'Jersey', description: 'Actually aerodynamic', price: 18)
+Item.create(title: 'Water Bottle', description: 'Hydrate!', price: 4.5)
+Item.create(title: 'Water Bottle Holder', description: 'Hold the hydration', price: 4.5)
+Item.create(title: 'Helmet Mirror ', description: 'See those slower bikers back there', price: 11)
