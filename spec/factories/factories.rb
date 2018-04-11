@@ -39,6 +39,12 @@ FactoryBot.define do
     name "Admin"
     sequence(:username) { |n| "Username #{n}" }
     sequence(:password) { |n| "Password #{n}" }
-    status 3
+    status 1
+  end
+
+  factory :item do
+    sequence(:title) { |n| "Item #{n}" }
+    sequence(:description) { |n| "Item #{n} Description" }
+    sequence(:price) { rand(0..100) }
   end
 end

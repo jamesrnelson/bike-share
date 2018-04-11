@@ -16,7 +16,18 @@ describe User, type: :model do
     end
   end
 
-  describe "status" do
+  describe "relationships" do
+    it "has_many_orders" do
+      user = create(:user)
+      expect(user).to respond_to(:orders)
+    end
+    it "has many carts" do
+      user = create(:user)
+      expect(user).to respond_to(:carts)
+    end
+  end
+
+  describe "statuses" do
     it "can be an admin" do
       admin = User.create!(username: "user", password: "pass", status: "admin", name: "name")
 
