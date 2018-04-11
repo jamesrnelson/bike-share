@@ -1,5 +1,11 @@
 require 'csv'
-Dir.mkdir('./db/csv/truncated_data') unless Dir.exists?('./db/csv/truncated_data')
+require 'fileutils'
+
+dest_folder = './db/truncated_data'
+Dir.mkdir(dest_folder) unless Dir.exists?(dest_folder)
+
+FileUtils.cp('./db/csv/station.csv', dest_folder)
+FileUtils.cp('./db/csv/weather.csv', dest_folder)
 
 @stations = CSV.readlines('./db/csv/station.csv', headers: true, header_converters: :symbol)
 @trips = []
@@ -20,7 +26,7 @@ def truncate_trips
     end
     station_count
   end
-  CSV.open('./db/csv/truncated_data/trip.csv', 'w') do |csv|
+  CSV.open('./db/truncated_data/trip.csv', 'w') do |csv|
     @trips.each do |row|
       csv << row
     end
@@ -35,7 +41,7 @@ def truncate_statuses
     130240.times { data.shift }
     puts "sample #{num} complete"
   end
-  CSV.open('./db/csv/truncated_data/status.csv', 'w') do |csv|
+  CSV.open('./db/truncated_data/status.csv', 'w') do |csv|
     @statuses.each do |row|
       csv << row
     end

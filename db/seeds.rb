@@ -1,10 +1,10 @@
 require 'csv'
 
-CSV.foreach('./db/csv/station.csv', headers: true, header_converters: :symbol) do |row|
+CSV.foreach('./db/truncated_data/station.csv', headers: true, header_converters: :symbol) do |row|
   Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
 end
 
-CSV.foreach('./db/csv/truncated_data/trip.csv', headers: true, header_converters: :symbol) do |row|
+CSV.foreach('./db/truncated_data/trip.csv', headers: true, header_converters: :symbol) do |row|
   start_station = Station.find(row[:start_station_id])
   end_station = Station.find(row[:end_station_id])
   Trip.create(id: row[:id],
@@ -18,7 +18,7 @@ CSV.foreach('./db/csv/truncated_data/trip.csv', headers: true, header_converters
               zip_code: row[:zip_code])
 end
 
-CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |row|
+CSV.foreach('./db/truncated_data/weather.csv', headers: true, header_converters: :symbol) do |row|
   Condition.create(date: row[:date],
                    max_temperature: row[:max_temperature_f],
                    mean_temperature: row[:mean_temperature_f],
