@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   post '/cart', to: 'carts#create'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: %i[new create show]
 
   get '/dashboard', to: 'dashboard#index'
 

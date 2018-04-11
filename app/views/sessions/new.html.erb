@@ -1,4 +1,5 @@
-<%= form_tag login_path do %>
+<div class="form">
+  <%= form_tag login_path do %>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
 
@@ -6,4 +7,5 @@
   <%= password_field_tag :password %>
 
   <%= submit_tag "Login" %>
-<% end %>
+  <% end %>
+</div>
