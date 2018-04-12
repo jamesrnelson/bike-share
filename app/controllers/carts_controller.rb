@@ -15,7 +15,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    @basket.update_item(params[:cart][:item], params[:cart][:quantity])
+    @basket.update_item(params[:item], params[:quantity])
     flash[:notice] = "Cart Updated!"
     redirect_to cart_path
   end
