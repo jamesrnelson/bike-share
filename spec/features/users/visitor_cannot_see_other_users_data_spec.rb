@@ -23,4 +23,26 @@ describe 'Visitor' do
     expect(page).to_not have_content(item2.title)
     expect(page).to have_content(item3.title)
   end
+
+  it 'cannot view another users profile information' do
+    user = create(:user)
+
+    visit root_path
+
+    click_on 'Login'
+
+    expect(current_path).to eq(login_path)
+    fill_in 'name', with: user.name
+    fill_in 'username', with: user.username
+    fill_in 'password', with: user.password
+
+    within('.form') do
+      click_on 'Login'
+    end
+
+    click_on 'Logout'
+
+    expect(page).to_not have_content(user.name)
+    expect(page).to_not have_content(user.username)
+  end
 end
