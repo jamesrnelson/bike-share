@@ -1,6 +1,8 @@
 <h1>Dashboard</h1>
 
-<ul>
-  <li>Name: <%= @user.name %></li>
-  <li>Username: <%= @user.username %></li>
-</ul>
+<% if current_user %>
+  <ul>
+    <li>Name: <%= @user.name %></li>
+    <li>Username: <%= @user.username %></li>
+  </ul>
+<% end %>
