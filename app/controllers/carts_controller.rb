@@ -2,7 +2,6 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    @cart = Cart.find_by(user_id: current_user.id)
   end
 
   def create
@@ -24,7 +23,7 @@ class CartsController < ApplicationController
   def destroy
     @basket.remove(params[:item])
     item = Item.find(params[:item].to_i)
-    flash[:notice] = %Q[Successfully removed <a href="#{item_path(item)}">#{item.title}</a> from your cart.]
+    flash[:notice] = "Successfully removed <a href=\"#{item_path(item)}\">#{item.title}</a> from your cart."
     redirect_to cart_path
   end
 end
