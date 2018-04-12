@@ -21,4 +21,6 @@
 <h3>Total: <%= @basket.total_cost %></h3>
 <% if current_user %>
   <%= button_to "Checkout", user_orders_path(current_user) %>
+<% else %>
+  <%= button_to "Register to Checkout", login_path %>
 <% end %>
