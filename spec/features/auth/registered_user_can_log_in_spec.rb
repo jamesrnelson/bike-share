@@ -22,6 +22,8 @@ describe 'Registered user' do
 
       expect(page).to have_content("Logged in as #{user.name}")
       expect(page).to have_content("Logout")
+      expect(page).to have_content(user.name)
+      expect(page).to have_content(user.username)
     end
   end
 end
