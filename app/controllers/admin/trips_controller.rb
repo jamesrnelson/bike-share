@@ -30,9 +30,9 @@ class Admin::TripsController < Admin::BaseController
   def trip_params
     params.require(:trip).permit(:duration,
                                  :start_date,
-                                 :start_station,
+                                 :start_station_id,
                                  :end_date,
-                                 :end_station,
+                                 :end_station_id,
                                  :bike_id,
                                  :subscription_type,
                                  :zip_code)

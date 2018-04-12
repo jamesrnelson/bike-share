@@ -17,12 +17,9 @@ feature 'On the trips path' do
       end
 
       expect(current_path).to eq(edit_admin_trip_path(trips.first))
-
       fill_in 'trip[duration]', with: 10
       fill_in 'trip[start_date]', with: '2013-08-01'
-      fill_in 'trip[start_station_id]', with: start_station.id
       fill_in 'trip[end_date]', with: '2013-08-01'
-      fill_in 'trip[end_station_id]', with: end_station.id
       fill_in 'trip[bike_id]', with: 1
       fill_in 'trip[subscription_type]', with: 'Test'
       fill_in 'trip[zip_code]', with: 12345

@@ -21,7 +21,7 @@
 
   <div class=''>
     <%= f.label :end_station_id %>
-    <%= f.number_field :end_station_id %>
+    <%= f.collection_select :end_station_id, @stations, :id, :name %>
   </div>
 
   <div class=''>
