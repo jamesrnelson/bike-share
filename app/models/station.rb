@@ -6,4 +6,7 @@ class Station < ApplicationRecord
     self.slug = name.parameterize
   end
 
+  def self.alphabetize
+    order(:name)
+  end
 end

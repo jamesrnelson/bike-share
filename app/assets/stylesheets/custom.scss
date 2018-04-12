@@ -13,7 +13,6 @@ body {
   font-family: $content;
   font-size: 16px;
   color: $light-gray;
-  // background: $sky-blue;
 }
 
 tr:nth-child(even) {
@@ -102,6 +101,13 @@ td {
 .col-9 {
   margin: 30px 0px;
   flex-basis: 75%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
+.col-5-table {
+  margin: 50px;
+  flex-basis: 38.5%;
   background-color: $light-gray;
   color: $dark-navy;
 }
