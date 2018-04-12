@@ -31,7 +31,6 @@ class Basket
       cart_item = @current_user.carts.find_by(item_id: id)
       cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
       params = { quantity: @contents[id.to_s] }
-      params.permit(:quantity)
       cart_item.update(params)
       cart_item.save
     end
@@ -43,7 +42,6 @@ class Basket
       cart_item = @current_user.carts.find_by(item_id: id.to_i)
       cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
       params = {quantity: quantity}
-      params.permit(:quantity)
       cart_item.update(params)
       cart_item.save
     end

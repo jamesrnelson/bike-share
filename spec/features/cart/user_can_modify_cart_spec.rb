@@ -14,7 +14,7 @@ describe 'As a visitor,' do
       click_on item2.title
 
       visit cart_path
-save_and_open_page
+
       click_on "remove#{item1.id.to_s}"
 
       expect(current_path).to eq(cart_path)
