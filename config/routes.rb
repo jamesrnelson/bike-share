@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trips, only: %i[index show]
-  resources :conditions, only: [:index, :show]
+  resources :conditions, only: %i[index show]
   resources :stations, only: %i[index show], param: :slug
 
   resources :items, only: [:show]
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :trips, only: %i[edit update destroy]
+    resources :conditions, only: %i[index edit update show]
   end
 end
