@@ -18,10 +18,12 @@ body {
 
 tr:nth-child(even) {
   background-color: $light-gray;
+  color: black
 }
 
 tr:nth-child(odd) {
   background-color: white;
+  color: black
 }
 
 tr:nth-child(1) {
