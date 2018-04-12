@@ -55,7 +55,7 @@ describe 'As a visitor,' do
 
       expect(page).to have_content('You now have 2 ones')
 
-      visit dashboard_path
+      visit root_path
 
       expect(page).to have_content('2')
     end

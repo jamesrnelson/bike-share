@@ -8,9 +8,9 @@ describe 'User visits trip index' do
 
     expect(page).to have_content(trips.first.duration)
     expect(page).to have_content(trips.first.start_date)
-    expect(page).to have_content(trips.first.start_station)
+    expect(page).to have_content(trips.first.start_station.name)
     expect(page).to have_content(trips.first.end_date)
-    expect(page).to have_content(trips.first.end_station)
+    expect(page).to have_content(trips.first.end_station.name)
     expect(page).to have_content(trips.first.bike_id)
     expect(page).to have_content(trips.first.subscription_type)
     expect(page).to have_content(trips.first.zip_code)
