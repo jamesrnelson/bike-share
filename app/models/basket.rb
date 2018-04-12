@@ -37,7 +37,7 @@ class Basket
   end
 
   def update_item(id, quantity)
-    @contents[id] = quantity
+    @contents[id] = quantity.to_i
     if @current_user
       cart_item = @current_user.carts.find_by(item_id: id.to_i)
       cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
