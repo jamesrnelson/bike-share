@@ -35,7 +35,7 @@ tr:hover {
 .container-fixed {
   margin: 0;
   max-width: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('golden_gate') no-repeat;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), image-url('golden_gate') no-repeat;
   background-attachment: fixed;
   background-size: cover;
   padding-bottom: 200px;
