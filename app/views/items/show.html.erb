@@ -2,6 +2,6 @@
   <li><%= @item.image %></li>
   <li><%= @item.title %></li>
   <li><%= @item.description %></li>
-  <li><%= @item.price %></li>
+  <li><%= "$#{'%.2f' % @item.price}" %></li>
   <%= button_to "Add to Cart", cart_path(item_id: @item.id) %>
 </ul>

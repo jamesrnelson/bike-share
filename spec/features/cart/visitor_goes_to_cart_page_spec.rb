@@ -21,7 +21,7 @@ describe 'As a visitor,' do
       expect(page).to have_content(10)
       expect(page).to have_content('two')
       expect(page).to have_content(20)
-      expect(page).to have_content('Total: 30.0')
+      expect(page).to have_content('Total: $30.00')
     end
 
     scenario 'I can create an account and still see the same cart' do
@@ -51,7 +51,7 @@ describe 'As a visitor,' do
       expect(page).to have_content(10)
       expect(page).to have_content('two')
       expect(page).to have_content(20)
-      expect(page).to have_content('Total: 30.0')
+      expect(page).to have_content('Total: $30.00')
 
       click_on "Logout"
 
@@ -85,7 +85,7 @@ describe 'As a visitor,' do
 
       expect(current_path).to eq(dashboard_path)
 
-      expect(page).to have_content('Successfully submitted your order totaling $30.0')
+      expect(page).to have_content('Successfully submitted your order totaling $30.00')
     end
   end
 end
