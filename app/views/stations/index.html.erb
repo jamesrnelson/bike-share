@@ -1,16 +1,22 @@
-<table>
-  <tr>
-    <th>Station Name</th>
-    <th>Dock Count</th>
-    <th>City</th>
-    <th>Installation Date</th>
-  </tr>
-  <% @stations.each do |station| %>
-    <tr data-href="<%= station_path(station.slug) %>">
-      <td><a href="<%= station_path(station.slug) %>"><%= station.name %></a></td>
-      <td><%= station.dock_count %></td>
-      <td><%= station.city %></td>
-      <td><%= station.installation_date %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-5-table">
+      <table>
+        <tr>
+          <th>Station Name</th>
+          <th>Dock Count</th>
+          <th>City</th>
+          <th>Installation Date</th>
+        </tr>
+        <% @stations.each do |station| %>
+          <tr data-href="<%= station_path(station.slug) %>">
+            <td><a href="<%= station_path(station.slug) %>"><%= station.name %></a></td>
+            <td><%= station.dock_count %></td>
+            <td><%= station.city %></td>
+            <td><%= station.installation_date %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

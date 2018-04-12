@@ -105,6 +105,13 @@ td {
   color: $dark-navy;
 }
 
+.col-5-table {
+  margin: 50px;
+  flex-basis: 38.5%;
+  background-color: $light-gray;
+  color: $dark-navy;
+}
+
 .col-4 {
   background-color: rgba(102,204,255,0.3);
   flex-basis: 33%;
