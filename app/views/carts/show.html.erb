@@ -6,6 +6,7 @@
     <th>Price</th>
     <th>Quantity</th>
     <th>Subtotal</th>
+    <th>Remove</th>
   </tr>
   <% @basket.contents.each do |item, quantity| %>
     <tr>
@@ -13,7 +14,15 @@
       <td><%= @basket.find_item(item).title %></td>
       <td><%= @basket.find_item(item).description %></td>
       <td><%= @basket.find_item(item).price %></td>
-      <td><%= quantity %></td>
+      <td>
+        <%= form_for @cart do |f| %>
+          <%= f.number_field :quantity, value: quantity %>
+          <%= f.hidden_field :item, value: item %>
+          <br>
+          <%= f.submit %>
+        <% end %>
+      </td>
+      <td><%= button_to "Remove", cart_path(item: item), method: :delete %></td>
       <td><%= @basket.find_item(item).price * quantity %></td>
     </tr>
   <% end %>

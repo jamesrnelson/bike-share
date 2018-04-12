@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/bike-shop', to: 'shop#index'
   get '/cart', to: 'carts#show'
   post '/cart', to: 'carts#create'
+  patch '/cart', to: 'carts#update'
+  put '/cart', to: 'carts#update'
+  delete '/cart', to: 'carts#destroy'
 
   resources :users, only: %i[new create show], shallow: true do
     resources :orders, only: %i[show create]

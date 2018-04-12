@@ -30,9 +30,29 @@ class Basket
     if @current_user
       cart_item = @current_user.carts.find_by(item_id: id)
       cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
-      params = {quantity: @contents[id.to_s]}
+      params = { quantity: @contents[id.to_s] }
+      params.permit(:quantity)
       cart_item.update(params)
       cart_item.save
+    end
+  end
+
+  def update_item(id, quantity)
+    @basket[id] = quantity
+    if @current_user
+      cart_item = @current_user.carts.find_by(item_id: id.to_i)
+      cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
+      params = {quantity: quantity}
+      params.permit(:quantity)
+      cart_item.update(params)
+      cart_item.save
+    end
+  end
+
+  def remove(id)
+    @basket.delete(id)
+    if @current_user
+      @current_user.carts.find_by(item_id: id.to_i).destroy
     end
   end
 
@@ -53,5 +73,10 @@ class Basket
 
   def clear
     @contents = Hash.new(0)
+    if @current_user
+      @current_user.carts.each do |cart|
+        cart.destroy
+      end
+    end
   end
 end
