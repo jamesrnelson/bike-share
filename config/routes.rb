@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
 
   namespace :admin do
+    resources :trips, only: %i[edit update]
   end
 end
