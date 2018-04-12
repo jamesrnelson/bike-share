@@ -1,7 +1,7 @@
 <div class="container-fixed">
   <div class="row">
     <div class="col-4">
-      <h3>The following information is for the trip starting at <%= @trip.start_date %> at Station "<% @trip.start_station.name %>"</h3>
+      <h3>The following information is for the trip starting at <%= @trip.start_date %> at <%= @trip.start_station.name %></h3>
 
       <p>Duration: <%= @trip.duration %></p>
       <p>Start Date: <%= @trip.start_date %></p>

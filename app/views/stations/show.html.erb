@@ -1,4 +1,11 @@
-<p><strong>Station Name:</strong> <%= @station.name %></p>
-<p><strong>Dock Count:</strong> <%= @station.dock_count %></p>
-<p><strong>City:</strong> <%= @station.city %></p>
-<p><strong>Installation Date:</strong> <%= @station.installation_date %></p>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
+      <h3><%= @station.name %></h3>
+
+      <p>Dock Count:</strong> <%= @station.dock_count %>
+      <p>City:</strong> <%= @station.city %>
+      <p>Installation Date:</strong> <%= @station.installation_date %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th>Image</th>
-    <th>Item</th>
+    <th>Title</th>
     <th>Description</th>
     <th>Price</th>
     <th>Quantity</th>
@@ -22,7 +22,7 @@
           <%= submit_tag "Update" %>
         <% end %>
       </td>
-      <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
+      <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "Remove #{item}" %></td>
       <td><%= @basket.find_item(item).price * quantity %></td>
     </tr>
   <% end %>
