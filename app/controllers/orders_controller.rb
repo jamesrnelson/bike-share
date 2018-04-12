@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    flash[:notice] = "Successfully submitted your order totaling $#{@basket.total_cost}"
+    flash[:notice] = "Successfully submitted your order totaling $#{'%.2f' % @basket.total_cost}"
     @basket.checkout
     @basket.clear
     session[:cart] = @basket.contents

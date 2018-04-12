@@ -51,6 +51,15 @@ tr:hover {
   padding-bottom: 50px;
 }
 
+td {
+  .table-image {
+    text-align: center;
+  }
+    img {
+      margin-top: 7%;
+      height: 3em;
+    }
+}
 
 .white {
   background-color: white;
