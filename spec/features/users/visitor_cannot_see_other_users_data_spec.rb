@@ -42,7 +42,29 @@ describe 'Visitor' do
 
     click_on 'Logout'
 
+    visit dashboard_path
+
     expect(page).to_not have_content(user.name)
     expect(page).to_not have_content(user.username)
+  end
+
+  it 'is redirected to login when they try to checkout' do
+    item1, item2, item3 = create_list(:item, 3)
+
+    visit bike_shop_path
+
+    click_on item1.title
+    click_on item2.title
+    click_on item3.title
+
+    visit cart_path
+
+    expect(page).to have_content(item1.title)
+    expect(page).to have_content(item2.title)
+    expect(page).to have_content(item3.title)
+
+    click_on 'Checkout'
+
+    expect(current_path).to eq(login_path)
   end
 end
