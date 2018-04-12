@@ -22,7 +22,7 @@
         <p><%= link_to 'Logout', logout_path, class: "button" %></p>
       </div>
       <div class="nav-center">
-        <p>Cart: <%= @basket.total_count %></p>
+        <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
       </div>
 
       <% else %>
