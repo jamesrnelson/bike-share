@@ -37,10 +37,4 @@ feature 'On the trips path' do
       expect(page).to have_content("Trip #{trips.first.id} was updated")
     end
   end
-
-  skip 'other users' do
-    scenario 'can\'t visit the edit page' do
-
-    end
-  end
 end

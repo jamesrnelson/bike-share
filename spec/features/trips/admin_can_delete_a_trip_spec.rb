@@ -9,15 +9,18 @@ feature 'On the trips path' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit trips_path
-      
-      expect(page).to have_content(trips.first.duration)
 
-      within 'tr:nth-child(2)' do
-        click_on 'Delete'
+
+      within 'tr:nth-child(2) td:first-child' do
+        expect(page).to have_content(trips.first.id)
       end
 
-      within 'tr:nth-child(2)' do
-        expect(page).to_not have_content(trips.first.duration)
+      click_on "#{trips.first.id} delete"
+
+      expect(page).to have_content('Trip 1 was successfully deleted')
+
+      within 'tr:nth-child(2) td:first-child' do
+        expect(page).to_not have_content(trips.first.id)
       end
     end
   end

@@ -14,6 +14,16 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def destroy
+    trip = Trip.find(params[:id])
+    if trip.destroy
+      flash[:success] = "Trip #{trip.id} was successfully deleted"
+    else
+      flash[:failure] = "Trip #{trip.id} was not deleted"
+    end
+    redirect_to trips_path
+  end
+
   private
 
   def trip_params

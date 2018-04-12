@@ -25,8 +25,8 @@
           <td><%= trip.subscription_type %> </td>
           <td><%= trip.zip_code %> </td>
           <% if current_admin? %>
-            <td><%= button_to 'Edit', edit_admin_trip_path(trip), method: 'get' %></td>
-            <td><%= button_to 'Delete' %></td>
+            <td><%= button_to 'Edit', edit_admin_trip_path(trip), method: 'get', title: "#{trip.id} edit"  %></td>
+            <td><%= button_to 'Delete', admin_trip_path(trip), method: 'delete', title: "#{trip.id} delete" %></td>
           <% end %>
         </tr>
         <% end %>
