@@ -16,7 +16,7 @@ describe 'As a visitor,' do
       visit cart_path
 
       click_on "remove#{item1.id.to_s}"
-
+      
       expect(current_path).to eq(cart_path)
       expect(page).to_not have_content('blah')
 
