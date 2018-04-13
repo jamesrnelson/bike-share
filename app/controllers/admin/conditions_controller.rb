@@ -19,6 +19,16 @@ class Admin::ConditionsController < Admin::BaseController
     flash[:notice] = 'You have updated the weather conditions.'
   end
 
+  def destroy
+    condition = Condition.find(params[:id])
+    if condition.destroy
+      flash[:success] = "You have successfully deleted the weather conditions for #{condition.date}."
+    else
+      flash[:failure] = "The weather conditions for #{condition.date} were NOT deleted."
+    end
+    redirect_to conditions_path
+  end
+
   private
 
   def condition_params
