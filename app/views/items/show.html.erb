@@ -1,7 +1,13 @@
-<ul>
-  <li><%= @item.image %></li>
-  <li><%= @item.title %></li>
-  <li><%= @item.description %></li>
-  <li><%= "$#{'%.2f' % @item.price}" %></li>
-  <%= button_to "Add to Cart", cart_path(item_id: @item.id) %>
-</ul>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
+      <ul>
+        <li class='item-image'><%= image_tag asset_path @item.image %></li>
+        <li><%= @item.title %></li>
+        <li><%= @item.description %></li>
+        <li><%= "$#{'%.2f' % @item.price}" %></li>
+        <%= button_to "Add to Cart", cart_path(item_id: @item.id) %>
+      </ul>
+    </div>
+  </div>
+</div>
