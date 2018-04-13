@@ -9,5 +9,4 @@ class Condition < ApplicationRecord
                        :precipitation,
                        :zip_code
 
-  has_many :trips
 end
