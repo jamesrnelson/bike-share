@@ -31,9 +31,11 @@
           </tr>
         <% end %>
       </table>
-      <% @pages.times do |n| %>
-        <%= link_to (n + 1).to_s, trips_path(offset: n) %>
-      <% end %>
+      <div class="pagination">
+        <% @pages.times do |n| %>
+          <%= link_to (n + 1).to_s, trips_path(offset: n) %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

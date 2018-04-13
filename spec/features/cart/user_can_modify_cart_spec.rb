@@ -8,14 +8,14 @@ describe 'As a visitor,' do
 
       visit bike_shop_path
 
-      click_on "Add #{item1.title}"
-      click_on "Add #{item1.title}"
+      click_on "#{item1.title}"
+      click_on "#{item1.title}"
 
-      click_on "Add #{item2.title}"
+      click_on "#{item2.title}"
 
       visit cart_path
 
-      click_on "Remove #{item1.id.to_s}"
+      click_on "#{item1.id.to_s}"
 
       expect(current_path).to eq(cart_path)
       expect(page).to_not have_content('blah')
