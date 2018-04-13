@@ -35,9 +35,7 @@ class Admin::ConditionsController < Admin::BaseController
   end
 
   def show
-    binding.pry
     @condition = Condition.find(params[:id])
-    flash[:notice] = 'You have updated the weather conditions.'
   end
 
   def destroy

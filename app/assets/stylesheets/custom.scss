@@ -1,6 +1,7 @@
 $dark-navy: #000066;
 $sky-blue: #66ccff;
-$light-gray: #e3e9f2;
+$light-gray: #B0B0B0;
+$table-gray: #E8E8E8;
 $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
@@ -37,6 +38,7 @@ tr:nth-child(1):hover {
 
 tr:hover {
   background-color: $hover-yellow;
+  color: $dark-navy;
 }
 .container-fixed {
   margin: 0;
@@ -89,7 +91,7 @@ td {
 .col-10 {
   margin: 30px 0px;
   flex-basis: 83.33%;
-  background-color: $light-gray;
+  background-color: $table-gray;
   color: $dark-navy;
 }
 

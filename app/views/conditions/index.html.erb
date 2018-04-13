@@ -35,6 +35,10 @@
           <td><%= condition.mean_visibility %></td>
           <td><%= condition.mean_wind_speed %></td>
           <td><%= condition.precipitation %></td>
+          <% if current_admin? %>
+            <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: 'get', title: "#{condition.id} edit"  %></td>
+            <td><%= button_to 'Delete', admin_condition_path(condition), method: 'delete', title: "#{condition.id} delete" %></td>
+          <% end %>
         </tr>
         <% end %>
       </table>
