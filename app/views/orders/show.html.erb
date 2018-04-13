@@ -1,0 +1,27 @@
+<p>Order Status: <%= @order.status %></p>
+<p>Submitted on: <%= @order.created_at %></p>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @order.order_items.map do |order_item| %>
+    <tr>
+      <td>
+        <div class="table-image">
+          <%= image_tag asset_path (order_item.item.image) %>
+        </div>
+      </td>
+      <td><%= order_item.item.title %></td>
+      <td><%= order_item.item.description %></td>
+      <td><%= "$#{'%.2f' % order_item.item.price}" %></td>
+      <td><%= order_item.order.item_quantity(order_item.item) %></td>
+      <td><%= "$#{'%.2f' % order_item.order.item_subtotal(order_item.item)}" %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>Total: <%= "$#{'%.2f' % @order.total }" %></h3>

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-
+    @order = Order.find(params[:id])
   end
 
   def create
