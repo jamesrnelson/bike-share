@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
-  validates :quantity, :order_num, presence: true
   belongs_to :user
-  belongs_to :item
+  has_many :order_items
+  has_many :items, through: :order_items
 
   enum status: ['ordered', 'completed', 'paid', 'cancelled']
 end

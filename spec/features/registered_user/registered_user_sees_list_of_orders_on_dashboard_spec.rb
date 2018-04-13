@@ -12,9 +12,9 @@ describe 'Registered user' do
 
       visit dashboard_path
 
-      expect(page).to have_content("Order #{order1.id}")
-      expect(page).to have_content("Order #{order2.id}")
-      expect(page).to have_content("Order #{order3.id}")
+      expect(page).to have_content("Order \##{order1.id}")
+      expect(page).to have_content("Order \##{order2.id}")
+      expect(page).to have_content("Order \##{order3.id}")
     end
   end
 end
