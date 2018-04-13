@@ -26,7 +26,10 @@ feature 'User visits trip index' do
       trips = create_list(:trip, 61)
 
       visit trips_path
-      click_link '2'
+
+      within '.pagination' do
+        click_link '2'
+      end
 
       expect(page).to_not have_content(trips[29].bike_id)
       expect(page).to_not have_content(trips[60].bike_id)
