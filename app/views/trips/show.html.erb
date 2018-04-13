@@ -11,6 +11,11 @@
       <p>Bike ID: <%= @trip.bike_id %></p>
       <p>Subscription Type: <%= @trip.subscription_type %></p>
       <p>Zip Code: <%= @trip.zip_code %></p>
+
+      <div class="buttons">
+        <%= button_to 'Edit', edit_admin_trip_path(@trip), method: 'get' %>
+        <%= button_to 'Delete', admin_trip_path(@trip), method: 'delete' %>
+      </div>
     </div>
   </div>
 </div>
