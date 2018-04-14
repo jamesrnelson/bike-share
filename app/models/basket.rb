@@ -63,7 +63,7 @@ class Basket
     end
     order = @current_user.orders.create
     @contents.each do |item, quantity|
-      order.order_items.create(item_id: item)
+      order.order_items.create(item_id: item, quantity: quantity)
     end
     clear
   end

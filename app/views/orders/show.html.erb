@@ -9,18 +9,18 @@
     <th>Quantity</th>
     <th>Subtotal</th>
   </tr>
-  <% @order.order_items.map do |order_item| %>
+  <% @order.items.map do |item| %>
     <tr>
       <td>
         <div class="table-image">
-          <%= image_tag asset_path (order_item.item.image) %>
+          <%= image_tag asset_path (item.image) %>
         </div>
       </td>
-      <td><%= order_item.item.title %></td>
-      <td><%= order_item.item.description %></td>
-      <td><%= "$#{'%.2f' % order_item.item.price}" %></td>
-      <td><%= order_item.order.item_quantity(order_item.item) %></td>
-      <td><%= "$#{'%.2f' % order_item.order.item_subtotal(order_item.item)}" %></td>
+      <td><%= item.title %></td>
+      <td><%= item.description %></td>
+      <td><%= "$#{'%.2f' % item.price}" %></td>
+      <td><%= @order.item_quantity(item) %></td>
+      <td><%= "$#{'%.2f' % @order.item_subtotal(item)}" %></td>
     </tr>
   <% end %>
 </table>
