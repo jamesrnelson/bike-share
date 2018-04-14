@@ -1,8 +1,10 @@
-<% if (@current_user.id == @order.user_id) || @current_user.admin? %>
+<% if (@current_user.id == @order.user_id) || current_user.admin? %>
+  <p><%= "Purchaser's Name: #{@order.fullname}" if current_user.admin? %>
+  <p><%= "Purchaser's Address: #{@order.address}" if current_user.admin? %>
   <p>Order Status: <%= @order.status %></p>
   <p>Submitted on: <%= @order.created_at %></p>
-  <%= "Order completed on: #{@order.updated_at}" if @order.completed? %>
-  <%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %>
+  <p><%= "Order completed on: #{@order.updated_at}" if @order.completed? %></p>
+  <p><%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %></p>
   <table>
     <tr>
       <th>Image</th>
@@ -12,6 +14,7 @@
       <th>Quantity</th>
       <th>Subtotal</th>
     </tr>
+    <p>Total Items in Order: <%= @order.total_quantity %></p>
     <% @order.items.map do |item| %>
       <tr>
         <td>
@@ -19,7 +22,7 @@
             <%= image_tag asset_path (item.image) %>
           </div>
         </td>
-        <td><%= item.title %></td>
+        <td><%= link_to item.title, item_path(item) %></td>
         <td><%= item.description %></td>
         <td><%= "$#{'%.2f' % item.price}" %></td>
         <td><%= @order.item_quantity(item) %></td>

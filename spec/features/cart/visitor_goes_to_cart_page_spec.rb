@@ -81,6 +81,9 @@ describe 'As a visitor,' do
 
       visit cart_path
 
+      fill_in "order[fullname]", with: "Bob Hope"
+      fill_in "order[address]", with: "Bob Hope's Address"
+
       click_on "Checkout"
 
       expect(current_path).to eq(dashboard_path)

@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  validates_presence_of :fullname, :address
   belongs_to :user
   has_many :order_items
   has_many :items, through: :order_items
@@ -15,5 +16,9 @@ class Order < ApplicationRecord
 
   def total
     items.inject(0) { |sum, item| sum + item_subtotal(item) }
+  end
+
+  def total_quantity
+    order_items.sum(:quantity)
   end
 end

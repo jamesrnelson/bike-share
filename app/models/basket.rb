@@ -54,14 +54,14 @@ class Basket
     end
   end
 
-  def checkout
+  def checkout(order_params)
     transaction = @current_user.orders.maximum(:id)
     if transaction
       transaction += 1
     else
       transaction = 1
     end
-    order = @current_user.orders.create
+    order = @current_user.orders.create(fullname: order_params[:fullname], address: order_params[:address])
     @contents.each do |item, quantity|
       order.order_items.create(item_id: item, quantity: quantity)
     end

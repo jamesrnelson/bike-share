@@ -9,6 +9,9 @@ describe Item, type: :model do
       expect(item.status).to eq("active")
       expect(item.image).to eq('img_default.jpg')
     end
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:price) }
   end
 
   describe "relationships" do
