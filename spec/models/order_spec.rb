@@ -13,4 +13,33 @@ describe Order, type: :model do
       expect(order).to respond_to(:user)
     end
   end
+
+  describe 'instance methods' do
+    it '.item_subtotal(item)' do
+      user = create(:user)
+      order = user.orders.create!
+      item = create(:item)
+      order_item = order.order_items.create!(item_id: item.id, quantity: 3)
+
+      expect(order.item_subtotal(item)).to eq(item.price * order_item.quantity)
+    end
+    it '.item_quantity(item)' do
+      user = create(:user)
+      order = user.orders.create!
+      item = create(:item)
+      order_item = order.order_items.create!(item_id: item.id, quantity: 3)
+
+      expect(order.item_quantity(item)).to eq(order_item.quantity)
+    end
+    it '.total' do
+      user = create(:user)
+      order = user.orders.create!
+      item1, item2 = create_list(:item, 3)
+      order_item1 = order.order_items.create!(item_id: item1.id, quantity: 3)
+      order_item2 = order.order_items.create!(item_id: item2.id, quantity: 1)
+      total = (item1.price * order_item1.quantity) + (item2.price * order_item2.quantity)
+
+      expect(order.total).to eq(total)
+    end
+  end
 end

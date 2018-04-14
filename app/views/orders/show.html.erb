@@ -1,29 +1,33 @@
-<p>Order Status: <%= @order.status %></p>
-<p>Submitted on: <%= @order.created_at %></p>
-<%= "Order completed on: #{@order.updated_at}" if @order.completed? %>
-<%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %>
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Subtotal</th>
-  </tr>
-  <% @order.items.map do |item| %>
+<% if @current_user.id == @order.user_id %>
+  <p>Order Status: <%= @order.status %></p>
+  <p>Submitted on: <%= @order.created_at %></p>
+  <%= "Order completed on: #{@order.updated_at}" if @order.completed? %>
+  <%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %>
+  <table>
     <tr>
-      <td>
-        <div class="table-image">
-          <%= image_tag asset_path (item.image) %>
-        </div>
-      </td>
-      <td><%= item.title %></td>
-      <td><%= item.description %></td>
-      <td><%= "$#{'%.2f' % item.price}" %></td>
-      <td><%= @order.item_quantity(item) %></td>
-      <td><%= "$#{'%.2f' % @order.item_subtotal(item)}" %></td>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
     </tr>
-  <% end %>
-</table>
-<h3>Total: <%= "$#{'%.2f' % @order.total }" %></h3>
+    <% @order.items.map do |item| %>
+      <tr>
+        <td>
+          <div class="table-image">
+            <%= image_tag asset_path (item.image) %>
+          </div>
+        </td>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= "$#{'%.2f' % item.price}" %></td>
+        <td><%= @order.item_quantity(item) %></td>
+        <td><%= "$#{'%.2f' % @order.item_subtotal(item)}" %></td>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Total: <%= "$#{'%.2f' % @order.total }" %></h3>
+<% else %>
+  <%= render file: "/public/404" %>
+<% end %>
