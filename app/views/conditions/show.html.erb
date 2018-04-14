@@ -1,14 +1,20 @@
 <div class="container-fixed">
   <div class="row">
     <div class="col-4">
-      <h3><%= @condition.date %></h3>
-      <p>Maximum Temperature: <%= @condition.max_temperature %></p>
-      <p>Minimum Temperature: <%= @condition.min_temperature %></p>
-      <p>Mean Temperature: <%= @condition.mean_temperature %></p>
-      <p>Mean Humidity: <%= @condition.mean_humidity %></p>
-      <p>Mean Visibility: <%= @condition.mean_visibility %></p>
-      <p>Mean Wind Speed: <%= @condition.mean_wind_speed %></p>
-      <p>Precipitation: <%= @condition.precipitation %></p>
-      <p>Zip Code: <%= @condition.zip_code %></p>
+      <div class="small-row">
+        <%= button_to 'Edit', edit_admin_condition_path(@condition), method: 'get', title: "#{@condition.id} edit"  %>
+        <%= button_to 'Delete', admin_condition_path(@condition), method: 'delete', title: "#{@condition.id} delete" %>
+      </div>
+      <h3>The following information is for the weather conditions on <%= @condition.date %> </h3>
+
+      <p> Date: <%= @condition.date %></p>
+      <p> Max Temperature (F): <%= @condition.max_temperature %></p>
+      <p> Min Temperature (F): <%= @condition.min_temperature %></p>
+      <p> Mean Temperature (F): <%= @condition.mean_temperature %>
+      <p> Mean Humidity: <%= @condition.mean_humidity %>%</p>
+      <p> Mean Visibility (miles): <%= @condition.mean_visibility %></p>
+      <p> Mean Wind Speed (mph): <%= @condition.mean_wind_speed %></p>
+      <p> Precipitation (in): <%= @condition.precipitation %></p>
+      <p> Zip Code: <%= @condition.zip_code %></p>
     </div>
   </div>
