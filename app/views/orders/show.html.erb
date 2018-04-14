@@ -1,4 +1,4 @@
-<% if @current_user.id == @order.user_id %>
+<% if (@current_user.id == @order.user_id) || @current_user.admin? %>
   <p>Order Status: <%= @order.status %></p>
   <p>Submitted on: <%= @order.created_at %></p>
   <%= "Order completed on: #{@order.updated_at}" if @order.completed? %>
