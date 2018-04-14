@@ -26,6 +26,5 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :trips, only: %i[edit update destroy new create]
-    resources :conditions, only: %i[edit update show]
-  end
+    resources :conditions, only: %i[new create edit update destroy]  end
 end

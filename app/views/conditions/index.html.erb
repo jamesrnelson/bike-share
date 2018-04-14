@@ -1,4 +1,13 @@
+
 <div class="container-fixed">
+<div class="row">
+  <% if current_admin? %>
+  <div class="row">
+    <%= button_to 'Create Weather Conditions', new_admin_condition_path, method: 'get' %>
+  </div>
+  <% end %>
+
+</div>
   <div class="row">
     <div class="col-9">
       <table>
@@ -11,6 +20,8 @@
           <th>Mean Visibility (miles)</th>
           <th>Mean Wind Speed (mph)</th>
           <th>Precipitation (in)</th>
+          <th></th>
+          <th></th>
         </tr>
         <% @conditions.each do |condition| %>
         <tr>

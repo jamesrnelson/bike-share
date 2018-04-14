@@ -1,47 +1,58 @@
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Remove</th>
-    <th>Subtotal</th>
-  </tr>
-  <% @basket.contents.each do |item, quantity| %>
-    <tr>
-      <td>
-        <div class="table-image">
-          <%= image_tag asset_path (@basket.find_item(item).image) %>
-        </div>
-      </td>
-      <td><%= @basket.find_item(item).title %></td>
-      <td><%= @basket.find_item(item).description %></td>
-      <td><%= "$#{'%.2f' % @basket.find_item(item).price}" %></td>
-      <td>
-        <%= form_tag(cart_path, method: :patch) do %>
-          <%= number_field_tag(:quantity, value = quantity) %>
-          <%= hidden_field_tag(:item, value = item) %>
-          <br>
-          <%= submit_tag "Update" %>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-5">
+      <table>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+          <th>Subtotal</th>
+        </tr>
+        <% @basket.contents.each do |item, quantity| %>
+          <tr>
+            <td>
+              <div class="table-image">
+                <%= image_tag asset_path (@basket.find_item(item).image) %>
+              </div>
+            </td>
+            <td><%= @basket.find_item(item).title %></td>
+            <td><%= @basket.find_item(item).description %></td>
+            <td><%= "$#{'%.2f' % @basket.find_item(item).price}" %></td>
+            <td>
+              <%= form_tag(cart_path, method: :patch) do %>
+                <%= number_field_tag(:quantity, value = quantity) %>
+                <%= hidden_field_tag(:item, value = item) %>
+                <br>
+                <%= submit_tag "Update" %>
+              <% end %>
+            </td>
+            <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
+            <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
+          </tr>
         <% end %>
       </td>
       <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
       <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
     </tr>
-  <% end %>
-</table>
-<h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
-<% if current_user %>
-  <%= form_tag user_orders_path(current_user) do %>
-    <label>Full Name:</label><br>
-    <%= text_field_tag :'order[fullname]' %><br>
+      <% end %>
+    </table>
+    <h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
+    <% if current_user %>
+      <%= form_tag user_orders_path(current_user) do %>
+        <label>Full Name:</label><br>
+        <%= text_field_tag :'order[fullname]' %><br>
 
-    <label>Address:</label><br>
-    <%= text_area_tag :'order[address]' %><br>
+        <label>Address:</label><br>
+        <%= text_area_tag :'order[address]' %><br>
 
-    <%= submit_tag "Checkout" %>
-  <% end %>
-<% else %>
-  <%= button_to "Register to Checkout", login_path %>
-<% end %>
+        <%= submit_tag "Checkout" %>
+      <% end %>
+    <% else %>
+      <%= button_to "Register to Checkout", login_path %>
+    <% end %>
+    </div>
+  </div>
+</div>

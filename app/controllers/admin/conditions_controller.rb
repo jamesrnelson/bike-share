@@ -4,14 +4,34 @@ class Admin::ConditionsController < Admin::BaseController
     @conditions = Condition.all
   end
 
+  def new
+    @condition = Condition.new
+  end
+
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+      flash[:success] = 'You have created new weather conditions.'
+      redirect_to condition_path(@condition)
+    else
+      flash[:failure] = 'You were unable to create new weather conditions.'
+      render :new
+    end
+  end
+
   def edit
     @condition = Condition.find(params[:id])
   end
 
   def update
     condition = Condition.find(params[:id])
-    condition.update(condition_params)
-    redirect_to admin_condition_path(condition)
+    if condition.update(condition_params)
+      flash[:success] = 'You have updated the weather conditions.'
+      redirect_to condition_path(condition)
+    else
+      flash[:failure] = 'You were unable to update the weather conditions.'
+      render :edit
+    end
   end
 
   def show
@@ -37,10 +57,11 @@ class Admin::ConditionsController < Admin::BaseController
       :max_temperature,
       :mean_temperature,
       :min_temperature,
-      :mean_humdity,
+      :mean_humidity,
       :mean_visibility,
       :mean_wind_speed,
-      :precipitation
+      :precipitation,
+      :zip_code
     )
   end
 end

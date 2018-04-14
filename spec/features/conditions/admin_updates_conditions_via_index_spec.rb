@@ -50,7 +50,8 @@ describe 'Admin' do
       fill_in 'Mean visibility', with: 10
       fill_in 'Mean wind speed', with: 10
       fill_in 'Precipitation', with: 2
-      click_on 'Update Conditions'
+      fill_in 'Zip code', with: 80230
+      click_on 'Update Condition'
 
       expect(current_path).to eq(admin_condition_path(condition))
       expect(page).to have_content('You have updated the weather conditions.')
