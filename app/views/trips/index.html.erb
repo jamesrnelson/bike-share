@@ -1,3 +1,8 @@
+<% if current_admin? %>
+  <div class="new-button">
+    <%= link_to 'New Trip', new_admin_trip_path %>
+  </div>
+<% end %>
 <div class="container-fixed">
   <div class="row">
     <div class="col-10">

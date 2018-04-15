@@ -16,7 +16,6 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def destroy
-    binding.pry
     trip = Trip.find(params[:id])
     if trip.destroy
       flash[:success] = "Trip #{trip.id} was successfully deleted"
