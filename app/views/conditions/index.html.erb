@@ -20,8 +20,10 @@
           <th>Mean Visibility (miles)</th>
           <th>Mean Wind Speed (mph)</th>
           <th>Precipitation (in)</th>
-          <th></th>
-          <th></th>
+          <% if current_admin? %>
+            <th></th>
+            <th></th>
+          <% end %>
         </tr>
         <% @conditions.each do |condition| %>
         <tr>
