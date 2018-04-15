@@ -33,7 +33,15 @@
 </table>
 <h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
 <% if current_user %>
-  <%= button_to "Checkout", user_orders_path(current_user) %>
+  <%= form_tag user_orders_path(current_user) do %>
+    <label>Full Name:</label><br>
+    <%= text_field_tag :'order[fullname]' %><br>
+
+    <label>Address:</label><br>
+    <%= text_area_tag :'order[address]' %><br>
+
+    <%= submit_tag "Checkout" %>
+  <% end %>
 <% else %>
   <%= button_to "Register to Checkout", login_path %>
 <% end %>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   delete '/cart', to: 'carts#destroy'
 
   resources :users, only: %i[new create show], shallow: true do
-    resources :orders, only: %i[show create]
+    resources :orders, only: %i[show create update]
   end
 
   get '/dashboard', to: 'dashboard#index'
@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :trips, only: %i[edit update destroy]
     resources :conditions, only: %i[index edit update show]
+    get '/dashboard', to: 'dashboard#index'
   end
 end

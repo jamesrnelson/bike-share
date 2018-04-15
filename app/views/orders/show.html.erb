@@ -1,0 +1,36 @@
+<% if (@current_user.id == @order.user_id) || current_user.admin? %>
+  <p><%= "Purchaser's Name: #{@order.fullname}" if current_user.admin? %>
+  <p><%= "Purchaser's Address: #{@order.address}" if current_user.admin? %>
+  <p>Order Status: <%= @order.status %></p>
+  <p>Submitted on: <%= @order.created_at %></p>
+  <p><%= "Order completed on: #{@order.updated_at}" if @order.completed? %></p>
+  <p><%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %></p>
+  <table>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <p>Total Items in Order: <%= @order.total_quantity %></p>
+    <% @order.items.map do |item| %>
+      <tr>
+        <td>
+          <div class="table-image">
+            <%= image_tag asset_path (item.image) %>
+          </div>
+        </td>
+        <td><%= link_to item.title, item_path(item) %></td>
+        <td><%= item.description %></td>
+        <td><%= "$#{'%.2f' % item.price}" %></td>
+        <td><%= @order.item_quantity(item) %></td>
+        <td><%= "$#{'%.2f' % @order.item_subtotal(item)}" %></td>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Total: <%= "$#{'%.2f' % @order.total }" %></h3>
+<% else %>
+  <%= render file: "/public/404" %>
+<% end %>
