@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :trips, only: %i[edit update destroy]
     resources :conditions, only: %i[index edit update show]
+    get '/dashboard', to: 'dashboard#index'
   end
 end

@@ -56,4 +56,19 @@ describe Order, type: :model do
       expect(order.total_quantity).to eq(total_quantity)
     end
   end
+
+  describe 'class methods' do
+    it '.count_by_status(status)' do
+      user = create(:user)
+      user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
+      user.orders.create!(fullname: 'Peter Smith', address: '400 Spencer St., Longmont, CO 80501', status: 1)
+      user.orders.create!(fullname: 'Bob Ross', address: '1000 Colors St., Magical Land, CO 1000', status: 1)
+      user.orders.create!(fullname: 'Another Name', address: '600 Colors St., Magical Land, CO 1000', status: 3)
+
+      expect(Order.count_by_status(0)).to eq(1)
+      expect(Order.count_by_status(1)).to eq(2)
+      expect(Order.count_by_status(2)).to eq(0)
+      expect(Order.count_by_status(3)).to eq(1)
+    end
+  end
 end
