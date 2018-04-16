@@ -10,4 +10,9 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
   end
+
+  def dashboard
+    @most_conditions = Condition.most_rides
+    @least_conditions = Condition.least_rides
+  end
 end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: 'dashboard#index'
+  get '/trips-dashboard', to: 'trips#dashboard'
 
   namespace :admin do
     resources :trips, only: %i[edit update destroy new create]
