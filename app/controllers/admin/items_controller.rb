@@ -36,7 +36,6 @@ class Admin::ItemsController < Admin::BaseController
 
   private
     def item_params
-      binding.pry
       params.require(:item).permit(:title, :description, :price, :image)
     end
 end
