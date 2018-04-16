@@ -24,8 +24,6 @@ describe 'Admin' do
         click_on 'Login'
       end
 
-      visit admin_dashboard_path
-
       expect(page).to have_content(order1.fullname)
       expect(page).to have_content(order2.fullname)
       expect(page).to have_content(order3.fullname)
