@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180416020455) do
   end
 
   create_table "conditions", force: :cascade do |t|
-    t.text "date"
+    t.date "date"
     t.float "max_temperature"
     t.float "mean_temperature"
     t.float "min_temperature"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20180416020455) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.text "start_date"
-    t.text "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "bike_id"
     t.string "subscription_type"
     t.integer "zip_code"
