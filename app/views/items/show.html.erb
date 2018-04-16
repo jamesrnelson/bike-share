@@ -6,7 +6,11 @@
         <li><%= @item.title %></li>
         <li><%= @item.description %></li>
         <li><%= "$#{'%.2f' % @item.price}" %></li>
-        <%= button_to "Add to Cart", cart_path(item_id: @item.id) %>
+        <% if @item.status == 'retired' %>
+          <h4>Accessory Retired!<h4>
+        <% else %>
+          <%= button_to "Add to Cart", cart_path(item_id: @item.id) %>
+        <% end %>
       </ul>
     </div>
   </div>
