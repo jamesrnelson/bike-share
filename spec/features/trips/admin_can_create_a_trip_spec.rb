@@ -24,12 +24,12 @@ feature 'On the trips path' do
 
       click_on 'Create Trip'
 
-      expect(current_path).to eq(trip_path(trips.first))
+      expect(current_path).to eq(trip_path(Trip.last))
       expect(page).to have_content('Test')
       expect(page).to have_content(10)
       expect(page).to have_content(12345)
 
-      expect(page).to have_content("Trip #{trips.first.id} was created")
+      expect(page).to have_content("Trip #{Trip.last.id} was created")
     end
   end
 end
