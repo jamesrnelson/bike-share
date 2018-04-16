@@ -9,8 +9,8 @@
           <th>Installation Date</th>
         </tr>
         <% @stations.each do |station| %>
-          <tr data-href="<%= station_path(station.slug) %>">
-            <td><a href="<%= station_path(station.slug) %>"><%= station.name %></a></td>
+          <tr>
+            <td><%= link_to station.name, station_path(station.slug) %></a></td>
             <td><%= station.dock_count %></td>
             <td><%= station.city %></td>
             <td><%= station.installation_date %></td>
