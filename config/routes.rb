@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :trips, only: %i[edit update destroy new create]
     resources :conditions, only: %i[new create edit update destroy]
     resources :stations, only: %i[new create edit update destroy]
+    get 'bikeshop/new', to: 'items#new'
     get '/dashboard', to: 'dashboard#index'
+    get '/bikeshop', to: 'shop#index'
+    post '/bikeshop', to: 'items#create'
   end
 end

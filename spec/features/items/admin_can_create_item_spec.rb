@@ -20,15 +20,15 @@ describe 'Admin' do
 
       click_on 'Add New Item'
 
-      expect(current_path).to eq(new_admin_item)
+      expect(current_path).to eq(admin_bikeshop_new_path)
 
-      fill_in 'Title', with: 'Sweet Wheels'
-      fill_in 'Description', with: 'Make all your friends jealous'
-      fill_in 'Price', with: 24.99
+      fill_in :'item[title]', with: 'Sweet Wheels'
+      fill_in :'item[description]', with: 'Make all your friends jealous'
+      fill_in :'item[price]', with: 24.99
 
       click_on 'Add Item'
 
-      expect(current_path).to equal admin_dashboard_path
+      expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_content('Sweet Wheels')
       expect(page).to have_content('Make all your friends jealous')
       expect(page).to have_content('24.99')
