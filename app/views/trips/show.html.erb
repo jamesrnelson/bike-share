@@ -14,6 +14,7 @@
 
       <% if current_admin? %>
         <div class="buttons">
+          <%= button_to 'New', new_admin_trip_path, method: 'get' %>
           <%= button_to 'Edit', edit_admin_trip_path(@trip), method: 'get' %>
           <%= button_to 'Delete', admin_trip_path(@trip), method: 'delete' %>
         </div>
