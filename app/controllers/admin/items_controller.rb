@@ -14,8 +14,29 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if params[:status]
+      @item.update_attribute(:status, 0) if params[:status] == 'retired'
+      @item.update_attribute(:status, 1) if params[:status] == 'active'
+      redirect_to admin_bike_shop_path
+    end
+    if @item.update(item_params)
+      flash[:success] = "You have updated #{@item.title}"
+      redirect_to admin_bike_shop_path
+    else
+      flash[:error] = "You were unable to update #{@item.title}"
+      render :edit
+    end
+  end
+
   private
     def item_params
+      binding.pry
       params.require(:item).permit(:title, :description, :price, :image)
     end
 end

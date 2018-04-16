@@ -33,5 +33,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#index'
     get '/bike-shop', to: 'shop#index'
     post '/bike-shop', to: 'items#create'
+    get '/bike-shop/:id/edit', to: 'items#edit'
+    put '/bike-shop/:id/edit', to: 'items#update'
   end
 end

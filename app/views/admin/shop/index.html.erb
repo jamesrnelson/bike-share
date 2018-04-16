@@ -8,6 +8,8 @@
           <th>Description</th>
           <th>Price</th>
           <th>Status</th>
+          <th>Edit?</th>
+          <th>Change Status?</th>
         </tr>
         <% @items.each do |item| %>
           <tr>
@@ -21,32 +23,17 @@
             <td><%= "$#{'%.2f' % item.price}" %></td>
             <td><%= item.status %></td>
             <td>
-              <%= link_to "Edit", admin_dashboard_path %>
+              <%= link_to "Edit #{item.title}", admin_path(item) %>
             </td>
             <td>
               <% if item.retired? %>
-                <%= link_to "Reactivate Accessory", admin_dashboard_path %>
+                <%= link_to "Reactivate Accessory", admin_path(item, status: "retired"), method: "put", data: {confirm: "Are you sure you want to reactivate #{item.title}?"} %>
               <% else %>
-                <%= link_to "Retire Accessory", admin_dashboard_path %>
+                <%= link_to "Retire Accessory", admin_path(item, status: "active"), method: "put", data: {confirm: "Are you sure you want to retire #{item.title}?"} %>
               <% end %>
             </td>
           </tr>
           <% end %>
     </table>
-    <h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
-    <% if current_user %>
-      <%= form_tag user_orders_path(current_user) do %>
-        <label>Full Name:</label><br>
-        <%= text_field_tag :'order[fullname]' %><br>
-
-        <label>Address:</label><br>
-        <%= text_area_tag :'order[address]' %><br>
-
-        <%= submit_tag "Checkout" %>
-      <% end %>
-    <% else %>
-      <%= button_to "Register to Checkout", login_path %>
-    <% end %>
-    </div>
   </div>
 </div>
