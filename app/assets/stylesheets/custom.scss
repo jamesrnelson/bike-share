@@ -236,3 +236,28 @@ ul {
     height: 200px
   }
 }
+
+.notice {
+  border: thin solid black;
+  background-color: #ff0;
+}
+
+.success {
+  border: thin solid black;
+  background-color: green;
+}
+
+.error {
+  border: thin solid black;
+  background-color: red;
+}
+
+.flash {
+    color: black;
+    text-align: center;
+    padding:    .3em .4em;
+    margin:     0 auto .5em;
+    clear:      both;
+    max-width:  46.923em; /* 610/13 */
+    max-width: 45.750em; /* 610/13.3333 - for IE */
+}
