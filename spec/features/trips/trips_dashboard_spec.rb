@@ -44,5 +44,18 @@ feature 'On the trips dashboard' do
       expect(page).to have_content("Longest Ride: #{longest_trip.id}")
       expect(page).to have_content("Shortest Ride: #{shortest_trip.id}")
     end
+
+    scenario 'can see the station with the most starting and ending rides' do
+      most_starting_station = create(:station)
+      most_ending_station = create(:station)
+      create_list(:trip, 25, start_station: most_starting_station)
+      create_list(:trip, 15, end_station: most_ending_station)
+      create_list(:trip, 10)
+
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Most Starting Rides: #{most_starting_station.name}")
+      expect(page).to have_content("Most Ending Rides: #{most_ending_station.name}")
+    end
   end
 end

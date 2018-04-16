@@ -35,4 +35,20 @@ class Station < ApplicationRecord
   def self.oldest
     order(:installation_date).first
   end
+  
+  def self.most_starting_rides
+    select('stations.*, count(trips.id) AS trip_count')
+    .joins('INNER JOIN trips ON stations.id = trips.start_station_id')
+    .group('stations.id')
+    .order('trip_count DESC')
+    .first
+  end
+
+  def self.most_ending_rides
+    select('stations.*, count(trips.id) AS trip_count')
+    .joins('INNER JOIN trips ON stations.id = trips.end_station_id')
+    .group('stations.id')
+    .order('trip_count DESC')
+    .first
+  end
 end

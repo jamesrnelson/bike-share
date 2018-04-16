@@ -15,5 +15,7 @@ class TripsController < ApplicationController
     @most_conditions = Condition.most_rides
     @least_conditions = Condition.least_rides
     @duration_metrics = Trip.duration_metrics
+    @most_starts = Station.most_starting_rides
+    @most_ends = Station.most_ending_rides
   end
 end
