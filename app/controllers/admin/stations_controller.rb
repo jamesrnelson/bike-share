@@ -7,7 +7,7 @@ class Admin::StationsController < Admin::BaseController
     station = Station.new(station_params)
     if station.save
       flash[:success] = "Station #{station.id} was created"
-      redirect_to station_path(station)
+      redirect_to station_path(station.slug)
     else
       flash[:error] = 'Station was not created'
       redirect_to new_admin_station_path
@@ -22,7 +22,7 @@ class Admin::StationsController < Admin::BaseController
     station = Station.find(params[:id])
     if station.update(station_params)
       flash[:success] = "Station #{station.id} was updated"
-      redirect_to station_path(station)
+      redirect_to station_path(station.slug)
     else
       flash[:error] = "Station #{station.id} was not updated"
       redirect_to edit_admin_station_path
@@ -43,8 +43,8 @@ class Admin::StationsController < Admin::BaseController
 
   def station_params
     params.require(:station).permit(:name,
-                                 :dock_count,
-                                 :city,
-                                 :installation_date)
+                                    :dock_count,
+                                    :city,
+                                    :installation_date)
   end
 end
