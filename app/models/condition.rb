@@ -9,4 +9,11 @@ class Condition < ApplicationRecord
                        :precipitation,
                        :zip_code
 
+  def most_rides
+
+  end
+
+  def least_rides
+
+  end
 end

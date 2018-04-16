@@ -12,6 +12,7 @@ class TripsController < ApplicationController
   end
 
   def dashboard
-    
+    @most_conditions = Condition.most_rides
+    @least_conditions = Condition.least_rides
   end
 end

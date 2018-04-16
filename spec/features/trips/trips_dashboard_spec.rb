@@ -22,8 +22,18 @@ feature 'On the trips dashboard' do
 
       visit trips_dashboard_path
 
-      expect(page).to have_content("Weather on the day with the most rides:")
-      expect(page).to have_content("Weather on the day with the least rides:")
+      within '.most-rides' do
+        expect(page).to have_content("Weather on the day with the most rides:")
+        expect(page).to have_content(@sep_condition.max_temperature)
+        expect(page).to have_content(@sep_condition.precipitation)
+        expect(page).to have_content(@sep_condition.zip_code)
+      end
+      within '.most-rides' do
+        expect(page).to have_content("Weather on the day with the least rides:")
+        expect(page).to have_content(@aug_condition.max_temperature)
+        expect(page).to have_content(@aug_condition.precipitation)
+        expect(page).to have_content(@aug_condition.zip_code)
+      end
     end
   end
 end

@@ -1,0 +1,30 @@
+<h2>Trips Dashboard</h2>
+
+<div class="weather-report">
+  <div class="most-rides">
+    <h4>Weather on the day with the most rides:</h4>
+    <ul>
+      <li>Maximum Temperature: <%= @most_conditions.max_temperature %></li>
+      <li>Minimum Temperature: <%= @most_conditions.min_temperature %></li>
+      <li>Mean Temperature: <%= @most_conditions.mean_temperature %></li>
+      <li>Mean Humidity: <%= @most_conditions.mean_humidity %></li>
+      <li>Mean Visibility: <%= @most_conditions.mean_visibility %></li>
+      <li>Mean Wind Speed: <%= @most_conditions.mean_wind_speed %></li>
+      <li>Precipitation: <%= @most_conditions.precipitation %></li>
+      <li>Zip Code: <%= @most_conditions.zip_code %></li>
+    </ul>
+  </div>
+  <div class="least-rides">
+    <h4>Weather on the day with the least rides:</h4>
+    <ul>
+      <li>Maximum Temperature: <%= @least_conditions.max_temperature %></li>
+      <li>Minimum Temperature: <%= @least_conditions.min_temperature %></li>
+      <li>Mean Temperature: <%= @least_conditions.mean_temperature %></li>
+      <li>Mean Humidity: <%= @least_conditions.mean_humidity %></li>
+      <li>Mean Visibility: <%= @least_conditions.mean_visibility %></li>
+      <li>Mean Wind Speed: <%= @least_conditions.mean_wind_speed %></li>
+      <li>Precipitation: <%= @least_conditions.precipitation %></li>
+      <li>Zip Code: <%= @least_conditions.zip_code %></li>
+    </ul>
+  </div>
+</div>
