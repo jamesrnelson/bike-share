@@ -12,4 +12,16 @@ class Trip < ApplicationRecord
   def self.average_rides(info_hash)
     select('trips.*, conditions.*').joins('INNER JOIN conditions ON trips.start_date = conditions.date').group('conditions.date').where(info_hash)
   end
+  
+  def self.average_duration
+    (average(:duration).to_f / 60).round(2)
+  end
+
+  def self.longest_ride
+    order(duration: :desc).first
+  end
+
+  def self.shortest_ride
+    order(duration: :asc).first
+  end
 end
