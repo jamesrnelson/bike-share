@@ -1,7 +1,7 @@
 require 'csv'
 
 CSV.foreach('./db/truncated_data/station.csv', headers: true, header_converters: :symbol) do |row|
-  Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+  Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: DateTime.strptime(row[:installation_date], "%m/%d/%Y"))
 end
 
 CSV.foreach('./db/truncated_data/trip.csv', headers: true, header_converters: :symbol) do |row|
@@ -9,9 +9,9 @@ CSV.foreach('./db/truncated_data/trip.csv', headers: true, header_converters: :s
   end_station = Station.find(row[:end_station_id])
   Trip.create(id: row[:id],
               duration: row[:duration],
-              start_date: row[:start_date],
+              start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M"),
               start_station_id: start_station.id,
-              end_date: row[:end_date],
+              end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M"),
               end_station_id: end_station.id,
               bike_id: row[:bike_id],
               subscription_type: row[:subscription_type],
@@ -19,7 +19,7 @@ CSV.foreach('./db/truncated_data/trip.csv', headers: true, header_converters: :s
 end
 
 CSV.foreach('./db/truncated_data/weather.csv', headers: true, header_converters: :symbol) do |row|
-  Condition.create(date: row[:date],
+  Condition.create(date: DateTime.strptime(row[:date], "%m/%d/%Y"),
                    max_temperature: row[:max_temperature_f],
                    mean_temperature: row[:mean_temperature_f],
                    min_temperature: row[:min_temperature_f],

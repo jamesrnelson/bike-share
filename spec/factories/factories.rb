@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :condition do
-    date '8/29/2013'
+    date '2013-08-29'
     max_temperature { rand(75.0..90.0).round(1) }
     mean_temperature { rand(65.0..75.0).round(1) }
     min_temperature { rand(50.0..65.0).round(1) }
@@ -15,7 +15,7 @@ FactoryBot.define do
     sequence(:name) { |n| "Name #{n}" }
     sequence(:dock_count) { rand(0..100) }
     sequence(:city) { |n| "City #{n}" }
-    installation_date '2/3/15'
+    installation_date '2015-02-03'
   end
 
   factory :trip do
