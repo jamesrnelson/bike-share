@@ -6,11 +6,14 @@ class CartsController < ApplicationController
 
   def create
     item = Item.find(params[:item_id])
+    if item.status == 'retired'
+      flash[:error] = "Accessory Retired!"
+    else
+      @basket.add_item(item.id)
+      session[:cart] = @basket.contents
 
-    @basket.add_item(item.id)
-    session[:cart] = @basket.contents
-
-    flash[:notice] = "You now have #{pluralize(@basket.count_of(item.id), item.title)}."
+      flash[:notice] = "You now have #{pluralize(@basket.count_of(item.id), item.title)}."
+    end
     redirect_to bike_shop_path
   end
 
