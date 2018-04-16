@@ -13,15 +13,15 @@
           <th>Precipitation (in)</th>
         </tr>
         <% @conditions.each do |condition| %>
-        <tr data-href="<%= condition_path(condition) %>">
-          <td><a href="<%= condition_path(condition) %>"><%= condition.date %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.max_temperature %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.mean_temperature %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.min_temperature %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.mean_humidity %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.mean_visibility %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.mean_wind_speed %></a></td>
-          <td><a href="<%= condition_path(condition) %>"><%= condition.precipitation %></a></td>
+        <tr>
+          <td><%= link_to condition.date, condition_path(condition) %></td>
+          <td><%= condition.max_temperature %></td>
+          <td><%= condition.mean_temperature %></td>
+          <td><%= condition.min_temperature %></td>
+          <td><%= condition.mean_humidity %></td>
+          <td><%= condition.mean_visibility %></td>
+          <td><%= condition.mean_wind_speed %></td>
+          <td><%= condition.precipitation %></td>
         </tr>
         <% end %>
       </table>

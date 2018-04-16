@@ -1,6 +1,6 @@
 $dark-navy: #000066;
 $sky-blue: #66ccff;
-$light-gray: #B0B0B0;
+$light-gray: #e3e9f2;
 $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
@@ -12,7 +12,7 @@ $header: 'Open Sans Condensed', sans-serif;
 body {
   font-family: $content;
   font-size: 16px;
-  color: $light-gray;
+  color: $dark-gray;
 }
 
 tr:nth-child(even) {
@@ -26,6 +26,11 @@ tr:nth-child(odd) {
 }
 
 tr:nth-child(1) {
+  background-color: $dark-navy;
+  color: white;
+}
+
+tr:nth-child(1):hover {
   background-color: $dark-navy;
   color: white;
 }
@@ -178,7 +183,7 @@ td {
   justify-content: center;
   align-items: center;
   a {
-    color: $light-gray;
+    color: $dark-gray;
     text-decoration: none;
   }
   a:hover {
@@ -235,4 +240,29 @@ ul {
   img {
     height: 200px
   }
+}
+
+.notice {
+  border: thin solid black;
+  background-color: #ff0;
+}
+
+.success {
+  border: thin solid black;
+  background-color: green;
+}
+
+.error {
+  border: thin solid black;
+  background-color: red;
+}
+
+.flash {
+    color: black;
+    text-align: center;
+    padding:    .3em .4em;
+    margin:     0 auto .5em;
+    clear:      both;
+    max-width:  46.923em; /* 610/13 */
+    max-width: 45.750em; /* 610/13.3333 - for IE */
 }

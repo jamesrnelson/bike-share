@@ -26,7 +26,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip #{trip.id} was updated"
       redirect_to trip_path(trip)
     else
-      flash[:failure] = "Trip #{trip.id} was not updated"
+      flash[:error] = "Trip #{trip.id} was not updated"
       redirect_to edit_admin_trip_path
     end
   end
@@ -36,7 +36,7 @@ class Admin::TripsController < Admin::BaseController
     if trip.destroy
       flash[:success] = "Trip #{trip.id} was successfully deleted"
     else
-      flash[:failure] = "Trip #{trip.id} was not deleted"
+      flash[:error] = "Trip #{trip.id} was not deleted"
     end
     redirect_to trips_path
   end
