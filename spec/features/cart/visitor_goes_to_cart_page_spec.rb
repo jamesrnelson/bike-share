@@ -61,8 +61,8 @@ describe 'As a visitor,' do
     end
 
     scenario 'I can create an account and still see the same cart' do
-      item1 = Item.create!(title: 'one', description: 'blah', price: 5.0)
-      item2 = Item.create!(title: 'two', description: 'asdf', price: 20.0)
+      item1 = Item.create!(title: 'one', description: 'blah', price: 5.00)
+      item2 = Item.create!(title: 'two', description: 'asdf', price: 20.00)
 
       visit bike_shop_path
 
