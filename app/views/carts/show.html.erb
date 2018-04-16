@@ -31,12 +31,12 @@
             </td>
             <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
             <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
+            <% end %>
           </tr>
-        <% end %>
-      </td>
+
       <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
       <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
-    </tr>
+
       <% end %>
     </table>
     <h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
