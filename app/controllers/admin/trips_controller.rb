@@ -1,4 +1,20 @@
 class Admin::TripsController < Admin::BaseController
+  def new
+    @trip = Trip.new
+    @stations = Station.alphabetize
+  end
+
+  def create
+    trip = Trip.new(trip_params)
+    if trip.save
+      flash[:success] = "Trip #{trip.id} was created"
+      redirect_to trip_path(trip)
+    else
+      flash[:failure] = 'Trip was not created'
+      redirect_to new_admin_trip_path
+    end
+  end
+
   def edit
     @trip = Trip.find(params[:id])
     @stations = Station.alphabetize
