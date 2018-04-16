@@ -8,4 +8,5 @@ class Condition < ApplicationRecord
                        :mean_wind_speed,
                        :precipitation,
                        :zip_code
+
 end

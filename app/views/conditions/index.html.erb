@@ -1,4 +1,13 @@
+
 <div class="container-fixed">
+<div class="row">
+  <% if current_admin? %>
+  <div class="row">
+    <%= button_to 'Create Weather Conditions', new_admin_condition_path, method: 'get' %>
+  </div>
+  <% end %>
+
+</div>
   <div class="row">
     <div class="col-9">
       <table>
@@ -11,6 +20,10 @@
           <th>Mean Visibility (miles)</th>
           <th>Mean Wind Speed (mph)</th>
           <th>Precipitation (in)</th>
+          <% if current_admin? %>
+            <th></th>
+            <th></th>
+          <% end %>
         </tr>
         <% @conditions.each do |condition| %>
         <tr>
@@ -22,6 +35,10 @@
           <td><%= condition.mean_visibility %></td>
           <td><%= condition.mean_wind_speed %></td>
           <td><%= condition.precipitation %></td>
+          <% if current_admin? %>
+            <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: 'get', title: "#{condition.id} edit"  %></td>
+            <td><%= button_to 'Delete', admin_condition_path(condition), method: 'delete', title: "#{condition.id} delete" %></td>
+          <% end %>
         </tr>
         <% end %>
       </table>

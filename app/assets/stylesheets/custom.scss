@@ -1,6 +1,7 @@
 $dark-navy: #000066;
 $sky-blue: #66ccff;
-$light-gray: #e3e9f2;
+$light-gray: #B0B0B0;
+$table-gray: #E8E8E8;
 $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
@@ -16,13 +17,13 @@ body {
 }
 
 tr:nth-child(even) {
-  background-color: $light-gray;
-  color: black
+  background-color: $table-gray;
+  color: black;
 }
 
 tr:nth-child(odd) {
   background-color: white;
-  color: black
+  color: black;
 }
 
 tr:nth-child(1) {
@@ -37,6 +38,7 @@ tr:nth-child(1):hover {
 
 tr:hover {
   background-color: $hover-yellow;
+  color: $dark-navy;
 }
 .container-fixed {
   margin: 0;
@@ -45,6 +47,14 @@ tr:hover {
   background-attachment: fixed;
   background-size: cover;
   padding-bottom: 200px;
+  a {
+    color: $dark-gray;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-gray;
+    text-decoration: underline;
+  }
 }
 
 .container-color {
@@ -69,9 +79,6 @@ td {
   background-color: white;
 }
 
-.sky-blue {
-  background-color: $sky-blue;
-}
 
 .row {
   display: flex;
@@ -81,39 +88,24 @@ td {
   width: 100%;
 }
 
-.white-links {
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  a:hover {
-    color: $dark-navy;
-    text-decoration: underline;
-  }
-  p {
-    display: inline-block;
-    padding: 0px 30px;
-  }
-}
-
 .col-10 {
   margin: 30px 0px;
   flex-basis: 83.33%;
-  background-color: $light-gray;
+  background-color: $table-gray;
   color: $dark-navy;
 }
 
 .col-9 {
   margin: 30px 0px;
   flex-basis: 75%;
-  background-color: $light-gray;
+  background-color: $table-gray;
   color: $dark-navy;
 }
 
 .col-5-table {
   margin: 50px;
   flex-basis: 38.5%;
-  background-color: $light-gray;
+  background-color: $table-gray;
   color: $dark-navy;
 }
 
@@ -135,7 +127,7 @@ td {
   font-size: 20px;
   text-align: center;
   h1 {
-    font-size: 40 px;
+    font-size: 40px;
   }
 }
 
@@ -152,12 +144,14 @@ td {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+  tr {
+    padding-top: 5px;
+    color: white;
+  }
+  tr:hover {
+    color: white;
+  }
 }
-
-.navy-background {
-  background-color: $dark-navy;
-}
-
 
 .nav-bar {
   width: 100%;
@@ -215,6 +209,29 @@ td {
   a {
     font-family: $header;
     color: white;
+  }
+}
+
+.navy-background {
+  background-color: $dark-navy;
+}
+
+.sky-blue {
+  background-color: $sky-blue;
+}
+
+.white-links {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $dark-navy;
+    text-decoration: underline;
+  }
+  p {
+    display: inline-block;
+    padding: 0px 30px;
   }
 }
 

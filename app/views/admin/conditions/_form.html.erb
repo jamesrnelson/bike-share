@@ -35,9 +35,13 @@
     <td><%= f.label :precipitation %></td>
     <td><%= f.number_field :precipitation %></td>
   </tr>
+  <tr>
+    <td><%= f.label :zip_code %></td>
+    <td><%= f.text_field :zip_code %></td>
+  </tr>
 
   <tr>
     <td></td>
-    <td><%= f.submit 'Update Conditions' %></td>
+    <td><%= f.submit %></td>
   </tr>
 <% end %>

@@ -13,7 +13,7 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       conditions = create_list(:condition, 10)
-      visit admin_conditions_path
+      visit conditions_path
       expect(page).to have_content(conditions[0].date)
       expect(page).to have_content(conditions[1].max_temperature)
       expect(page).to have_content(conditions[2].mean_temperature)
@@ -23,7 +23,7 @@ describe 'Admin' do
       expect(page).to have_content(conditions[7].mean_wind_speed)
       expect(page).to have_content(conditions[9].precipitation)
 
-      expect(page).to have_link('Edit')
+      expect(page).to have_button('Edit')
     end
   end
 
@@ -39,7 +39,7 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       condition = create(:condition)
-      visit admin_conditions_path
+      visit conditions_path
 
       click_on 'Edit'
 
@@ -50,9 +50,10 @@ describe 'Admin' do
       fill_in 'Mean visibility', with: 10
       fill_in 'Mean wind speed', with: 10
       fill_in 'Precipitation', with: 2
-      click_on 'Update Conditions'
+      fill_in 'Zip code', with: 80230
+      click_on 'Update Condition'
 
-      expect(current_path).to eq(admin_condition_path(condition))
+      expect(current_path).to eq(condition_path(condition))
       expect(page).to have_content('You have updated the weather conditions.')
       expect(page).to have_content('80')
       expect(page).to have_content('70')

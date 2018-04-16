@@ -17,6 +17,10 @@
           <th>Bike ID</th>
           <th>Subscription Type</th>
           <th>Zip Code</th>
+          <% if current_admin? %>
+            <th></th>
+            <th></th>
+          <% end %>
         </tr>
         <% @trips.each do |trip| %>
           <tr>
