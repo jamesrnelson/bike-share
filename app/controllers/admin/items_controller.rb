@@ -7,10 +7,10 @@ class Admin::ItemsController < Admin::BaseController
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been added to the Bike Shop"
-      redirect_to admin_dashboard_path
+      redirect_to admin_bike_shop_path
     else
       flash[:error] = 'Title, description and price are required fields.'
-      redirect_to admin_bikeshop_new_path
+      redirect_to admin_bike_shop_new_path
     end
   end
 

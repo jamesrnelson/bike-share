@@ -1,0 +1,52 @@
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-5">
+      <table>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+        <% @items.each do |item| %>
+          <tr>
+            <td>
+              <div class="table-image">
+                <%= image_tag asset_path (item.image) %>
+              </div>
+            </td>
+            <td><%= item.title %></td>
+            <td><%= item.description %></td>
+            <td><%= "$#{'%.2f' % item.price}" %></td>
+            <td><%= item.status %></td>
+            <td>
+              <%= link_to "Edit", admin_dashboard_path %>
+            </td>
+            <td>
+              <% if item.retired? %>
+                <%= link_to "Reactivate Accessory", admin_dashboard_path %>
+              <% else %>
+                <%= link_to "Retire Accessory", admin_dashboard_path %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+    </table>
+    <h3>Total: <%= "$#{'%.2f' % @basket.total_cost}" %></h3>
+    <% if current_user %>
+      <%= form_tag user_orders_path(current_user) do %>
+        <label>Full Name:</label><br>
+        <%= text_field_tag :'order[fullname]' %><br>
+
+        <label>Address:</label><br>
+        <%= text_area_tag :'order[address]' %><br>
+
+        <%= submit_tag "Checkout" %>
+      <% end %>
+    <% else %>
+      <%= button_to "Register to Checkout", login_path %>
+    <% end %>
+    </div>
+  </div>
+</div>
