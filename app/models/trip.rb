@@ -31,4 +31,18 @@ class Trip < ApplicationRecord
                 shortest: shortest_ride }
     metrics
   end
+
+  def self.rides_by_month
+    group("to_char(start_date, 'FMyyyy mm')")
+      .group("to_char(start_date, 'yyyy FMMonth')")
+      .count
+  end
+
+  def self.rides_by_year
+    group("to_char(start_date, 'FMyyyy')").count
+  end
+
+  def self.rides_by_date
+    { years: rides_by_year, months: rides_by_month }
+  end
 end

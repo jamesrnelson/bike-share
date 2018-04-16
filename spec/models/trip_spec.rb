@@ -33,5 +33,48 @@ describe Trip, type: :model do
 
       expect(Trip.duration_metrics).to eq(expected)
     end
+
+    it 'should find #rides_by_month' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2013-03-03')
+      create_list(:trip, 6, start_date: '2013-04-03')
+
+      expected = { ['2013 01', '2013 January'] => 4,
+                   ['2013 02', '2013 February'] => 2,
+                   ['2013 03', '2013 March'] => 10,
+                   ['2013 04', '2013 April'] => 6 }
+
+      expect(Trip.rides_by_month).to eq(expected)
+    end
+
+    it 'should subtotal #rides_by_year' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-01-03')
+      create_list(:trip, 6, start_date: '2014-02-03')
+
+      expected = { '2013' => 6, '2014' => 16 }
+
+      expect(Trip.rides_by_year).to eq(expected)
+    end
+
+    it 'should build #rides_by_date summary' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-03-03')
+      create_list(:trip, 6, start_date: '2014-04-03')
+
+      expected = { years: { '2013' => 6, '2014' => 16 },
+                   months: { ['2013 01', '2013 January'] => 4,
+                             ['2013 02', '2013 February'] => 2,
+                             ['2014 03', '2014 March'] => 10,
+                             ['2014 04', '2014 April'] => 6 } }
+
+      expect(Trip.rides_by_date).to eq(expected)
+    end
   end
 end
