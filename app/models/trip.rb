@@ -34,7 +34,8 @@ class Trip < ApplicationRecord
 
   def self.rides_by_month
     group("to_char(start_date, 'FMyyyy mm')")
-      .group("to_char(start_date, 'yyyy FMMonth')")
+      .group("to_char(start_date, 'FMMonth yyyy')")
+      .order("to_char(start_date, 'FMyyyy mm')")
       .count
   end
 

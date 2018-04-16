@@ -57,5 +57,44 @@ feature 'On the trips dashboard' do
       expect(page).to have_content("Most Starting Rides: #{most_starting_station.name}")
       expect(page).to have_content("Most Ending Rides: #{most_ending_station.name}")
     end
+
+    scenario 'can see a summary of rides by date' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-03-03')
+      create_list(:trip, 6, start_date: '2014-04-03')
+      create(:condition, date: '2013-02-03')
+      create(:condition, date: '2014-03-03')
+
+      visit trips_dashboard_path
+
+      within '.rides-by-month tr:nth-child(2)' do
+        within 'td:first-child' do
+          expect(page).to have_content('January 2013')
+        end
+        within 'td:nth-child(2)' do
+          expect(page).to have_content('4')
+        end
+      end
+
+      within '.rides-by-month tr:nth-child(4)' do
+        within 'td:first-child' do
+          expect(page).to have_content('March 2014')
+        end
+        within 'td:nth-child(2)' do
+          expect(page).to have_content('10')
+        end
+      end
+
+      within '.rides-by-year tr:nth-child(2)' do
+        within 'td:first-child' do
+          expect(page).to have_content('2013')
+        end
+        within 'td:nth-child(2)' do
+          expect(page).to have_content('6')
+        end
+      end
+    end
   end
 end
