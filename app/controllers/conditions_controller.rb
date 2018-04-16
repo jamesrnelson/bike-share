@@ -8,6 +8,6 @@ class ConditionsController < ApplicationController
   end
 
   def dashboard
-
+    @conditions = Condition.where(zip_code: 94107)
   end
 end
