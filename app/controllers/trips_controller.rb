@@ -14,5 +14,6 @@ class TripsController < ApplicationController
   def dashboard
     @most_conditions = Condition.most_rides
     @least_conditions = Condition.least_rides
+    @duration_metrics = Trip.duration_metrics
   end
 end

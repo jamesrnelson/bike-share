@@ -28,3 +28,9 @@
     </ul>
   </div>
 </div>
+
+<div class="duration-metrics">
+  <p>Longest Ride: <%= link_to @duration_metrics[:longest].id, trip_path(@duration_metrics[:longest].id) %></p>
+  <p>Average Ride Duration: <%= @duration_metrics[:average] %> minutes</p>
+  <p>Shortest Ride: <%= link_to @duration_metrics[:shortest].id, trip_path(@duration_metrics[:shortest].id) %></p>
+</div>

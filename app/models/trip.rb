@@ -24,4 +24,11 @@ class Trip < ApplicationRecord
   def self.shortest_ride
     order(duration: :asc).first
   end
+
+  def self.duration_metrics
+    metrics = { longest: longest_ride,
+                average: average_duration,
+                shortest: shortest_ride }
+    metrics
+  end
 end

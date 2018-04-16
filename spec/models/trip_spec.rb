@@ -27,5 +27,11 @@ describe Trip, type: :model do
     it 'should find the #shortest_ride' do
       expect(Trip.shortest_ride).to eq(@shortest_trip)
     end
+
+    it 'should build #duration_metrics' do
+      expected = { longest: @longest_trip, average: 17.33, shortest: @shortest_trip }
+
+      expect(Trip.duration_metrics).to eq(expected)
+    end
   end
 end
