@@ -15,7 +15,7 @@ FactoryBot.define do
     sequence(:name) { |n| "Name #{n}" }
     sequence(:dock_count) { rand(0..100) }
     sequence(:city) { |n| "City #{n}" }
-    installation_date '2/3/15'
+    installation_date '2015-02-03'
   end
 
   factory :trip do
