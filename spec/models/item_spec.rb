@@ -2,12 +2,11 @@ require "rails_helper"
 
 describe Item, type: :model do
   describe "validations" do
-    it "default status is 1 and image" do
+    it "default status is 1" do
       item = create(:item)
 
       expect(item).to be_valid
       expect(item.status).to eq("active")
-      expect(item.image).to eq('img_default.jpg')
     end
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }

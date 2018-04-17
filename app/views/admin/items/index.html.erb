@@ -1,0 +1,39 @@
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-5">
+      <table>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Edit?</th>
+          <th>Change Status?</th>
+        </tr>
+        <% @items.each do |item| %>
+          <tr>
+            <td>
+              <div class="table-image">
+                <%= image_tag asset_path (item.image) %>
+              </div>
+            </td>
+            <td><%= item.title %></td>
+            <td><%= item.description %></td>
+            <td><%= "$#{'%.2f' % item.price}" %></td>
+            <td><%= item.status %></td>
+            <td>
+              <%= link_to "Edit #{item.title}", edit_admin_bike_shop_path(item) %>
+            </td>
+            <td>
+              <% if item.retired? %>
+                <%= link_to "Reactivate Accessory", admin_bike_shop_path(item, item: {id: item.id, title: item.title, description: item.description, price: item.price, image_file_name: "img_default.jpg", image_content_type: "image/png", image_file_size: 359655, image_updated_at: "Mon, 16 Apr 2018 19:23:30 UTC +00:00"}, status: "retired"), method: "patch", data: {confirm: "Are you sure you want to reactivate #{item.title}?"} %>
+              <% elsif item.active? %>
+                <%= link_to "Retire Accessory", admin_bike_shop_path(item, item: {id: item.id, title: item.title, description: item.description, price: item.price, image_file_name: "img_default.jpg", image_content_type: "image/png", image_file_size: 359655, image_updated_at: "Mon, 16 Apr 2018 19:23:30 UTC +00:00"}, status: "active"), method: "patch", data: {confirm: "Are you sure you want to retire #{item.title}?"} %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+    </table>
+  </div>
+</div>

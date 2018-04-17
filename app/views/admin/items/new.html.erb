@@ -1,0 +1,11 @@
+<%= form_tag(admin_bike_shop_index_path, method: :post, multipart: true) do %>
+  <label>Title</label>
+  <%= text_field_tag :"item[title]" %>
+  <label>Description</label>
+  <%= text_area_tag :"item[description]" %>
+  <label>Price</label>
+  <%= number_field_tag :"item[price]", nil, step: "0.01", min: 0 %>
+  <label>Image</label>
+  <%= file_field_tag :"item[image]", accept: 'image/png,image/gif,image/jpeg' %>
+  <%= submit_tag "Add Accessory" %>
+<% end %>
