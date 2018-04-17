@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'Admin' do
   describe 'visits admin dashboard' do
+    before(:each) do
+      DatabaseCleaner.clean
+    end
+    
     it 'they see a list of all orders and total number of each order status' do
       user = create(:user)
       order1 = user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')

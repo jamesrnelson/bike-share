@@ -10,7 +10,7 @@ feature 'On the stations path' do
 
       visit stations_path
 
-      within 'tr:nth-child(2)' do
+      within 'tr:nth-child(31)' do
         click_on 'Edit'
       end
 
