@@ -25,7 +25,7 @@ class Condition < ApplicationRecord
     .first
   end
 
-  def self.most_rides(info_hash)
+  def self.max_rides(info_hash)
     trips = joins('INNER JOIN trips ON conditions.date = trips.start_date')
             .group('trips.start_date')
             .where(info_hash)
@@ -37,7 +37,7 @@ class Condition < ApplicationRecord
     end
   end
 
-  def self.least_rides(info_hash)
+  def self.min_rides(info_hash)
     trips = joins('INNER JOIN trips ON conditions.date = trips.start_date')
             .group('trips.start_date')
             .where(info_hash)
