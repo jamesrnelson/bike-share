@@ -10,34 +10,7 @@
   <p>Least Ridden Bike: <%= @bike_metrics[:least_bike][0] %>, <%= pluralize(@bike_metrics[:least_bike][1], 'ride') %></p>
 </div>
 
-<div class="weather-report">
-  <div class="most-rides">
-    <h4>Weather on the day with the most rides:</h4>
-    <ul>
-      <li>Maximum Temperature: <%= @most_conditions.max_temperature %></li>
-      <li>Minimum Temperature: <%= @most_conditions.min_temperature %></li>
-      <li>Mean Temperature: <%= @most_conditions.mean_temperature %></li>
-      <li>Mean Humidity: <%= @most_conditions.mean_humidity %></li>
-      <li>Mean Visibility: <%= @most_conditions.mean_visibility %></li>
-      <li>Mean Wind Speed: <%= @most_conditions.mean_wind_speed %></li>
-      <li>Precipitation: <%= @most_conditions.precipitation %></li>
-      <li>Zip Code: <%= @most_conditions.zip_code %></li>
-    </ul>
-  </div>
-  <div class="least-rides">
-    <h4>Weather on the day with the least rides:</h4>
-    <ul>
-      <li>Maximum Temperature: <%= @least_conditions.max_temperature %></li>
-      <li>Minimum Temperature: <%= @least_conditions.min_temperature %></li>
-      <li>Mean Temperature: <%= @least_conditions.mean_temperature %></li>
-      <li>Mean Humidity: <%= @least_conditions.mean_humidity %></li>
-      <li>Mean Visibility: <%= @least_conditions.mean_visibility %></li>
-      <li>Mean Wind Speed: <%= @least_conditions.mean_wind_speed %></li>
-      <li>Precipitation: <%= @least_conditions.precipitation %></li>
-      <li>Zip Code: <%= @least_conditions.zip_code %></li>
-    </ul>
-  </div>
-</div>
+<%= render partial: 'weather' %>
 
 <div class="duration-metrics">
   <p>Longest Ride: <%= link_to @duration_metrics[:longest].id, trip_path(@duration_metrics[:longest].id) %></p>
@@ -45,29 +18,4 @@
   <p>Shortest Ride: <%= link_to @duration_metrics[:shortest].id, trip_path(@duration_metrics[:shortest].id) %></p>
 </div>
 
-<div class="rides-by-date">
-  <table class='rides-by-month'>
-    <tr>
-      <th>Month</th>
-      <th>Number of Rides</th>
-    </tr>
-    <% @rides_by_date[:months].each do |month, count| %>
-      <tr>
-        <td><%= month[1] %></td>
-        <td><%= count %></td>
-      </tr>
-    <% end %>
-  </table>
-  <table class='rides-by-year'>
-    <tr>
-      <th>Yearly Subtotal</th>
-      <th>Number of Rides</th>
-    </tr>
-    <% @rides_by_date[:years].each do |year, count| %>
-      <tr>
-        <td><%= year %></td>
-        <td><%= count %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+<%= render partial: 'rides_by_date' %>

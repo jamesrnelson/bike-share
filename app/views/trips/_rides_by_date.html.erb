@@ -1,0 +1,27 @@
+
+<div class="rides-by-date">
+  <table class='rides-by-month'>
+    <tr>
+      <th>Month</th>
+      <th>Number of Rides</th>
+    </tr>
+    <% @rides_by_date[:months].each do |month, count| %>
+      <tr>
+        <td><%= month[1] %></td>
+        <td><%= count %></td>
+      </tr>
+    <% end %>
+  </table>
+  <table class='rides-by-year'>
+    <tr>
+      <th>Yearly Subtotal</th>
+      <th>Number of Rides</th>
+    </tr>
+    <% @rides_by_date[:years].each do |year, count| %>
+      <tr>
+        <td><%= year %></td>
+        <td><%= count %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
