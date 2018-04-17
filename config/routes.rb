@@ -31,9 +31,6 @@ Rails.application.routes.draw do
     resources :stations, only: %i[new create edit update destroy]
     get 'bikeshop/new', to: 'items#new'
     get '/dashboard', to: 'dashboard#index'
-    get '/bike-shop', to: 'shop#index'
-    post '/bike-shop', to: 'items#create'
-    get '/bike-shop/:id/edit', to: 'items#edit'
-    put '/bike-shop/:id/edit', to: 'items#update'
+    resources :items, as: 'bike_shop', path: 'bike-shop', only: %i[index new create edit update]
   end
 end

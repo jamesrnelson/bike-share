@@ -21,7 +21,7 @@ describe 'Admin' do
 
       click_on 'View all Accessories in Bike Shop'
 
-      expect(current_path).to eq(admin_bike_shop_path)
+      expect(current_path).to eq(admin_bike_shop_index_path)
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item1.status)

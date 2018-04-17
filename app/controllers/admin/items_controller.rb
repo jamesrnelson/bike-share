@@ -1,4 +1,8 @@
 class Admin::ItemsController < Admin::BaseController
+  def index
+    @items = Item.order(:title)
+  end
+
   def new
     @item = Item.new
   end
@@ -7,10 +11,10 @@ class Admin::ItemsController < Admin::BaseController
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been added to the Bike Shop"
-      redirect_to admin_bike_shop_path
+      redirect_to admin_bike_shop_index_path
     else
       flash[:error] = 'Title, description and price are required fields.'
-      redirect_to admin_bike_shop_new_path
+      redirect_to new_admin_bike_shop_path
     end
   end
 
@@ -23,11 +27,11 @@ class Admin::ItemsController < Admin::BaseController
     if params[:status]
       @item.update_attribute(:status, 0) if params[:status] == 'retired'
       @item.update_attribute(:status, 1) if params[:status] == 'active'
-      redirect_to admin_bike_shop_path
+      redirect_to admin_bike_shop_index_path
     end
     if @item.update(item_params)
       flash[:success] = "You have updated #{@item.title}"
-      redirect_to admin_bike_shop_path
+      redirect_to admin_bike_shop_index_path
     else
       flash[:error] = "You were unable to update #{@item.title}"
       render :edit

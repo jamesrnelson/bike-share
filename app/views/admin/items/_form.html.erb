@@ -1,4 +1,4 @@
-<%= form_tag(admin_path(@item), method: :put, multipart: true) do %>
+<%= form_tag(admin_bike_shop_path(@item), method: 'put', multipart: true) do %>
   <label>Title</label>
   <%= text_field_tag :"item[title]" %>
   <label>Description</label>

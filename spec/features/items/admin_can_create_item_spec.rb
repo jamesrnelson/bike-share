@@ -20,7 +20,7 @@ describe 'Admin' do
 
       click_on 'Add New Accessory'
 
-      expect(current_path).to eq(admin_bike_shop_new_path)
+      expect(current_path).to eq(new_admin_bike_shop_path)
 
       fill_in :'item[title]', with: 'Sweet Wheels'
       fill_in :'item[description]', with: 'Make all your friends jealous'
@@ -28,7 +28,7 @@ describe 'Admin' do
 
       click_on 'Add Accessory'
 
-      expect(current_path).to eq(admin_bike_shop_path)
+      expect(current_path).to eq(admin_bike_shop_index_path)
       expect(page).to have_content('Sweet Wheels')
       expect(page).to have_content('Make all your friends jealous')
       expect(page).to have_content('24.99')

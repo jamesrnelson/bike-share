@@ -23,13 +23,13 @@
             <td><%= "$#{'%.2f' % item.price}" %></td>
             <td><%= item.status %></td>
             <td>
-              <%= link_to "Edit #{item.title}", admin_path(item) %>
+              <%= link_to "Edit #{item.title}", edit_admin_bike_shop_path(item) %>
             </td>
             <td>
               <% if item.retired? %>
-                <%= link_to "Reactivate Accessory", admin_path(item, status: "retired"), method: "put", data: {confirm: "Are you sure you want to reactivate #{item.title}?"} %>
+                <%= link_to "Reactivate Accessory", admin_bike_shop_index_path(item, status: "retired"), method: "patch", data: {confirm: "Are you sure you want to reactivate #{item.title}?"} %>
               <% else %>
-                <%= link_to "Retire Accessory", admin_path(item, status: "active"), method: "put", data: {confirm: "Are you sure you want to retire #{item.title}?"} %>
+                <%= link_to "Retire Accessory", admin_bike_shop_index_path(item, status: "active"), method: "patch", data: {confirm: "Are you sure you want to retire #{item.title}?"} %>
               <% end %>
             </td>
           </tr>

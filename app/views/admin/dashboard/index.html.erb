@@ -1,5 +1,5 @@
-<%= link_to 'View all Accessories in Bike Shop', admin_bike_shop_path %>
-<%= link_to 'Add New Accessory', admin_bike_shop_new_path %>
+<%= link_to 'View all Accessories in Bike Shop', admin_bike_shop_index_path %>
+<%= link_to 'Add New Accessory', new_admin_bike_shop_path %>
 <p><%= link_to "Total Completed: #{@completed_orders}", :status => "completed" %>
 <p><%= link_to "Total Ordered: #{@ordered_orders}", :status => "ordered" %>
 <p><%= link_to "Total Paid: #{@paid_orders}", :status => "paid" %>
