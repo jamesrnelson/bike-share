@@ -19,5 +19,6 @@ class TripsController < ApplicationController
     @most_ends = Station.most_ending_rides
     @rides_by_date = Trip.rides_by_date
     @bike_metrics = Trip.bike_metrics
+    @subscription_metrics = Trip.subscription_metrics
   end
 end

@@ -21,9 +21,16 @@
     <p>Shortest Ride: <%= link_to @duration_metrics[:shortest].id, trip_path(@duration_metrics[:shortest].id) %></p>
   </div>
 
-  <div class="rides-by-date">
-    <%= render partial: 'rides_by_date' %>
-  </div>
+<div class="rides-by-date">
+  <%= render partial: 'rides_by_date' %>
+</div>
+
+<div class="subscriptions">
+  <h4>Rides by Subscription Type:</h4>
+  <p><%= pluralize(@subscription_metrics['Subscriber'], 'Subscriber') %></p>
+  <p><%= pluralize(@subscription_metrics['Customer'], 'Customer') %></p>
+</div>
+
 <% else %>
-  <%= render file: "/public/404" %>
+<%= render file: "/public/404" %>
 <% end%>

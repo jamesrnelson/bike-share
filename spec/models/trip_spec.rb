@@ -104,5 +104,15 @@ describe Trip, type: :model do
 
       expect(Trip.bike_metrics).to eq(expected)
     end
+
+    it 'should build #subscription_metrics' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, subscription_type: 'Subscriber')
+      create_list(:trip, 1, subscription_type: 'Customer')
+
+      expected = { 'Subscriber' => 5, 'Customer' => 1 }
+
+      expect(Trip.subscription_metrics).to eq(expected)
+    end
   end
 end

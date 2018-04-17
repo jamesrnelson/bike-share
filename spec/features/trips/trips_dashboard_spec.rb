@@ -115,5 +115,18 @@ feature 'On the trips dashboard' do
       expect(page).to have_content('Most Ridden Bike: 12345, 5 rides')
       expect(page).to have_content('Least Ridden Bike: 98765, 1 ride')
     end
+
+    scenario 'can see a breakout of subscriptions' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, subscription_type: 'Subscriber')
+      create_list(:trip, 1, subscription_type: 'Customer')
+      create(:condition)
+
+      visit trips_dashboard_path
+
+      expect(page).to have_content('Rides by Subscription Type:')
+      expect(page).to have_content('5 Subscribers')
+      expect(page).to have_content('1 Customer')
+    end
   end
 end
