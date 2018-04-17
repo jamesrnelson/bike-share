@@ -46,4 +46,22 @@ class Trip < ApplicationRecord
   def self.rides_by_date
     { years: rides_by_year, months: rides_by_month }
   end
+
+  def self.most_ridden_bike
+    group(:bike_id)
+      .order('count(trips.id) DESC')
+      .count
+      .first
+  end
+
+  def self.least_ridden_bike
+    group(:bike_id)
+      .order('count(trips.id) ASC')
+      .count
+      .first
+  end
+
+  def self.bike_metrics
+    { most_bike: most_ridden_bike, least_bike: least_ridden_bike }
+  end
 end

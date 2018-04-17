@@ -96,5 +96,18 @@ feature 'On the trips dashboard' do
         end
       end
     end
+
+    scenario 'can see most and least ridden bikes' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, bike_id: 12345)
+      create_list(:trip, 3, bike_id: 2)
+      create_list(:trip, 1, bike_id: 98765)
+      create(:condition)
+
+      visit trips_dashboard_path
+
+      expect(page).to have_content('Most Ridden Bike: 12345, 5 rides')
+      expect(page).to have_content('Least Ridden Bike: 98765, 1 ride')
+    end
   end
 end

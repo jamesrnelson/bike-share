@@ -76,5 +76,34 @@ describe Trip, type: :model do
 
       expect(Trip.rides_by_date).to eq(expected)
     end
+
+    it 'should find #most_ridden_bike' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, bike_id: 12345)
+      create_list(:trip, 3, bike_id: 2)
+      create_list(:trip, 1, bike_id: 98765)
+
+      expect(Trip.most_ridden_bike).to eq([12345, 5])
+    end
+
+    it 'should find #least_ridden_bike' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, bike_id: 12345)
+      create_list(:trip, 3, bike_id: 2)
+      create_list(:trip, 1, bike_id: 98765)
+
+      expect(Trip.least_ridden_bike).to eq([98765, 1])
+    end
+
+    it 'should build #bike_metrics' do
+      DatabaseCleaner.clean
+      create_list(:trip, 5, bike_id: 12345)
+      create_list(:trip, 3, bike_id: 2)
+      create_list(:trip, 1, bike_id: 98765)
+
+      expected = { most_bike: [12345, 5], least_bike: [98765, 1] }
+
+      expect(Trip.bike_metrics).to eq(expected)
+    end
   end
 end

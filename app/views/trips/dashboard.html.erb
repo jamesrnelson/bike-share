@@ -4,6 +4,12 @@
   <p>Most Starting Rides: <%= @most_starts.name %></p>
   <p>Most Ending Rides: <%= @most_ends.name %></p>
 </div>
+
+<div class="bikes-report">
+  <p>Most Ridden Bike: <%= @bike_metrics[:most_bike][0] %>, <%= pluralize(@bike_metrics[:most_bike][1], 'ride') %></p>
+  <p>Least Ridden Bike: <%= @bike_metrics[:least_bike][0] %>, <%= pluralize(@bike_metrics[:least_bike][1], 'ride') %></p>
+</div>
+
 <div class="weather-report">
   <div class="most-rides">
     <h4>Weather on the day with the most rides:</h4>
