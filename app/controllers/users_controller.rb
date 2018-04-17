@@ -13,6 +13,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = 'Your profile information has been updated'
+      redirect_to dashboard_path if current_user.default?
+      redirect_to admin_dashboard_path if current_user.admin?
+    else
+      flash[:error] = 'You are missing required user information'
+      render :edit
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :username, :password)

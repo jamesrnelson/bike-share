@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   put '/cart', to: 'carts#update'
   delete '/cart', to: 'carts#destroy'
 
-  resources :users, only: %i[new create show], shallow: true do
+  resources :users, only: %i[new create show edit update], shallow: true do
     resources :orders, only: %i[show create update]
   end
 
