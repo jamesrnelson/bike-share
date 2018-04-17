@@ -29,10 +29,10 @@ class Station < ApplicationRecord
   end
 
   def self.newest
-    order(:installation_date).first
+    order(installation_date: :desc).first
   end
 
   def self.oldest
-    order(installation_date: :desc).first
+    order(:installation_date).first
   end
 end

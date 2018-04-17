@@ -6,4 +6,8 @@ class ConditionsController < ApplicationController
   def show
     @condition = Condition.find(params[:id])
   end
+
+  def dashboard
+    @conditions = Condition.where(zip_code: 94107)
+  end
 end

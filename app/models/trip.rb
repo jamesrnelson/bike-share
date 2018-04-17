@@ -8,4 +8,8 @@ class Trip < ApplicationRecord
 
   belongs_to :start_station, :class_name => 'Station'
   belongs_to :end_station, :class_name => 'Station'
+
+  def self.average_rides(info_hash)
+    select('trips.*, conditions.*').joins('INNER JOIN conditions ON trips.start_date = conditions.date').group('conditions.date').where(info_hash)
+  end
 end
