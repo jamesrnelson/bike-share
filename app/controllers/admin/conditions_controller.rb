@@ -14,7 +14,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:success] = 'You have created new weather conditions.'
       redirect_to condition_path(@condition)
     else
-      flash[:failure] = 'You were unable to create new weather conditions.'
+      flash[:error] = 'You were unable to create new weather conditions.'
       render :new
     end
   end
@@ -29,7 +29,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:success] = 'You have updated the weather conditions.'
       redirect_to condition_path(condition)
     else
-      flash[:failure] = 'You were unable to update the weather conditions.'
+      flash[:error] = 'You were unable to update the weather conditions.'
       render :edit
     end
   end

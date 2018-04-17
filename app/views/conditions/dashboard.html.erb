@@ -77,7 +77,17 @@
 <% wind_speed_ranges = [[0, 4], [4, 8], [8, 12], [12, 16], [16, 20], [20, 24], [24, 28]] %>
 <% wind_speed_ranges.each do |range| %>
   <p><%= range[0] %> to <%= range[1] %> miles per hour:</p>
-  <p>Most rides in a day for the given wind speed range: <%= @conditions.most_rides(mean_wind_speed: range[0]..range[1]) %></p>
-  <p>Least rides in a day for the given wind speed range: <%= @conditions.least_rides(mean_wind_speed: range[0]..range[1]) %></p>
-  <p>Average rides per day in the given wind speed range: <%= @conditions.average_rides(mean_wind_speed: range[0]..range[1]) %></p>
+  <p>Most rides in a day for the given average wind speed range: <%= @conditions.most_rides(mean_wind_speed: range[0]..range[1]) %></p>
+  <p>Least rides in a day for the given average wind speed range: <%= @conditions.least_rides(mean_wind_speed: range[0]..range[1]) %></p>
+  <p>Average rides per day in the given average wind speed range: <%= @conditions.average_rides(mean_wind_speed: range[0]..range[1]) %></p>
+<% end %>
+
+<h3>Rides based on visibility</h3>
+<p>The number of rides for the given visibility range</p>
+<% visibility_ranges = [[0, 4], [4, 8], [8, 12], [12, 16], [16, 20]] %>
+<% visibility_ranges.each do |range| %>
+  <p><%= range[0] %> to <%= range[1] %> miles of visibility:</p>
+  <p>Most rides in a day for the given average visibility range: <%= @conditions.most_rides(mean_visibility: range[0]..range[1]) %></p>
+  <p>Least rides in a day for the given average visibility range: <%= @conditions.least_rides(mean_visibility: range[0]..range[1]) %></p>
+  <p>Average rides per day in the given average visibility range: <%= @conditions.average_rides(mean_visibility: range[0]..range[1]) %></p>
 <% end %>
