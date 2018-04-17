@@ -10,7 +10,9 @@
   <p>Least Ridden Bike: <%= @bike_metrics[:least_bike][0] %>, <%= pluralize(@bike_metrics[:least_bike][1], 'ride') %></p>
 </div>
 
-<%= render partial: 'weather' %>
+<div class="weather-report">
+  <%= render partial: 'weather' %>
+</div>
 
 <div class="duration-metrics">
   <p>Longest Ride: <%= link_to @duration_metrics[:longest].id, trip_path(@duration_metrics[:longest].id) %></p>
@@ -18,4 +20,6 @@
   <p>Shortest Ride: <%= link_to @duration_metrics[:shortest].id, trip_path(@duration_metrics[:shortest].id) %></p>
 </div>
 
-<%= render partial: 'rides_by_date' %>
+<div class="rides-by-date">
+  <%= render partial: 'rides_by_date' %>
+</div
