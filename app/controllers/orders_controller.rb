@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.update_attribute(:status, 3) if params[:status] == 'cancelled'
     order.update_attribute(:status, 2) if params[:status] == 'paid'
+    order.update_attribute(:status, 1) if params[:status] == 'completed'
     flash[:notice] = "Order \##{order.id} was updated!"
     redirect_to admin_dashboard_path
   end

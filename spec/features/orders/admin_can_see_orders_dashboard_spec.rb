@@ -5,7 +5,7 @@ describe 'Admin' do
     before(:each) do
       DatabaseCleaner.clean
     end
-    
+
     it 'they see a list of all orders and total number of each order status' do
       user = create(:user)
       order1 = user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
@@ -79,7 +79,7 @@ describe 'Admin' do
       expect(page).to_not have_content(order2.fullname)
     end
 
-    it 'they see cancel and mark as paid links' do
+    it 'they see cancel and mark as paid/completed links' do
       user = create(:user)
       order1 = user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
       order2 = user.orders.create!(fullname: 'Peter Smith', address: '400 Spencer St., Longmont, CO 80501', status: 1)
@@ -110,12 +110,17 @@ describe 'Admin' do
       expect(page).to have_link("Mark Order \##{order1.id} as Paid")
       expect(page).to_not have_link("Mark Order \##{order2.id} as Paid")
       expect(page).to_not have_link("Mark Order \##{order4.id} as Paid")
+
+      expect(page).to have_link("Mark Order \##{order3.id} as Completed")
+      expect(page).to_not have_link("Mark Order \##{order2.id} as Completed")
+      expect(page).to_not have_link("Mark Order \##{order4.id} as Completed")
     end
 
-    it 'they can cancel orders or mark orders as paid' do
+    it 'they can cancel orders or mark orders as paid/completed' do
       user = create(:user)
       order1 = user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
       order2 = user.orders.create!(fullname: 'Peter Smith', address: '400 Spencer St., Longmont, CO 80501')
+      order3 = user.orders.create!(fullname: 'Sally Smith', address: '401 Spencer St., Longmont, CO 80501', status: 2)
 
       admin = create(:admin)
 
@@ -141,6 +146,10 @@ describe 'Admin' do
       click_on "Mark Order \##{order2.id} as Paid"
 
       expect(page).to have_content('paid')
+
+      click_on "Mark Order \##{order3.id} as Completed"
+
+      expect(page).to have_content('completed')
     end
   end
 end
