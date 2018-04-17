@@ -25,9 +25,9 @@ class Admin::ItemsController < Admin::BaseController
   def update
     @item = Item.find(params[:id])
     if params[:status]
-      @item.update_attribute(:status, 0) if params[:status] == 'retired'
-      @item.update_attribute(:status, 1) if params[:status] == 'active'
-      redirect_to admin_bike_shop_index_path
+      @item.update_attribute(:status, 1) if params[:status] == 'retired'
+      @item.update_attribute(:status, 0) if params[:status] == 'active'
+      redirect_to admin_bike_shop_index_path and return
     end
     if @item.update(item_params)
       flash[:success] = "You have updated #{@item.title}"
