@@ -45,3 +45,7 @@ Item.create(title: 'Jersey', description: 'Actually aerodynamic', price: 18, ima
 Item.create(title: 'Water Bottle', description: 'Hydrate!', price: 4.5, image: File.new(Rails.root.join('app/assets/images/img_default.jpg')))
 Item.create(title: 'Water Bottle Holder', description: 'Hold the hydration', price: 4.5, image: File.new(Rails.root.join('app/assets/images/img_default.jpg')))
 Item.create(title: 'Helmet Mirror ', description: 'See those slower bikers back there', price: 11, image: File.new(Rails.root.join('app/assets/images/img_default.jpg')))
+
+ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+ActiveRecord::Base.connection.reset_pk_sequence!('conditions')

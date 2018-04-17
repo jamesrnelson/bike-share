@@ -19,7 +19,7 @@ feature 'On the stations path' do
       expect(page).to have_content('Station 1 was successfully deleted')
 
       within 'tr:nth-child(2) td:first-child' do
-        expect(page).to_not have_content(stations.first.id)
+        expect(page).to_not have_content(stations.first.name)
       end
     end
   end

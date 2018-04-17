@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin' do
   describe 'visits admin dashboard' do
-    before(:each) do
+    before(:all) do
       DatabaseCleaner.clean
     end
 
