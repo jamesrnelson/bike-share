@@ -43,7 +43,7 @@ class Admin::ConditionsController < Admin::BaseController
     if condition.destroy
       flash[:success] = "You have successfully deleted the weather conditions for #{condition.date}."
     else
-      flash[:failure] = "The weather conditions for #{condition.date} were NOT deleted."
+      flash[:error] = "The weather conditions for #{condition.date} were NOT deleted."
     end
     redirect_to conditions_path
   end

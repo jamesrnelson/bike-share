@@ -35,5 +35,32 @@ describe Condition do
 
       expect(Condition.least_rides).to eq(aug_condition)
     end
+
+    it 'should find the most rides for provided attribute' do
+      trips = create_list(:trip, 5)
+      trip2 = create(:trip, start_date: '2013-08-30')
+      condition1 = create(:condition, max_temperature: 55, zip_code: 94107)
+      condition2 = create(:condition, date: '2013-08-30', max_temperature: 55, zip_code: 94107)
+
+      expect(Condition.most_rides(max_temperature: 50..60)).to eq(5)
+    end
+
+    it 'should find the least rides for provided attribute' do
+      trips = create_list(:trip, 5)
+      trip2 = create(:trip, start_date: '2013-08-30')
+      condition1 = create(:condition, max_temperature: 55, zip_code: 94107)
+      condition2 = create(:condition, date: '2013-08-30', max_temperature: 55, zip_code: 94107)
+
+      expect(Condition.least_rides(max_temperature: 50..60)).to eq(1)
+    end
+
+    it 'should find the average rides for provided attribute' do
+      trips = create_list(:trip, 5)
+      trip2 = create(:trip, start_date: '2013-08-30')
+      condition1 = create(:condition, max_temperature: 55, zip_code: 94107)
+      condition2 = create(:condition, date: '2013-08-30', max_temperature: 55, zip_code: 94107)
+      
+      expect(Condition.average_rides(max_temperature: 50..60)).to eq(3)
+    end
   end
 end
