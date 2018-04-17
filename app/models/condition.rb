@@ -31,7 +31,7 @@ class Condition < ApplicationRecord
             .where(info_hash)
             .count.values
     if trips.max.nil?
-      'There were no rides in zip code 94107 for this temperature range.'
+      'There were no rides in zip code 94107 for this range.'
     else
       trips.max
     end
@@ -43,7 +43,7 @@ class Condition < ApplicationRecord
             .where(info_hash)
             .count.values
     if trips.min.nil?
-      'There were no rides in zip code 94107 for this temperature range.'
+      'There were no rides in zip code 94107 for this range.'
     else
       trips.min
     end
@@ -56,7 +56,7 @@ class Condition < ApplicationRecord
             .count.values
     average = (trips.sum.to_f / trips.length)
     if average.nan?
-      'There were no rides in zip code 94107 for this temperature range.'
+      'There were no rides in zip code 94107 for this range.'
     else
       average.round(1)
     end

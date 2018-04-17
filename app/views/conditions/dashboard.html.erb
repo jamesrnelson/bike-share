@@ -61,3 +61,23 @@
 <p>Most rides in a day for the given temperature range: <%= @conditions.most_rides(max_temperature: -100..20) %></p>
 <p>Least rides in a day for the given temperature range: <%= @conditions.least_rides(max_temperature: -100..20) %></p>
 <p>Average rides per day in the given temperature range: <%= @conditions.average_rides(max_temperature: -100..20) %></p>
+
+<h3>Rides based on precipitation</h3>
+<p>The number of rides for the given preciptation range</p>
+<% precipitation_ranges = [[0, 0.5], [0.5, 1], [1, 1.5], [1.5, 2]] %>
+<% precipitation_ranges.each do |range| %>
+  <p><%= range[0] %> to <%= range[1] %> inches:</p>
+  <p>Most rides in a day for the given precipitation range: <%= @conditions.most_rides(precipitation: range[0]..range[1]) %></p>
+  <p>Least rides in a day for the given precipitation range: <%= @conditions.least_rides(precipitation: range[0]..range[1]) %></p>
+  <p>Average rides per day in the given precipitation range: <%= @conditions.average_rides(precipitation: range[0]..range[1]) %></p>
+<% end %>
+
+<h3>Rides based on wind speed</h3>
+<p>The number of rides for the given wind speed range</p>
+<% wind_speed_ranges = [[0, 4], [4, 8], [8, 12], [12, 16], [16, 20], [20, 24], [24, 28]] %>
+<% wind_speed_ranges.each do |range| %>
+  <p><%= range[0] %> to <%= range[1] %> miles per hour:</p>
+  <p>Most rides in a day for the given wind speed range: <%= @conditions.most_rides(mean_wind_speed: range[0]..range[1]) %></p>
+  <p>Least rides in a day for the given wind speed range: <%= @conditions.least_rides(mean_wind_speed: range[0]..range[1]) %></p>
+  <p>Average rides per day in the given wind speed range: <%= @conditions.average_rides(mean_wind_speed: range[0]..range[1]) %></p>
+<% end %>
