@@ -89,6 +89,11 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_zip_code
-
+    start_trips
+    .select('zip_code, count(zip_code) AS count')
+    .group(:zip_code)
+    .to_a
+    .first
+    .zip_code
   end
 end

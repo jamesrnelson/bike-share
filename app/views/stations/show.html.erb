@@ -11,6 +11,7 @@
       <p>Most frequent destination station: <%= @station.most_frequent_destination.name %></p>
       <p>Most frequent origination station: <%= @station.most_frequent_origin.name %></p>
       <p>Greatest number of trips started at this station on <%= @station.most_trips_date %></p>
+      <p>Most users have a zip code of <%= @station.most_frequent_zip_code %> that start trips at this station.</p>
 
       <% if current_admin? %>
         <div class="buttons">
