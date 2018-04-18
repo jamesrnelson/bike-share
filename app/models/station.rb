@@ -52,6 +52,7 @@ class Station < ApplicationRecord
     .group('stations.id')
     .order('trip_count DESC')
     .first
+  end
 
   def start_count
     start_trips.count
