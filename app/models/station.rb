@@ -96,4 +96,13 @@ class Station < ApplicationRecord
     .first
     .zip_code
   end
+
+  def most_used_bike
+    start_trips
+    .select('bike_id, count(bike_id) AS count')
+    .group(:bike_id)
+    .to_a
+    .first
+    .bike_id
+  end
 end

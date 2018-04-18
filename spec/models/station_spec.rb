@@ -97,5 +97,16 @@ describe Station, type: :model do
         expect(station1.most_frequent_zip_code).to eq(trip3.zip_code)
       end
     end
+    describe '.most_used_bike' do
+      it 'returns most used bike from station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        trip1, trip2, trip3 = create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.most_used_bike).to eq(trip3.bike_id)
+      end
+    end
   end
 end
