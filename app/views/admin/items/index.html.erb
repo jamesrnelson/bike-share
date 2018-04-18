@@ -20,7 +20,7 @@
             </td>
             <td><%= item.title %></td>
             <td><%= item.description %></td>
-            <td><%= "$#{'%.2f' % item.price}" %></td>
+            <td><%= "#{number_to_currency(item.price)}" %></td>
             <td><%= item.status %></td>
             <td>
               <%= link_to "Edit #{item.title}", edit_admin_bike_shop_path(item) %>

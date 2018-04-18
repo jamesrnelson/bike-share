@@ -10,7 +10,7 @@
           </div>
           <div class="card-bottom">
               <h3><%= item.title %></h3>
-              <p> Price: <%= "$#{'%.2f' % item.price}" %> </p>
+              <p> Price: <%= "#{number_to_currency(item.price)}" %> </p>
               <%= button_to "Add to Cart", cart_path(item_id: item.id), title: item.title %>
           </div>
         </li>

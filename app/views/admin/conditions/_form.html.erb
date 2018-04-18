@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td><%= f.label :zip_code %></td>
-    <td><%= f.text_field :zip_code %></td>
+    <td><%= f.text_field :zip_code, in: 10000..99999 %></td>
   </tr>
 
   <tr>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'On the trips path' do
+feature 'On the stations path' do
   context 'an Admin user' do
     scenario 'can create a new station from admin/station/new' do
       admin = create(:admin)
@@ -10,7 +10,7 @@ feature 'On the trips path' do
 
       visit stations_path
 
-      click_on 'New Station'
+      click_on 'Create Station'
 
       expect(current_path).to eq(new_admin_station_path)
       fill_in 'station[name]', with: 'blah'
