@@ -1,55 +1,60 @@
-<ul>
-  <li>Name: <%= current_user.name %></li>
-  <li>Username: <%= current_user.username %></li>
-</ul>
-<%= link_to "Update Profile Information", edit_user_path(current_user) %>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
+      <ul>
+        <li>Name: <%= current_user.name %></li>
+        <li>Username: <%= current_user.username %></li>
+      </ul>
+      <p><%= link_to "Update Profile Information", edit_user_path(current_user), class: 'create-button' %></p>
 
-<%= link_to 'View all Accessories in Bike Shop', admin_bike_shop_index_path %>
-<%= link_to 'Add New Accessory', new_admin_bike_shop_path %>
-
-<p><%= link_to "Total Completed: #{@completed_orders}", :status => "completed" %>
-<p><%= link_to "Total Ordered: #{@ordered_orders}", :status => "ordered" %>
-<p><%= link_to "Total Paid: #{@paid_orders}", :status => "paid" %>
-<p><%= link_to "Total Cancelled: #{@cancelled_orders}", :status => "cancelled" %>
-<table>
-  <tr>
-    <th>Purchaser's Name</th>
-    <th>Purchaser's Address</th>
-    <th>Order #</th>
-    <th>Order Total</th>
-    <th>Status</th>
-    <th>Cancel?</th>
-    <th>Mark as Paid?</th>
-    <th>Mark as Completed?</th>
-  </tr>
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.fullname %></td>
-      <td><%= order.address %></td>
-      <td><%= link_to "#{order.id}", order_path(order) %></td>
-      <td><%= "#{number_to_currency(order.total) }" %></td>
-      <td><%= order.status %></td>
-      <td>
-        <% if order.paid? || order.ordered? %>
-          <%= link_to "Cancel", order_path(order, status: "cancelled"), method: "patch", data: {confirm: "Are you sure you want to cancel Order \##{order.id}?"}, title: "Cancel Order \##{order.id}"%>
-        <% else %>
-          <% " " %>
+      <p><%= link_to 'View all Accessories in Bike Shop', admin_bike_shop_index_path, class: 'create-button' %></p>
+      <p><%= link_to 'Add New Accessory', new_admin_bike_shop_path, class: 'create-button' %></p>
+      <p><%= link_to "Total Completed: #{@completed_orders}", :status => "completed" %>
+      <p><%= link_to "Total Ordered: #{@ordered_orders}", :status => "ordered" %>
+      <p><%= link_to "Total Paid: #{@paid_orders}", :status => "paid" %>
+      <p><%= link_to "Total Cancelled: #{@cancelled_orders}", :status => "cancelled" %>
+      <table>
+        <tr>
+          <th>Purchaser's Name</th>
+          <th>Purchaser's Address</th>
+          <th>Order #</th>
+          <th>Order Total</th>
+          <th>Status</th>
+          <th>Cancel?</th>
+          <th>Mark as Paid?</th>
+          <th>Mark as Completed?</th>
+        </tr>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.fullname %></td>
+            <td><%= order.address %></td>
+            <td><%= link_to "#{order.id}", order_path(order) %></td>
+            <td><%= "#{number_to_currency(order.total) }" %></td>
+            <td><%= order.status %></td>
+            <td>
+              <% if order.paid? || order.ordered? %>
+                <%= link_to "Cancel", order_path(order, status: "cancelled"), method: "patch", data: {confirm: "Are you sure you want to cancel Order \##{order.id}?"}, title: "Cancel Order \##{order.id}"%>
+              <% else %>
+                <% " " %>
+              <% end %>
+            </td>
+            <td>
+              <% if order.ordered? %>
+                <%= link_to "Mark as Paid", order_path(order, status: "paid"), method: "patch", data: {confirm: "Are you sure you want to mark Order \##{order.id} as Paid?"}, title: "Mark Order \##{order.id} as Paid"%>
+              <% else %>
+                <% " " %>
+              <% end %>
+            </td>
+            <td>
+              <% if order.paid? %>
+                <%= link_to "Mark as Completed", order_path(order, status: "completed"), method: "patch", data: {confirm: "Are you sure you want to mark Order \##{order.id} as Completed?"}, title: "Mark Order \##{order.id} as Completed"%>
+              <% else %>
+                <% " " %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-      </td>
-      <td>
-        <% if order.ordered? %>
-          <%= link_to "Mark as Paid", order_path(order, status: "paid"), method: "patch", data: {confirm: "Are you sure you want to mark Order \##{order.id} as Paid?"}, title: "Mark Order \##{order.id} as Paid"%>
-        <% else %>
-          <% " " %>
-        <% end %>
-      </td>
-      <td>
-        <% if order.paid? %>
-          <%= link_to "Mark as Completed", order_path(order, status: "completed"), method: "patch", data: {confirm: "Are you sure you want to mark Order \##{order.id} as Completed?"}, title: "Mark Order \##{order.id} as Completed"%>
-        <% else %>
-          <% " " %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+      </table>
+    </div>
+  </div>
+</div>

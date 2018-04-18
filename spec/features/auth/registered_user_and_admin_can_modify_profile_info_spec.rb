@@ -62,11 +62,8 @@ describe 'Admin' do
       fill_in 'user[username]', with: 'bobbyboy'
       fill_in 'user[password]', with: 'password'
 
-<<<<<<< HEAD
       click_on "Update Account"
-=======
-      click_on 'Update User'
->>>>>>> 0ebe8db... Updates tests to add more consistency in style
+
 
       expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_content('Your profile information has been updated')

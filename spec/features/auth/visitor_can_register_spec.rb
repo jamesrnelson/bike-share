@@ -17,7 +17,7 @@ describe 'Visitor' do
 
       click_on "Create Account"
 
-      expect(page).to have_content('Logged in as Bob')
+      expect(page).to have_content('Logged in as: Bob')
     end
   end
 end

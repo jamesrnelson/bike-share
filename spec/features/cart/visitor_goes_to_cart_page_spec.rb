@@ -42,11 +42,7 @@ describe 'As a visitor,' do
       fill_in 'user[username]', with: 'bobbyboy'
       fill_in 'user[password]', with: 'password'
 
-<<<<<<< HEAD
       click_on "Create Account"
-=======
-      click_on 'Create User'
->>>>>>> 0ebe8db... Updates tests to add more consistency in style
 
       visit cart_path
 
