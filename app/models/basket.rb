@@ -38,12 +38,19 @@ class Basket
 
   def update_item(id, quantity)
     @contents[id] = quantity.to_i
+    if @contents[id] < 1
+      @contents.delete(id)
+    end
     if @current_user
       cart_item = @current_user.carts.find_by(item_id: id.to_i)
       cart_item ||= @current_user.carts.new(item_id: id, quantity: 0)
-      params = {quantity: quantity}
-      cart_item.update(params)
-      cart_item.save
+      if quantity.to_i < 1
+        cart_item.destroy
+      else
+        params = {quantity: quantity}
+        cart_item.update(params)
+        cart_item.save
+      end
     end
   end
 
