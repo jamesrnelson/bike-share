@@ -1,9 +1,14 @@
-<% if current_admin? %>
-<% end %>
 <div class="container-fixed">
-  <div class="row">
-    <%= link_to 'New Station', new_admin_station_path, class: 'create-button' %>
-  </div>
+  <% if current_admin? %>
+    <div class="row">
+      <%= link_to 'New Station', new_admin_station_path, class: 'create-button' %>
+    </div>
+  <% end %>
+  <% if current_user %>
+    <div class="row">
+      <%= link_to 'Stations Dashboard', stations_dashboard_path, class: 'create-button' %>
+    </div>
+  <% end %>
   <div class="row">
       <table>
         <tr>
