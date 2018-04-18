@@ -41,7 +41,7 @@ describe 'As a visitor,' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create User"
+      click_on "Create/Update Account"
 
       visit cart_path
 
@@ -77,7 +77,7 @@ describe 'As a visitor,' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create User"
+      click_on "Create/Update Account"
 
       visit cart_path
 
