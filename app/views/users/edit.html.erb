@@ -1,12 +1,16 @@
-<div class="container-color sky-blue">
-  <div class="row">
-    <div class="col-4 navy-background">
-      <div class="small-row">
-        <h2>Edit <%= @user.name %>'s Profile Information</h2>
-      </div>
-      <div class="small-row">
-        <%= render partial: "form" %>
+<% if @current_user.id == @user.id %>
+  <div class="container-color sky-blue">
+    <div class="row">
+      <div class="col-4 navy-background">
+        <div class="small-row">
+          <h2>Edit <%= @user.name %>'s Profile Information</h2>
+        </div>
+        <div class="small-row">
+          <%= render partial: "form" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <%= render file: "/public/404" %>
+<% end %>
