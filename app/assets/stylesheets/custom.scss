@@ -46,13 +46,25 @@ tr:hover {
   background-attachment: fixed;
   background-size: cover;
   padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
   a {
     color: $dark-gray;
     text-decoration: none;
   }
   a:hover {
-    color: $dark-gray;
+    color: $dark-navy;
     text-decoration: underline;
+  }
+
+  td {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -297,4 +309,11 @@ ul {
 .pagination {
   background-color: $table-gray;
   font-size: 18px;
+
+  a {
+    color: $dark-navy;
+  }
+  a:hover {
+    color: $button-red;
+  }
 }
