@@ -9,13 +9,43 @@
       <% if current_user %>
         <p>Number of rides started at this station: <%= @station.start_count %></p>
         <p>Number of rides ended at this station: <%= @station.end_count %></p>
-        <p>Most frequent destination station: <%= @station.most_frequent_destination.name %></p>
-        <p>Most frequent origination station: <%= @station.most_frequent_origin.name %></p>
-        <p>Greatest number of trips started at this station on <%= @station.most_trips_date %></p>
-        <p>Most users have a zip code of <%= @station.most_frequent_zip_code %> that start trips at this station.</p>
-        <p>Bike #<%= @station.most_used_bike %> is the most frequently used bike at this station.</p>
+        <p>Most frequent destination station:
+          <% if @station.start_trips.empty? %>
+            N/A
+          <% else %>
+            <%= @station.most_frequent_destination.name %>
+          <% end %>
+        </p>
+        <p>Most frequent origination station:
+          <% if @station.end_trips.empty? %>
+            N/A
+          <% else %>
+            <%= @station.most_frequent_origin.name %>
+          <% end %>
+        </p>
+        <p>Greatest number of trips started at this station on
+          <% if @station.start_trips.empty? %>
+            N/A
+          <% else %>
+            <%= @station.most_trips_date %>.
+          <% end %>
+        </p>
+        <p>Most frequent user zip code:
+          <% if @station.start_trips.empty? %>
+            N/A
+          <% else %>
+             <%= @station.most_frequent_zip_code %>
+          <% end %>
+        </p>
+        <p>Most used bike at this station:
+          <% if @station.start_trips.empty? %>
+            N/A
+          <% else %>
+             Bike #<%= @station.most_used_bike %>
+          <% end %>
+        </p>
       <% end %>
-      
+
       <% if current_admin? %>
         <div class="buttons">
           <%= button_to 'New', new_admin_station_path, method: 'get' %>
