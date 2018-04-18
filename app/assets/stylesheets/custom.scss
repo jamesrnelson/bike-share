@@ -78,6 +78,26 @@ table {
   }
 }
 
+.admin-table {
+
+  td {
+    background-color: white;
+    padding: 8px 8px;
+  }
+  a {
+    color: $dark-navy;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $button-red;
+    text-decoration: underline;
+  }
+
+  th {
+    padding: 8px 8px;
+  }
+}
+
 .container-color {
   margin: 0;
   max-width: 100%;

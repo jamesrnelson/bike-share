@@ -1,3 +1,6 @@
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
 <% if (@current_user.id == @order.user_id) || current_user.admin? %>
   <p><%= "Purchaser's Name: #{@order.fullname}" if current_user.admin? %>
   <p><%= "Purchaser's Address: #{@order.address}" if current_user.admin? %>
@@ -5,7 +8,7 @@
   <p>Submitted on: <%= @order.created_at %></p>
   <p><%= "Order completed on: #{@order.updated_at}" if @order.completed? %></p>
   <p><%= "Order cancelled on: #{@order.updated_at}" if @order.cancelled? %></p>
-  <table>
+  <table class="admin-table">
     <tr>
       <th>Image</th>
       <th>Title</th>
@@ -31,6 +34,9 @@
     <% end %>
   </table>
   <h3>Total: <%= "#{number_to_currency(@order.total) }" %></h3>
+</div>
+</div>
+</div>
 <% else %>
   <%= render file: "/public/404" %>
 <% end %>
