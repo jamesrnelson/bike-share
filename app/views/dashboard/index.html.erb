@@ -1,12 +1,18 @@
-<h1>Dashboard</h1>
+<div class="container-fixed">
+  <div class="row">
+    <div class="col-4">
+      <h1>Dashboard</h1>
 
-<% if current_user %>
-  <ul>
-    <li>Name: <%= @user.name %></li>
-    <li>Username: <%= @user.username %></li>
-  </ul>
-  <%= link_to "Update Profile Information", edit_user_path(@user) %>
-  <% @user.orders.each do |order| %>
-    <%= link_to "Order \##{order.id}", order_path(order) %>
-  <% end %>
-<% end %>
+      <% if current_user %>
+        <ul>
+          <li>Name: <%= @user.name %></li>
+          <li>Username: <%= @user.username %></li>
+        </ul>
+        <%= link_to "Update Profile Information", edit_user_path(@user), class: "create-button" %>
+        <% @user.orders.each do |order| %>
+          <%= link_to "Order \##{order.id}", order_path(order) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
