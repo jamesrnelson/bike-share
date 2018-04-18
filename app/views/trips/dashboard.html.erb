@@ -17,8 +17,8 @@
             </div>
 
             <div class="stations-report">
-              <p>Most Starting Rides: <%= link_to @stations.most_starting_rides.name, station_path(@stations.most_starting_rides) %></p>
-              <p>Most Ending Rides: <%= link_to @stations.most_ending_rides.name, station_path(@stations.most_ending_rides) %></p>
+              <p>Most Starting Rides: <%= link_to @stations.most_starting_rides.name, station_path(@stations.most_starting_rides.slug) %></p>
+              <p>Most Ending Rides: <%= link_to @stations.most_ending_rides.name, station_path(@stations.most_ending_rides.slug) %></p>
             </div>
           </div>
 

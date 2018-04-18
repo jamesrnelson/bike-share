@@ -9,7 +9,6 @@ $hover-yellow: #ffff99;
 $content: 'Roboto', sans-serif;
 $header: 'Open Sans Condensed', sans-serif;
 
-
 body {
   font-family: $content;
   font-size: 16px;
@@ -289,4 +288,8 @@ ul {
     clear:      both;
     max-width:  46.923em; /* 610/13 */
     max-width: 45.750em; /* 610/13.3333 - for IE */
+}
+
+.page-not-found {
+  text-align: center
 }

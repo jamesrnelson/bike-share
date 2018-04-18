@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BikeShare</title>
+    <% if content_for? :for_head %>
+      <%= yield :for_head %>
+    <% else %>
+      <title>BikeShare</title>
+    <% end %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <%= csrf_meta_tags %>
@@ -46,11 +50,13 @@
         <p><%= link_to 'The Bike Shop', bike_shop_path %></p>
       </div>
     </div>
-    <div class="flash">
-      <% flash.each do |type, message| %>
-      <%= content_tag :div, sanitize(message), class: type %>
-      <% end %>
-    </div>
+    <% unless flash.empty? %>
+      <div class="flash">
+        <% flash.each do |type, message| %>
+        <%= content_tag :div, sanitize(message), class: type %>
+        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

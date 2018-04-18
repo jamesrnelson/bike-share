@@ -35,4 +35,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#index'
     resources :items, as: 'bike_shop', path: 'bike-shop', only: %i[index new create edit update]
   end
+
+  match '404', to: 'errors#page_not_found', via: :all
+  match '500', to: 'errors#internal_server_error', via: :all
 end
