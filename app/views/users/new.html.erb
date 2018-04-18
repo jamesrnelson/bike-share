@@ -5,7 +5,29 @@
         <h2>Create an Account Here!</h2>
       </div>
       <div class="small-row">
-        <%= render partial: "form" %>
+
+        <%= form_for @user do |f| %>
+        <table>
+          <tr>
+            <td><%= f.label :name %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :username %></td>
+            <td><%= f.text_field :username %></p></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :password %></td>
+            <td><%= f.password_field :password %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit 'Create Account', class: "create-button" %></td>
+          </tr>
+        </table>
+        <% end %>
       </div>
     </div>
   </div>
