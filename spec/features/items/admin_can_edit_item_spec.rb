@@ -4,8 +4,8 @@ describe 'Admin' do
   describe 'visits admin dashboard' do
     it 'they can click a link and view all items' do
       admin = create(:admin)
-      item1, item2, item3 = create_list(:item, 3)
-
+      item1 = create(:item)
+      create_list(:item, 2)
       visit root_path
 
       click_on 'Login'

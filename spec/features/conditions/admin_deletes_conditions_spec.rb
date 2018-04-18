@@ -3,12 +3,7 @@ require 'rails_helper'
 describe 'Admin' do
   context 'deletes condition from index' do
     scenario 'there is a flash message and that condition is gone' do
-      admin = User.create!(
-        name: 'Jimmy',
-        username: 'Jimmy',
-        password: 'test',
-        status: 'admin'
-      )
+      admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

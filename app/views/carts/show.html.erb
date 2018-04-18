@@ -39,11 +39,13 @@
       <%= form_tag user_orders_path(current_user) do %>
         <label>Full Name:</label><br>
         <%= text_field_tag :'order[fullname]' %><br>
+          <label>Address:</label><br>
+          <%= text_area_tag :'order[address]' %><br>
 
-        <label>Address:</label><br>
-        <%= text_area_tag :'order[address]' %><br>
-
-        <%= submit_tag "Checkout" %>
+          <%= submit_tag "Checkout" %>
+        <% end %>
+      <% else %>
+        <%= button_to "Register to Checkout", login_path %>
       <% end %>
     <% else %>
       <%= button_to "Register to Checkout", login_path, class: "create-button" %>

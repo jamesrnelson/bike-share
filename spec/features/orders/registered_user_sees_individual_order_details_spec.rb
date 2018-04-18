@@ -12,15 +12,15 @@ describe 'Registered user' do
 
       visit root_path
 
-      click_on "Login"
+      click_on 'Login'
 
       expect(current_path).to eq(login_path)
-      fill_in "name", with: user.name
-      fill_in "username", with: user.username
-      fill_in "password", with: user.password
+      fill_in 'name', with: user.name
+      fill_in 'username', with: user.username
+      fill_in 'password', with: user.password
 
       within('.form') do
-        click_on "Login"
+        click_on 'Login'
       end
 
       visit order_path(order)

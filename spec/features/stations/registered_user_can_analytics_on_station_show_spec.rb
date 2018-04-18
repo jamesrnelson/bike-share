@@ -5,7 +5,8 @@ describe 'Registered user' do
     it 'they see analytics for the station' do
       station1 = create(:station)
       station2 = create(:station)
-      trip1, trip2, trip3 = create_list(:trip, 3, start_station_id: station1.id, end_station_id: station2.id, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+      trip1 = create(:trip, start_station_id: station1.id, end_station_id: station2.id, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+      create_list(:trip, 2, start_station_id: station1.id, end_station_id: station2.id, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
       create_list(:trip, 2, start_station_id: station1.id, end_station_id: station2.id, start_date: '2013-08-30 10:11:00')
       create_list(:trip, 2, start_station_id: station2.id, end_station_id: station1.id)
       user = create(:user)
