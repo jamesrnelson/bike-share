@@ -1,8 +1,8 @@
 <div class="container-fixed">
   <% if current_admin? %>
-  <div class="row">
-    <%= link_to 'New Trip', new_admin_trip_path, method: 'get', class: 'create-button' %>
-  </div>
+    <div class="row">
+      <%= button_to 'Create Trip', new_admin_trip_path, method: 'get', class: 'create-button' %>
+    </div>
   <% end %>
   <% if current_user %>
     <%= link_to 'Trips Dashboard', trips_dashboard_path, class: 'create-button' %>
