@@ -3,12 +3,7 @@ require 'rails_helper'
 describe 'Admin' do
   context 'visits conditions index' do
     scenario 'they see all conditions and edit button' do
-      admin = User.create!(
-        name: 'Jimmy',
-        username: 'Jimmy',
-        password: 'test',
-        status: 'admin'
-      )
+      admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -29,12 +24,7 @@ describe 'Admin' do
 
   context 'clicks on edit link' do
     scenario 'they fill in information and submit' do
-      admin = User.create!(
-        name: 'Jimmy',
-        username: 'Jimmy',
-        password: 'test',
-        status: 'admin'
-      )
+      admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

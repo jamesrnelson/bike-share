@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Registered user' do
   it 'cannot view another users cart' do
-    user1,user2 = create_list(:user, 2)
+    user1, user2 = create_list(:user, 2)
     item1, item2, item3 = create_list(:item, 3)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
@@ -27,7 +27,7 @@ describe 'Registered user' do
   end
 
   it 'cannot view another users profile information' do
-    user1,user2 = create_list(:user, 2)
+    user1, user2 = create_list(:user, 2)
 
     visit root_path
 

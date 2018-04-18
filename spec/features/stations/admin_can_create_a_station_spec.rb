@@ -4,7 +4,7 @@ feature 'On the stations path' do
   context 'an Admin user' do
     scenario 'can create a new station from admin/station/new' do
       admin = create(:admin)
-      stations = create_list(:station, 35)
+      create_list(:station, 35)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

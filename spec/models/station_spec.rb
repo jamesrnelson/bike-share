@@ -25,7 +25,7 @@ describe Station, type: :model do
       create_list(:trip, 25, start_station: most_starting_station)
       create_list(:trip, 15, end_station: most_ending_station)
       create_list(:trip, 10)
-      
+
       expect(Station.most_ending_rides).to eq(most_ending_station)
     end
   end

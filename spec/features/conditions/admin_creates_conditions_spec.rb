@@ -3,12 +3,7 @@ require 'rails_helper'
 describe 'Admin visits conditions index' do
   context 'clicks on create weather conditions' do
     it 'can fill in information and submit form' do
-      admin = User.create!(
-        name: 'Jimmy',
-        username: 'Jimmy',
-        password: 'test',
-        status: 'admin'
-      )
+      admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

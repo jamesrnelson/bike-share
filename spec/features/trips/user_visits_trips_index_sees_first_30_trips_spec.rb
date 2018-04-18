@@ -61,7 +61,7 @@ feature 'User visits trip index' do
 
     scenario 'should see buttons to edit and delete a trip' do
       admin = create(:admin)
-      trips = create_list(:trip, 35)
+      create_list(:trip, 35)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

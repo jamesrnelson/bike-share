@@ -5,13 +5,14 @@ describe Order, type: :model do
     it { should validate_presence_of(:fullname) }
     it { should validate_presence_of(:address) }
   end
+
   describe 'relationships' do
-    it "has_many_items" do
+    it 'has_many_items' do
       user = create(:user)
       order = user.orders.create!(user_id: 1, fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
       expect(order).to respond_to(:items)
     end
-    it "belongs_to user" do
+    it 'belongs_to user' do
       user = create(:user)
       order = user.orders.create!(user_id: 1, fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
       expect(order).to respond_to(:user)

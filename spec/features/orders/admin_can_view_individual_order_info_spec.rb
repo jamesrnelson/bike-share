@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'Admin' do
   describe 'visits indiviual order page' do
     it 'they see complete order information including user info' do
-      DatabaseCleaner.clean
       user = create(:user)
       order = user.orders.create!(fullname: 'Haley Mesander', address: '936 Spencer St., Longmont, CO 80501')
       item = create(:item)
