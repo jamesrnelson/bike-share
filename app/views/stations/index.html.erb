@@ -18,7 +18,7 @@
           <% end %>
         </tr>
         <% @stations.each do |station| %>
-          <tr class="table-row">
+          <tr class="table-row" id=<%= "#{station.id}" %> >
             <td><%= link_to station.name, station_path(station.slug) %></a></td>
             <td><%= station.dock_count %></td>
             <td><%= station.city %></td>

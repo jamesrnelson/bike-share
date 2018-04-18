@@ -10,7 +10,7 @@ feature 'On the stations path' do
 
       visit stations_path
 
-      within 'tr:nth-child(31)' do
+      within "\##{stations[7].id}" do
         click_on 'Edit'
       end
 
@@ -26,7 +26,7 @@ feature 'On the stations path' do
       expect(page).to have_content(35)
       expect(page).to have_content('denver')
 
-      expect(page).to have_content("Station 30 was updated")
+      expect(page).to have_content("Station 8 was updated")
     end
   end
 end

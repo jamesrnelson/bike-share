@@ -30,8 +30,8 @@ FactoryBot.define do
   end
 
   factory :user do
-    sequence(:name) { |n| "Name #{n}" }
-    sequence(:username) { |n| "Username #{n}" }
+    sequence(:name) { "Name #{Random.rand(1000).to_s}" }
+    sequence(:username) { "Username #{Random.rand(1000).to_s}" }
     sequence(:password) { |n| "Password #{n}" }
   end
 
