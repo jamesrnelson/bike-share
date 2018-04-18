@@ -184,6 +184,16 @@ td {
   }
 }
 
+.login-row {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  color: white;
+}
+
 .nav-bar {
   width: 100%;
   background-color: white;

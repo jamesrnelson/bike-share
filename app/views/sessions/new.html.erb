@@ -1,5 +1,10 @@
-<div class="container-color white">
+<div class="container-fixed">
   <div class="row">
+    <div class="col-5">
+      <h1>Log in for the full experience!</h1>
+    </div>
+  </div>
+  <div class="login-row">
     <div class="form">
       <%= form_tag login_path do %>
       <%= label_tag :username %>
@@ -10,14 +15,6 @@
 
       <%= submit_tag "Login" %>
       <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container-fixed">
-  <div class="row">
-    <div class="col-5">
-      <h1>Log in for the full experience!</h1>
     </div>
   </div>
   <div class="row">

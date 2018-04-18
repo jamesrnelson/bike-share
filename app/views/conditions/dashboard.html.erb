@@ -50,9 +50,7 @@
       <p>Average rides per day: <%= @conditions.average_rides(mean_visibility: range[0]..range[1]) %></p>
       <% end %>
     </div>
-
   </div>
-
 <% else %>
   <%= render file: "/public/404" %>
 <% end%>
