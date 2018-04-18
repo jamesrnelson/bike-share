@@ -11,14 +11,14 @@
   <div class="row">
       <table>
         <tr>
-          <th>Date</th>
-          <th>Max Temperature (F)</th>
-          <th>Mean Temperature (F)</th>
-          <th>Min Temperature (F)</th>
-          <th>Mean Humidity</th>
-          <th>Mean Visibility (miles)</th>
-          <th>Mean Wind Speed (mph)</th>
-          <th>Precipitation (in)</th>
+          <th><%= link_to 'Date', conditions_path(sort: 'date')%></th>
+          <th><%= link_to 'Max Temperature (F)', conditions_path(sort: 'max_temperature')%></th>
+          <th><%= link_to 'Mean Temperature (F)', conditions_path(sort: 'mean_temperature')%></th>
+          <th><%= link_to 'Min Temperature (F)', conditions_path(sort: 'min_temperature')%></th>
+          <th><%= link_to 'Mean Humidity', conditions_path(sort: 'mean_humidity')%></th>
+          <th><%= link_to 'Mean Visibility (miles)', conditions_path(sort: 'mean_visibility')%></th>
+          <th><%= link_to 'Mean Wind Speed (mph)', conditions_path(sort: 'mean_wind_speed')%></th>
+          <th><%= link_to 'Precipitation (in)', conditions_path(sort: 'precipitation')%></th>
           <% if current_admin? %>
             <th></th>
             <th></th>

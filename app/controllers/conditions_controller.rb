@@ -3,7 +3,11 @@ class ConditionsController < ApplicationController
     limit = 100
     @pages = (Condition.all.size.to_f / limit).ceil
     offset = params[:offset].to_i * limit ||= 0
-    @conditions = Condition.all.offset(offset).limit(limit)
+    if params[:sort]
+      @conditions = Condition.all.order(params[:sort]).offset(offset).limit(limit)
+    else
+      @conditions = Condition.all.order('date DESC').offset(offset).limit(limit)
+    end
   end
 
   def show

@@ -28,6 +28,12 @@ tr:nth-child(odd) {
 tr:nth-child(1) {
   background-color: $dark-navy;
   color: white;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: $button-red;
+  }
 }
 
 tr:nth-child(1):hover {
