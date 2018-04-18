@@ -230,6 +230,22 @@ td {
   }
 }
 
+.create-button {
+  background-color: $sky-blue;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  margin: 10px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: $dark-navy
+  }
+}
+
 .navy-background {
   background-color: $dark-navy;
 }
