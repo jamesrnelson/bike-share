@@ -293,3 +293,10 @@ ul {
 .page-not-found {
   text-align: center
 }
+
+.pagination {
+  background-color: $table-gray;
+  a:hover {
+    color: $dark-gray;
+  }
+}
