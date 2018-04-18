@@ -6,6 +6,7 @@ $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
 $hover-yellow: #ffff99;
+$bright-red: #ff4d4d;
 $content: 'Roboto', sans-serif;
 $header: 'Open Sans Condensed', sans-serif;
 
@@ -28,6 +29,12 @@ tr:nth-child(odd) {
 tr:nth-child(1) {
   background-color: $dark-navy;
   color: white;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: $button-red;
+  }
 }
 
 tr:nth-child(1):hover {
@@ -46,13 +53,28 @@ tr:hover {
   background-attachment: fixed;
   background-size: cover;
   padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
   a {
     color: $dark-gray;
     text-decoration: none;
   }
   a:hover {
-    color: $dark-gray;
+    color: $dark-navy;
     text-decoration: underline;
+  }
+
+  td {
+    padding: 8px 8px;
+  }
+
+  th {
+    padding: 8px 8px;
   }
 }
 
@@ -85,6 +107,7 @@ td {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  color: white;
 }
 
 .col-10 {
@@ -116,6 +139,7 @@ td {
 }
 
 .col-4 {
+  margin: 0px 20px 40px 20px;
   background-color: rgba(102,204,255,0.3);
   flex-basis: 33%;
   color: white;
@@ -157,6 +181,16 @@ td {
   tr:hover {
     color: white;
   }
+}
+
+.login-row {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  color: white;
 }
 
 .nav-bar {
@@ -215,6 +249,22 @@ td {
   a {
     font-family: $header;
     color: white;
+  }
+}
+
+.create-button {
+  background-color: $sky-blue;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  margin: 10px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: $dark-navy
   }
 }
 
@@ -292,4 +342,37 @@ ul {
 
 .page-not-found {
   text-align: center
+}
+
+.pagination {
+  background-color: $table-gray;
+  font-size: 18px;
+
+  a {
+    color: $dark-navy;
+  }
+  a:hover {
+    color: $button-red;
+  }
+}
+
+.quantity-width {
+  width: 45px;
+  height: 30px;
+}
+
+.delete-button {
+  background-color: $bright-red;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  margin: 10px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: $dark-navy
+  }
 }

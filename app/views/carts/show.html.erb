@@ -18,18 +18,18 @@
                 <%= image_tag asset_path (@basket.find_item(item).image) %>
               </div>
             </td>
-            <td><%= @basket.find_item(item).title %></td>
+            <td><%= link_to @basket.find_item(item).title, item_path(item) %></td>
             <td><%= @basket.find_item(item).description %></td>
             <td><%= "$#{'%.2f' % @basket.find_item(item).price}" %></td>
             <td>
               <%= form_tag(cart_path, method: :patch) do %>
-                <%= number_field_tag(:quantity, value = quantity) %>
+                <%= number_field_tag(:quantity, value = quantity, options = {min: 0, class: "quantity-width"}) %>
                 <%= hidden_field_tag(:item, value = item) %>
                 <br>
                 <%= submit_tag "Update" %>
               <% end %>
             </td>
-            <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}" %></td>
+            <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}", class: "delete-button" %></td>
             <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
           </tr>
           <% end %>
@@ -46,7 +46,7 @@
         <%= submit_tag "Checkout" %>
       <% end %>
     <% else %>
-      <%= button_to "Register to Checkout", login_path %>
+      <%= button_to "Register to Checkout", login_path, class: "create-button" %>
     <% end %>
     </div>
   </div>

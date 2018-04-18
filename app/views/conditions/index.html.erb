@@ -3,23 +3,24 @@
 <div class="row">
   <% if current_admin? %>
   <div class="row">
-    <%= button_to 'Create Weather Conditions', new_admin_condition_path, method: 'get', class: 'create-button' %>
+    <%= link_to 'Create Weather Conditions', new_admin_condition_path, method: 'get', class: 'create-button' %>
   </div>
   <% end %>
-
+  <% if current_user %>
+    <%= link_to 'Weather Conditions Dashboard', conditions_dashboard_path, class: "create-button" %>
+  <% end %>
 </div>
   <div class="row">
-    <div class="col-9">
       <table>
         <tr>
-          <th>Date</th>
-          <th>Max Temperature (F)</th>
-          <th>Mean Temperature (F)</th>
-          <th>Min Temperature (F)</th>
-          <th>Mean Humidity</th>
-          <th>Mean Visibility (miles)</th>
-          <th>Mean Wind Speed (mph)</th>
-          <th>Precipitation (in)</th>
+          <th><%= link_to 'Date', conditions_path(sort: 'date')%></th>
+          <th><%= link_to 'Max Temperature (F)', conditions_path(sort: 'max_temperature')%></th>
+          <th><%= link_to 'Mean Temperature (F)', conditions_path(sort: 'mean_temperature')%></th>
+          <th><%= link_to 'Min Temperature (F)', conditions_path(sort: 'min_temperature')%></th>
+          <th><%= link_to 'Mean Humidity', conditions_path(sort: 'mean_humidity')%></th>
+          <th><%= link_to 'Mean Visibility (miles)', conditions_path(sort: 'mean_visibility')%></th>
+          <th><%= link_to 'Mean Wind Speed (mph)', conditions_path(sort: 'mean_wind_speed')%></th>
+          <th><%= link_to 'Precipitation (in)', conditions_path(sort: 'precipitation')%></th>
           <% if current_admin? %>
             <th></th>
             <th></th>
@@ -36,12 +37,18 @@
           <td><%= condition.mean_wind_speed %></td>
           <td><%= condition.precipitation %></td>
           <% if current_admin? %>
-            <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: 'get', title: "#{condition.id} edit"  %></td>
-            <td><%= button_to 'Delete', admin_condition_path(condition), method: 'delete', title: "#{condition.id} delete" %></td>
+            <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: 'get', title: "#{condition.id} edit", class: "create-button"  %></td>
+            <td><%= button_to 'Delete', admin_condition_path(condition), method: 'delete', title: "#{condition.id} delete", class: "delete-button" %></td>
           <% end %>
         </tr>
         <% end %>
       </table>
     </div>
-  </div>
+    <div class="row">
+      <div class="pagination">
+        <% @pages.times do |n| %>
+        <%= link_to (n + 1).to_s, conditions_path(offset: n) %>
+        <% end %>
+      </div>
+    </div>
 </div>

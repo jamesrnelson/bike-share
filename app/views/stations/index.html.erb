@@ -1,11 +1,15 @@
-<% if current_admin? %>
-  <div class="new-button">
-    <%= link_to 'New Station', new_admin_station_path %>
-  </div>
-<% end %>
 <div class="container-fixed">
+  <% if current_admin? %>
+    <div class="row">
+      <%= link_to 'New Station', new_admin_station_path, class: 'create-button' %>
+    </div>
+  <% end %>
+  <% if current_user %>
+    <div class="row">
+      <%= link_to 'Stations Dashboard', stations_dashboard_path, class: 'create-button' %>
+    </div>
+  <% end %>
   <div class="row">
-    <div class="col-5-table">
       <table>
         <tr>
           <th>Station Name</th>
@@ -24,12 +28,11 @@
             <td><%= station.city %></td>
             <td><%= station.installation_date %></td>
             <% if current_admin? %>
-              <td><%= button_to 'Edit', edit_admin_station_path(station), method: 'get', title: "#{station.id} edit"  %></td>
-              <td><%= button_to 'Delete', admin_station_path(station), method: 'delete', title: "#{station.id} delete" %></td>
+              <td><%= button_to 'Edit', edit_admin_station_path(station), method: 'get', title: "#{station.id} edit", class: 'create-button'  %></td>
+              <td><%= button_to 'Delete', admin_station_path(station), method: 'delete', title: "#{station.id} delete", class: 'delete-button' %></td>
             <% end %>
           </tr>
         <% end %>
       </table>
-    </div>
   </div>
 </div>

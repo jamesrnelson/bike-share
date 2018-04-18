@@ -1,6 +1,13 @@
 class ConditionsController < ApplicationController
   def index
-    @conditions = Condition.all
+    limit = 100
+    @pages = (Condition.all.size.to_f / limit).ceil
+    offset = params[:offset].to_i * limit ||= 0
+    if params[:sort]
+      @conditions = Condition.all.order(params[:sort]).offset(offset).limit(limit)
+    else
+      @conditions = Condition.all.order('date DESC').offset(offset).limit(limit)
+    end
   end
 
   def show

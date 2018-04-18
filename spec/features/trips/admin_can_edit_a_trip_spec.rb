@@ -21,13 +21,13 @@ feature 'On the trips path' do
       fill_in 'trip[start_date]', with: '2013-08-01'
       fill_in 'trip[end_date]', with: '2013-08-01'
       fill_in 'trip[bike_id]', with: 1
-      fill_in 'trip[subscription_type]', with: 'Test'
+      select('Customer', from: 'trip[subscription_type]')
       fill_in 'trip[zip_code]', with: 12345
 
       click_on 'Update Trip'
 
       expect(current_path).to eq(trip_path(trips.first))
-      expect(page).to have_content('Test')
+      expect(page).to have_content('Customer')
       expect(page).to have_content(10)
       expect(page).to have_content(12345)
 

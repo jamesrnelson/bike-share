@@ -1,12 +1,12 @@
 <%= form_for [:admin, @trip] do |f| %>
   <div class=''>
     <%= f.label :duration %>
-    <%= f.number_field :duration %>
+    <%= f.number_field :duration, min: 0 %>
   </div>
 
   <div class=''>
     <%= f.label :start_date %>
-    <%= f.text_field :start_date %>
+    <%= f.date_field :start_date %>
   </div>
 
   <div class=''>
@@ -16,7 +16,7 @@
 
   <div class=''>
     <%= f.label :end_date %>
-    <%= f.text_field :end_date %>
+    <%= f.date_field :end_date %>
   </div>
 
   <div class=''>
@@ -26,12 +26,12 @@
 
   <div class=''>
     <%= f.label :bike_id %>
-    <%= f.number_field :bike_id %>
+    <%= f.number_field :bike_id, min: 1 %>
   </div>
 
   <div class=''>
     <%= f.label :subscription_type %>
-    <%= f.text_field :subscription_type %>
+    <%= f.select :subscription_type, options_for_select(['Customer', 'Subscriber']) %>
   </div>
 
   <div class=''>

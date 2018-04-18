@@ -5,7 +5,9 @@ describe 'Visitor' do
     it 'they sign up to be a registered user' do
       visit '/'
 
-      click_on "CreateAccount"
+      within '.container-fixed' do
+        click_on "CreateAccount"
+      end
 
       expect(current_path).to eq(new_user_path)
 
@@ -13,7 +15,7 @@ describe 'Visitor' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create User"
+      click_on "Create Account"
 
       expect(page).to have_content("Logged in as Bob")
     end

@@ -1,11 +1,13 @@
 <div class="container-fixed">
   <% if current_admin? %>
   <div class="row">
-    <%= button_to 'New Trip', new_admin_trip_path, method: 'get', class: 'create-button' %>
+    <%= link_to 'New Trip', new_admin_trip_path, method: 'get', class: 'create-button' %>
   </div>
   <% end %>
+  <% if current_user %>
+    <%= link_to 'Trips Dashboard', trips_dashboard_path, class: 'create-button' %>
+  <% end %>
   <div class="row">
-    <div class="col-10">
       <table>
         <tr class="table-background">
           <th>Trip ID</th>
@@ -34,17 +36,18 @@
             <td><%= trip.subscription_type %></td>
             <td><%= trip.zip_code %></td>
             <% if current_admin? %>
-              <td><%= button_to 'Edit', edit_admin_trip_path(trip), method: 'get', title: "#{trip.id} edit"  %></td>
-              <td><%= button_to 'Delete', admin_trip_path(trip), method: 'delete', title: "#{trip.id} delete" %></td>
+              <td><%= button_to 'Edit', edit_admin_trip_path(trip), method: 'get', title: "#{trip.id} edit", class: 'create-button'  %></td>
+              <td><%= button_to 'Delete', admin_trip_path(trip), method: 'delete', title: "#{trip.id} delete", class: 'delete-button' %></td>
             <% end %>
           </tr>
         <% end %>
       </table>
+    </div>
+    <div class="row">
       <div class="pagination">
         <% @pages.times do |n| %>
-          <%= link_to (n + 1).to_s, trips_path(offset: n) %>
+        <%= link_to (n + 1).to_s, trips_path(offset: n) %>
         <% end %>
       </div>
     </div>
-  </div>
 </div>
