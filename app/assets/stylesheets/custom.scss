@@ -6,6 +6,7 @@ $dark-gray: #606060;
 $button-red: #e60000;
 $hover-red: #ff0000;
 $hover-yellow: #ffff99;
+$bright-red: #ff4d4d;
 $content: 'Roboto', sans-serif;
 $header: 'Open Sans Condensed', sans-serif;
 
@@ -360,4 +361,20 @@ ul {
 .quantity-width {
   width: 45px;
   height: 30px;
+}
+
+.delete-button {
+  background-color: $bright-red;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  margin: 10px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: $dark-navy
+  }
 }

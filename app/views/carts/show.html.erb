@@ -29,7 +29,7 @@
                 <%= submit_tag "Update" %>
               <% end %>
             </td>
-            <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}", class: "button" %></td>
+            <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}", class: "delete-button" %></td>
             <td><%= "$#{'%.2f' % (@basket.find_item(item).price * quantity)}" %></td>
           </tr>
           <% end %>
