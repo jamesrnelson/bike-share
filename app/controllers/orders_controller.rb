@@ -8,10 +8,10 @@ class OrdersController < ApplicationController
 
   def create
     if @basket.checkout(order_params)
-      session[:cart] = @basket.contents
       flash[:success] = "Successfully submitted your order totaling #{number_to_currency(@basket.total_cost)}"
-      redirect_to dashboard_path
       @basket.clear
+      session[:cart] = @basket.contents
+      redirect_to dashboard_path
     else
       flash[:error] = "Full Name and Address are required fields"
       redirect_to cart_path
