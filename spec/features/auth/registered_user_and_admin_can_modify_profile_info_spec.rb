@@ -26,7 +26,7 @@ describe 'Registered user' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create/Update Account"
+      click_on "Update Account"
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("Your profile information has been updated")
@@ -62,7 +62,7 @@ describe 'Admin' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create/Update Account"
+      click_on "Update Account"
 
       expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_content("Your profile information has been updated")

@@ -15,7 +15,7 @@ describe 'Visitor' do
       fill_in "user[username]", with: "bobbyboy"
       fill_in "user[password]", with: "password"
 
-      click_on "Create/Update Account"
+      click_on "Create Account"
 
       expect(page).to have_content("Logged in as Bob")
     end

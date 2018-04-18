@@ -6,7 +6,9 @@
     <%= link_to 'Create Weather Conditions', new_admin_condition_path, method: 'get', class: 'create-button' %>
   </div>
   <% end %>
-
+  <% if current_user %>
+    <%= link_to 'Weather Conditions Dashboard', conditions_dashboard_path, class: "create-button" %>
+  <% end %>
 </div>
   <div class="row">
       <table>

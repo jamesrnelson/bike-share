@@ -108,6 +108,7 @@ td {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  color: white;
 }
 
 .col-10 {
@@ -139,6 +140,7 @@ td {
 }
 
 .col-4 {
+  margin: 0px 20px 40px 20px;
   background-color: rgba(102,204,255,0.3);
   flex-basis: 33%;
   color: white;
