@@ -24,13 +24,6 @@ class Trip < ApplicationRecord
     order(duration: :asc).first
   end
 
-  def self.duration_metrics
-    metrics = { longest: longest_ride,
-                average: average_duration,
-                shortest: shortest_ride }
-    metrics
-  end
-
   def self.rides_by_month
     group("to_char(start_date, 'FMyyyy mm')")
       .group("to_char(start_date, 'FMMonth yyyy')")
@@ -40,10 +33,6 @@ class Trip < ApplicationRecord
 
   def self.rides_by_year
     group("to_char(start_date, 'FMyyyy')").count
-  end
-
-  def self.rides_by_date
-    { years: rides_by_year, months: rides_by_month }
   end
 
   def self.most_ridden_bike
@@ -58,10 +47,6 @@ class Trip < ApplicationRecord
       .order('count(trips.id) ASC')
       .count
       .first
-  end
-
-  def self.bike_metrics
-    { most_bike: most_ridden_bike, least_bike: least_ridden_bike }
   end
 
   def self.subscription_metrics

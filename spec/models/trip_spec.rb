@@ -27,12 +27,6 @@ describe Trip, type: :model do
       expect(Trip.shortest_ride).to eq(@shortest_trip)
     end
 
-    it 'should build #duration_metrics' do
-      expected = { longest: @longest_trip, average: 17.33, shortest: @shortest_trip }
-
-      expect(Trip.duration_metrics).to eq(expected)
-    end
-
     it 'should find #rides_by_month' do
       DatabaseCleaner.clean
       create_list(:trip, 4, start_date: '2013-01-03')
@@ -60,22 +54,6 @@ describe Trip, type: :model do
       expect(Trip.rides_by_year).to eq(expected)
     end
 
-    it 'should build #rides_by_date summary' do
-      DatabaseCleaner.clean
-      create_list(:trip, 4, start_date: '2013-01-03')
-      create_list(:trip, 2, start_date: '2013-02-03')
-      create_list(:trip, 10, start_date: '2014-03-03')
-      create_list(:trip, 6, start_date: '2014-04-03')
-
-      expected = { years: { '2013' => 6, '2014' => 16 },
-                   months: { ['2013 01', 'January 2013'] => 4,
-                             ['2013 02', 'February 2013'] => 2,
-                             ['2014 03', 'March 2014'] => 10,
-                             ['2014 04', 'April 2014'] => 6 } }
-
-      expect(Trip.rides_by_date).to eq(expected)
-    end
-
     it 'should find #most_ridden_bike' do
       DatabaseCleaner.clean
       create_list(:trip, 5, bike_id: 12345)
@@ -92,17 +70,6 @@ describe Trip, type: :model do
       create_list(:trip, 1, bike_id: 98765)
 
       expect(Trip.least_ridden_bike).to eq([98765, 1])
-    end
-
-    it 'should build #bike_metrics' do
-      DatabaseCleaner.clean
-      create_list(:trip, 5, bike_id: 12345)
-      create_list(:trip, 3, bike_id: 2)
-      create_list(:trip, 1, bike_id: 98765)
-
-      expected = { most_bike: [12345, 5], least_bike: [98765, 1] }
-
-      expect(Trip.bike_metrics).to eq(expected)
     end
 
     it 'should build #subscription_metrics' do
