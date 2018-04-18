@@ -27,7 +27,7 @@
       <td><%= order.fullname %></td>
       <td><%= order.address %></td>
       <td><%= link_to "#{order.id}", order_path(order) %></td>
-      <td><%= "$#{'%.2f' % order.total }" %></td>
+      <td><%= "#{number_to_currency(order.total) }" %></td>
       <td><%= order.status %></td>
       <td>
         <% if order.paid? || order.ordered? %>

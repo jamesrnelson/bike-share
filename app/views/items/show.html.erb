@@ -5,7 +5,7 @@
         <li class='item-image'><%= image_tag asset_path @item.image %></li>
         <li><%= @item.title %></li>
         <li><%= @item.description %></li>
-        <li><%= "$#{'%.2f' % @item.price}" %></li>
+        <li><%= "#{number_to_currency(@item.price)}" %></li>
         <% if @item.status == 'retired' %>
           <h4>Accessory Retired!<h4>
         <% else %>

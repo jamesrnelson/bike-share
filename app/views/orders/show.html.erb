@@ -24,13 +24,13 @@
         </td>
         <td><%= link_to item.title, item_path(item) %></td>
         <td><%= item.description %></td>
-        <td><%= "$#{'%.2f' % item.price}" %></td>
+        <td><%= "#{number_to_currency(item.price)}" %></td>
         <td><%= @order.item_quantity(item) %></td>
-        <td><%= "$#{'%.2f' % @order.item_subtotal(item)}" %></td>
+        <td><%= "#{number_to_currency(@order.item_subtotal(item))}" %></td>
       </tr>
     <% end %>
   </table>
-  <h3>Total: <%= "$#{'%.2f' % @order.total }" %></h3>
+  <h3>Total: <%= "#{number_to_currency(@order.total) }" %></h3>
 <% else %>
   <%= render file: "/public/404" %>
 <% end %>

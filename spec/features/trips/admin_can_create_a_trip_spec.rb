@@ -12,7 +12,7 @@ feature 'On the trips path' do
 
       visit trips_path
 
-      click_on 'New Trip'
+      click_on 'Create Trip'
 
       expect(current_path).to eq(new_admin_trip_path)
       fill_in 'trip[duration]', with: 10

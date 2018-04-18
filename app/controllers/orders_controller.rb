@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::NumberHelper
 
   def show
     @order = Order.find(params[:id])
@@ -8,7 +9,7 @@ class OrdersController < ApplicationController
   def create
     if @basket.checkout(order_params)
       session[:cart] = @basket.contents
-      flash[:success] = "Successfully submitted your order totaling $#{'%.2f' % @basket.total_cost}"
+      flash[:success] = "Successfully submitted your order totaling #{number_to_currency(@basket.total_cost)}"
       redirect_to dashboard_path
       @basket.clear
     else
