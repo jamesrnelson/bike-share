@@ -19,7 +19,9 @@
 
 .byebug_history
 
+#ignores datafiles
 /db/csv
+/db/truncated_data
 
 # Ignore application configuration
 /config/application.yml

@@ -1,24 +1,47 @@
 # README
+## Bike-Share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bike-share is a web-app that utilizes bike share data, allowing users to see an overview and analytics of the rides, conditions, and stations in the  San-Francisco area. The app includes a e-commerce shop for bike accessories. See the deployed version here: https://sleepy-taiga-28417.herokuapp.com/
 
-Things you may want to cover:
+### Setup
 
-* Ruby version
+#### Ruby Version
+* This app uses Ruby version 2.4.1 and up, and Rails 5.1.6
 
-* System dependencies
+#### Creating the repository
+* Clone this repository to your local machine from the command line
+```
+git clone git@github.com:anon0mys/bike-share.git
+```
+* Run bundle to install gem dependencies
 
-* Configuration
+#### Development Database Setup
+* The database relies on sanitized data from the bike-share project. Find the raw data here: https://www.kaggle.com/benhamner/sf-bay-area-bike-share
 
-* Database creation
+* Download the csv data for the project and add it to the database directory in a subfolder named 'csv'. The path should be './db/csv/csv_files_go_here.csv'
 
-* Database initialization
+* From the command line run:
+```
+ruby db/sanitizer.rb
+```
 
-* How to run the test suite
+* Create and seed the database:
+```
+rails db:{create,migrate,seed}
+```
+* There are no users in the seeds file. To create an admin user, use the rails console:
+```ruby
+User.create(name: 'any_name', username: 'your_username', password: 'your_password', status: 'admin')
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Testing
+* The test suite is written in rspec. Run the full suite with:
+```
+rspec
+```
 
-* Deployment instructions
-
-* ...
+#### Deploying
+* By default the sanitized data folder 'truncated_data' is ignored by git. In order to deploy, remove this line from .gitignore before deploying:
+```
+/db/truncated_data
+```
