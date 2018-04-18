@@ -1,9 +1,12 @@
 # README
 ## Bike-Share
 
-Bike-share is a web-app that utilizes bike share data, allowing users to see an overview and analytics of the rides, conditions, and stations in the  San-Francisco area. The app includes a e-commerce shop for bike accessories.
+Bike-share is a web-app that utilizes bike share data, allowing users to see an overview and analytics of the rides, conditions, and stations in the  San-Francisco area. The app includes a e-commerce shop for bike accessories. See the deployed version here: https://sleepy-taiga-28417.herokuapp.com/
 
 ### Setup
+
+#### Ruby Version
+* This app uses Ruby version 2.4.1 and up, and Rails 5.1.6
 
 #### Creating the repository
 * Clone this repository to your local machine from the command line
