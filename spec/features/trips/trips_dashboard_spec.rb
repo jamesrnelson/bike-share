@@ -46,6 +46,8 @@ feature 'On the trips dashboard' do
     end
 
     scenario 'can see the station with the most starting and ending rides' do
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       most_starting_station = create(:station)
       most_ending_station = create(:station)
       create_list(:trip, 25, start_station: most_starting_station)
@@ -60,6 +62,8 @@ feature 'On the trips dashboard' do
 
     scenario 'can see a summary of rides by date' do
       DatabaseCleaner.clean
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       create_list(:trip, 4, start_date: '2013-01-03')
       create_list(:trip, 2, start_date: '2013-02-03')
       create_list(:trip, 10, start_date: '2014-03-03')
@@ -99,6 +103,8 @@ feature 'On the trips dashboard' do
 
     scenario 'can see most and least ridden bikes' do
       DatabaseCleaner.clean
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       create_list(:trip, 5, bike_id: 12345)
       create_list(:trip, 3, bike_id: 2)
       create_list(:trip, 1, bike_id: 98765)

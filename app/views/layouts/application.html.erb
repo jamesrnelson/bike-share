@@ -17,27 +17,25 @@
         <h1 class="sky-header"><%= link_to 'BikeShare', root_path %></h1>
       </div>
       <% if current_user  %>
-      <div class="nav-center">
-        <p>Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %></p>
-      </div>
-      <div class="nav-right">
-        <p><%= link_to 'Logout', logout_path, class: "button" %></p>
-      </div>
-      <div class="nav-center">
-        <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
-      </div>
-
+        <div class="nav-center">
+          <p>Logged in as <% if current_admin? %>Admin User: <% end %><%= current_user.name %></p>
+        </div>
+        <div class="nav-right">
+          <p><%= link_to 'Logout', logout_path, class: "button" %></p>
+        </div>
+        <div class="nav-center">
+          <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
+        </div>
       <% else %>
-
-      <div class="nav-center">
-        <p><%= link_to 'Login', login_path %></p>
-      </div>
-      <div class="nav-right">
-        <p><%= link_to 'CreateAccount', new_user_path, class: "button" %></p>
-      </div>
-      <div class="nav-center">
-        <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
-      </div>
+        <div class="nav-center">
+          <p><%= link_to 'Login', login_path %></p>
+        </div>
+        <div class="nav-right">
+          <p><%= link_to 'CreateAccount', new_user_path, class: "button" %></p>
+        </div>
+        <div class="nav-center">
+          <p><%= link_to "Cart: #{@basket.total_count}", cart_path %></p>
+        </div>
       <% end %>
     </nav>
     <div class="row sky-blue">
@@ -47,7 +45,6 @@
         <p><%= link_to 'All Stations', stations_path %></p>
         <p><%= link_to 'The Bike Shop', bike_shop_path %></p>
       </div>
-
     </div>
     <div class="flash">
       <% flash.each do |type, message| %>

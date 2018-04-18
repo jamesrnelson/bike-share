@@ -1,5 +1,5 @@
-<h2>Stations Dashboard</h2>
 <% if current_user %>
+  <h2>Stations Dashboard</h2>
   <div class="station-stats">
     <h4>Station Stats</h4>
     <ul>
@@ -23,4 +23,6 @@
       <li>Installed: <%= @oldest.installation_date %></li>
     </ul>
   </div>
+<% else %>
+  <%= render file: "/public/404" %>
 <% end %>
