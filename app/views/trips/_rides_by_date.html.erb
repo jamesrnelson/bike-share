@@ -4,7 +4,7 @@
     <th>Month</th>
     <th>Number of Rides</th>
   </tr>
-  <% @rides_by_date[:months].each do |month, count| %>
+  <% @trips.rides_by_month.each do |month, count| %>
     <tr>
       <td><%= month[1] %></td>
       <td><%= count %></td>
@@ -16,7 +16,7 @@
     <th>Yearly Subtotal</th>
     <th>Number of Rides</th>
   </tr>
-  <% @rides_by_date[:years].each do |year, count| %>
+  <% @trips.rides_by_year.each do |year, count| %>
     <tr>
       <td><%= year %></td>
       <td><%= count %></td>

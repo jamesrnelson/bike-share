@@ -1,28 +1,52 @@
 <% if current_user %>
-  <h2>Trips Dashboard</h2>
+  <div class="container-fixed">
+    <div class="row">
+      <div class="col-8">
+        <h2 class='dashboard-title'>Trips Dashboard</h2>
 
-  <div class="stations-report">
-    <p>Most Starting Rides: <%= @most_starts.name %></p>
-    <p>Most Ending Rides: <%= @most_ends.name %></p>
-  </div>
+        <div class="dashboard">
+          <div class="most-and-least">
+            <div class="date-metrics">
+              <p>Date with Most Rides: <%= @trips.most_trips_date[0] %>, <%= pluralize(@trips.most_trips_date[1], 'ride') %></p>
+              <p>Date with Least Rides: <%= @trips.least_trips_date[0] %>, <%= pluralize(@trips.least_trips_date[1], 'ride') %></p>
+            </div>
 
-  <div class="bikes-report">
-    <p>Most Ridden Bike: <%= @bike_metrics[:most_bike][0] %>, <%= pluralize(@bike_metrics[:most_bike][1], 'ride') %></p>
-    <p>Least Ridden Bike: <%= @bike_metrics[:least_bike][0] %>, <%= pluralize(@bike_metrics[:least_bike][1], 'ride') %></p>
-  </div>
+            <div class="bikes-report">
+              <p>Most Ridden Bike: <%= @trips.most_ridden_bike[0] %>, <%= pluralize(@trips.most_ridden_bike[1], 'ride') %></p>
+              <p>Least Ridden Bike: <%= @trips.least_ridden_bike[0] %>, <%= pluralize(@trips.least_ridden_bike[1], 'ride') %></p>
+            </div>
 
-  <div class="weather-report">
-    <%= render partial: 'weather' %>
-  </div>
+            <div class="stations-report">
+              <p>Most Starting Rides: <%= link_to @stations.most_starting_rides.name, station_path(@stations.most_starting_rides) %></p>
+              <p>Most Ending Rides: <%= link_to @stations.most_ending_rides.name, station_path(@stations.most_ending_rides) %></p>
+            </div>
+          </div>
 
-  <div class="duration-metrics">
-    <p>Longest Ride: <%= link_to @duration_metrics[:longest].id, trip_path(@duration_metrics[:longest].id) %></p>
-    <p>Average Ride Duration: <%= @duration_metrics[:average] %> minutes</p>
-    <p>Shortest Ride: <%= link_to @duration_metrics[:shortest].id, trip_path(@duration_metrics[:shortest].id) %></p>
-  </div>
+          <div class="duration-subscription">
+            <div class="duration-metrics">
+              <h4>Rides by Duration:</h4>
+              <p>Longest Ride: <%= link_to @trips.longest_ride.id, trip_path(@trips.longest_ride.id) %></p>
+              <p>Average Ride Duration: <%= @trips.average_duration %> minutes</p>
+              <p>Shortest Ride: <%= link_to @trips.shortest_ride.id, trip_path(@trips.shortest_ride.id) %></p>
+            </div>
 
-  <div class="rides-by-date">
-    <%= render partial: 'rides_by_date' %>
+            <div class="subscriptions">
+              <h4>Rides by Subscription Type:</h4>
+              <p><%= pluralize(@trips.subscription_metrics['Subscriber'], 'Subscriber') %></p>
+              <p><%= pluralize(@trips.subscription_metrics['Customer'], 'Customer') %></p>
+            </div>
+          </div>
+
+          <div class="weather-report">
+            <%= render partial: 'weather' %>
+          </div>
+
+          <div class="rides-by-date">
+            <%= render partial: 'rides_by_date' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% else %>
   <%= render file: "/public/404" %>
