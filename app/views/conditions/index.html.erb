@@ -41,10 +41,12 @@
         </tr>
         <% end %>
       </table>
+    </div>
+    <div class="row">
       <div class="pagination">
         <% @pages.times do |n| %>
         <%= link_to (n + 1).to_s, conditions_path(offset: n) %>
         <% end %>
       </div>
-  </div>
+    </div>
 </div>
