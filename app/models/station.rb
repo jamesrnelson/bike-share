@@ -1,6 +1,8 @@
 class Station < ApplicationRecord
   validates_presence_of :name, :dock_count, :city, :installation_date
   before_save :generate_slug
+  has_many :start_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trips, class_name: "Trip", foreign_key: "end_station_id"
 
   def generate_slug
     self.slug = name.parameterize
@@ -50,5 +52,43 @@ class Station < ApplicationRecord
     .group('stations.id')
     .order('trip_count DESC')
     .first
+
+  def start_count
+    start_trips.count
+  end
+
+  def end_count
+    end_trips.count
+  end
+
+  def most_frequent_destination
+    start_trips
+    .select('end_station_id, COUNT(end_station_id) AS count')
+    .group(:end_station_id)
+    .order('count DESC')
+    .first
+    .end_station
+  end
+
+  def most_frequent_origin
+    end_trips
+    .select('start_station_id, COUNT(start_station_id) AS count')
+    .group(:start_station_id)
+    .order('count DESC')
+    .first
+    .start_station
+  end
+
+  def most_trips_date
+    start_trips
+    .select('start_date AS date, count(start_date) AS count')
+    .group('date')
+    .to_a
+    .first
+    .date
+  end
+
+  def most_frequent_zip_code
+
   end
 end

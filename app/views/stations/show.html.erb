@@ -6,6 +6,11 @@
       <p>Dock Count:</strong> <%= @station.dock_count %>
       <p>City:</strong> <%= @station.city %>
       <p>Installation Date:</strong> <%= @station.installation_date %>
+      <p>Number of rides started at this station: <%= @station.start_count %></p>
+      <p>Number of rides ended at this station: <%= @station.end_count %></p>
+      <p>Most frequent destination station: <%= @station.most_frequent_destination.name %></p>
+      <p>Most frequent origination station: <%= @station.most_frequent_origin.name %></p>
+      <p>Greatest number of trips started at this station on <%= @station.most_trips_date %></p>
 
       <% if current_admin? %>
         <div class="buttons">

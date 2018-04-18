@@ -29,4 +29,73 @@ describe Station, type: :model do
       expect(Station.most_ending_rides).to eq(most_ending_station)
     end
   end
+
+  describe 'instance methods' do
+    describe '.start_count' do
+      it 'returns total count of all trips starting at station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.start_count).to eq(5)
+      end
+    end
+    describe '.end_count' do
+      it 'returns total count of all trips ending at station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.end_count).to eq(2)
+      end
+    end
+    describe '.most_frequent_destination' do
+      it 'returns station that is the most frequent end station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.most_frequent_destination).to eq(station2)
+      end
+    end
+    describe '.most_frequent_origin' do
+      it 'returns station that is the most frequent start station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.most_frequent_origin).to eq(station2)
+      end
+    end
+    describe '.most_trips_date' do
+      it 'returns date that had most trips originating from station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        trip1, trip2, trip3 = create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.most_trips_date).to eq(trip3.start_date)
+      end
+    end
+    describe '.most_frequent_zip_code' do
+      it 'returns most frequent zip code for users starting trips at station' do
+        station1 = create(:station)
+        station2 = create(:station)
+        trip1, trip2, trip3 = create_list(:trip, 3, start_station: station1, end_station: station2, start_date: '2013-08-29 10:11:00', zip_code: 12345, bike_id: 4)
+        create_list(:trip, 2, start_station: station1, end_station: station2, start_date: '2013-08-30 10:11:00')
+        create_list(:trip, 2, end_station: station1)
+
+        expect(station1.most_frequent_zip_code).to eq(trip3.zip_code)
+      end
+    end
+  end
 end
