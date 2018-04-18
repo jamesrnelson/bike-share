@@ -6,11 +6,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    flash[:success] = "Successfully submitted your order totaling $#{'%.2f' % @basket.total_cost}"
-    @basket.checkout(order_params)
-    @basket.clear
-    session[:cart] = @basket.contents
-    redirect_to dashboard_path
+    if @basket.checkout(order_params)
+      session[:cart] = @basket.contents
+      flash[:success] = "Successfully submitted your order totaling $#{'%.2f' % @basket.total_cost}"
+      redirect_to dashboard_path
+      @basket.clear
+    else
+      flash[:error] = "Full Name and Address are required fields"
+      redirect_to cart_path
+    end
   end
 
   def update
