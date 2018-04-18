@@ -114,5 +114,29 @@ describe Trip, type: :model do
 
       expect(Trip.subscription_metrics).to eq(expected)
     end
+
+    it 'should find #most_trips_date' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-02-04')
+      create_list(:trip, 6, start_date: '2014-04-03')
+
+      expected = ['2014-02-04', 10]
+
+      expect(Trip.most_trips_date).to eq(expected)
+    end
+
+    it 'should find #least_trips_date' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 2, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-02-04')
+      create_list(:trip, 6, start_date: '2014-04-03')
+
+      expected =  ['2013-02-03', 2]
+
+      expect(Trip.least_trips_date).to eq(expected)
+    end
   end
 end

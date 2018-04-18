@@ -128,5 +128,19 @@ feature 'On the trips dashboard' do
       expect(page).to have_content('5 Subscribers')
       expect(page).to have_content('1 Customer')
     end
+
+    scenario 'can see a date with most and least rides' do
+      DatabaseCleaner.clean
+      create_list(:trip, 4, start_date: '2013-01-03')
+      create_list(:trip, 1, start_date: '2013-02-03')
+      create_list(:trip, 10, start_date: '2014-02-04')
+      create_list(:trip, 6, start_date: '2014-04-03')
+      create(:condition, date: '2013-01-03')
+
+      visit trips_dashboard_path
+
+      expect(page).to have_content('Date with Most Rides: 2014-02-04, 10 rides')
+      expect(page).to have_content('Date with Least Rides: 2013-02-03, 1 ride')
+    end
   end
 end

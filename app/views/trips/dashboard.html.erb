@@ -31,6 +31,11 @@
   <p><%= pluralize(@subscription_metrics['Customer'], 'Customer') %></p>
 </div>
 
+<div class="date-metrics">
+  <p>Date with Most Rides: <%= @trips.most_trips_date[0] %>, <%= pluralize(@trips.most_trips_date[1], 'ride') %></p>
+  <p>Date with Least Rides: <%= @trips.least_trips_date[0] %>, <%= pluralize(@trips.least_trips_date[1], 'ride') %></p>
+</div>
+
 <% else %>
 <%= render file: "/public/404" %>
 <% end%>

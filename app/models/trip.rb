@@ -67,4 +67,18 @@ class Trip < ApplicationRecord
   def self.subscription_metrics
     group(:subscription_type).count
   end
+
+  def self.most_trips_date
+    group("to_char(start_date, 'FMyyyy-mm-dd')")
+      .order('count(trips.id) DESC')
+      .count
+      .first
+  end
+
+  def self.least_trips_date
+    group("to_char(start_date, 'FMyyyy-mm-dd')")
+      .order('count(trips.id) ASC')
+      .count
+      .first
+  end
 end
