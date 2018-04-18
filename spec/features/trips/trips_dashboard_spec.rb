@@ -2,12 +2,16 @@ require 'rails_helper'
 
 feature 'On the trips dashboard' do
   before(:each) do
+    DatabaseCleaner.clean
+    FactoryBot.reload
     @aug_trips = create_list(:trip, 5, start_date: '2013-08-29 10:11:00', end_date: '2013-08-31')
     @sep_trips = create_list(:trip, 15, start_date: '2013-09-15 10:11:00', end_date: '2013-09-17')
     @oct_trips = create_list(:trip, 10, start_date: '2013-10-02', end_date: '2013-10-04')
     @aug_condition = create(:condition, date: '2013-08-29')
     @sep_condition = create(:condition, date: '2013-09-15')
     @oct_condition = create(:condition, date: '2013-10-02')
+    admin = create(:admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
 
   context 'an Admin user' do
