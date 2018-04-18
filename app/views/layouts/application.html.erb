@@ -22,7 +22,13 @@
       </div>
       <% if current_user  %>
         <div class="nav-center">
-          <p><%= link_to "Logged in as", dashboard_path %> <% if current_admin? %>Admin User: <% end %><%= link_to current_user.name, dashboard_path %></p>
+          <% if current_admin? %>
+          <p><%= link_to "Logged in as Admin User:", dashboard_path %>
+            <%= link_to current_user.name, dashboard_path %> - <%= link_to 'Go to Admin Dashboard', admin_dashboard_path %></p>
+            <% else %>
+            <p><%= link_to "Logged in as:", dashboard_path %>
+              <%= link_to current_user.name, dashboard_path %></p>
+              <% end %>
         </div>
         <div class="nav-right">
           <p><%= link_to 'Logout', logout_path, class: "button" %></p>

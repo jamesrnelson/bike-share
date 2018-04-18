@@ -11,7 +11,8 @@
           <div class="card-bottom">
               <h3><%= item.title %></h3>
               <p> Price: <%= "#{number_to_currency(item.price)}" %> </p>
-              <%= button_to "Add to Cart", cart_path(item_id: item.id), title: item.title %>
+              <%= button_to "Add to Cart", cart_path(item_id: item.id), title: item.title, class: 'create-button' %>
+
           </div>
         </li>
       <% end %>

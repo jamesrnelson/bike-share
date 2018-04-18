@@ -26,7 +26,7 @@
                 <%= number_field_tag(:quantity, value = quantity, options = {min: 0, class: "quantity-width"}) %>
                 <%= hidden_field_tag(:item, value = item) %>
                 <br>
-                <%= submit_tag "Update" %>
+                <%= submit_tag "Update", class: 'create-button' %>
               <% end %>
             </td>
             <td><%= button_to "Remove", cart_path(item: item), method: :delete, title: "remove#{item}", class: "delete-button" %></td>
