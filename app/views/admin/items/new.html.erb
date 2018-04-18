@@ -1,11 +1,33 @@
-<%= form_tag(admin_bike_shop_index_path, method: :post, multipart: true) do %>
-  <label>Title</label>
-  <%= text_field_tag :"item[title]" %>
-  <label>Description</label>
-  <%= text_area_tag :"item[description]" %>
-  <label>Price</label>
-  <%= number_field_tag :"item[price]", nil, step: "0.01", min: 0 %>
-  <label>Image</label>
-  <%= file_field_tag :"item[image]", accept: 'image/png,image/gif,image/jpeg' %>
-  <%= submit_tag "Add Accessory" %>
-<% end %>
+<div class="container-color sky-blue">
+  <div class="row">
+    <div class="col-4 navy-background">
+      <div class="row">
+        <%= form_tag(admin_bike_shop_index_path, method: :post, multipart: true) do %>
+        <label>Title</label>
+      </div>
+      <div class="row">
+        <%= text_field_tag :"item[title]" %>
+      </div>
+      <div class="row">
+        <label>Description</label>
+      </div>
+      <div class="row">
+        <%= text_area_tag :"item[description]" %>
+      </div>
+      <div class="row">
+        <label>Price</label>
+      </div>
+      <div class="row">
+        <%= number_field_tag :"item[price]", nil, step: "0.01", min: 0 %>
+      </div>
+      <div class="row">
+        <label>Image</label>
+      </div>
+      <div class="row">
+        <%= file_field_tag :"item[image]", accept: 'image/png,image/gif,image/jpeg' %>
+        <%= submit_tag "Add Accessory" %>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>
