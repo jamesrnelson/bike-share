@@ -15,7 +15,7 @@ class Station < ApplicationRecord
   end
 
   def self.avg_bikes
-    average(:dock_count)
+    average(:dock_count).round
   end
 
   def self.most_bikes
@@ -35,7 +35,7 @@ class Station < ApplicationRecord
   def self.oldest
     order(:installation_date).first
   end
-  
+
   def self.most_starting_rides
     select('stations.*, count(trips.id) AS trip_count')
     .joins('INNER JOIN trips ON stations.id = trips.start_station_id')
