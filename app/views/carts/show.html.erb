@@ -18,7 +18,7 @@
                 <%= image_tag asset_path (@basket.find_item(item).image) %>
               </div>
             </td>
-            <td><%= @basket.find_item(item).title %></td>
+            <td><%= link_to @basket.find_item(item).title, item_path(item) %></td>
             <td><%= @basket.find_item(item).description %></td>
             <td><%= "$#{'%.2f' % @basket.find_item(item).price}" %></td>
             <td>
@@ -46,7 +46,7 @@
         <%= submit_tag "Checkout" %>
       <% end %>
     <% else %>
-      <%= button_to "Register to Checkout", login_path %>
+      <%= button_to "Register to Checkout", login_path, class: "create-button" %>
     <% end %>
     </div>
   </div>
