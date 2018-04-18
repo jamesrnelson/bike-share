@@ -61,11 +61,14 @@ class Basket
     else
       transaction = 1
     end
-    order = @current_user.orders.create(fullname: order_params[:fullname], address: order_params[:address])
-    @contents.each do |item, quantity|
-      order.order_items.create(item_id: item, quantity: quantity)
+    order = @current_user.orders.new(fullname: order_params[:fullname], address: order_params[:address])
+    if order.save
+      @contents.each do |item, quantity|
+        order.order_items.create(item_id: item, quantity: quantity)
+      end
+    else
+      false
     end
-    clear
   end
 
   def clear
