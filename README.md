@@ -1,7 +1,7 @@
 # README
 ## Bike-Share
 
-Bike-share is a web-app that utilizes bike share data, allowing users to see an overview and analytics of the rides, conditions, and stations in the  San-Francisco area. The app includes a e-commerce shop for bike accessories. See the deployed version here: https://sleepy-taiga-28417.herokuapp.com/
+Bike-share is a web-app that utilizes bike share data, allowing users to see an overview and analytics of the rides, conditions, and stations in the  San-Francisco area. The app includes an e-commerce shop for bike accessories. See the deployed version here: https://sleepy-taiga-28417.herokuapp.com/
 
 ### Setup
 
